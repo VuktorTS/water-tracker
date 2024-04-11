@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  font-family: 'Roboto', sans-serif;
+
+  --primery-color-black: #2f2f2f;
+  --primery-color-white: #fff;
+  --primery-color-blue: #407bff;
+
+  --secondary-color-blue: #9ebbff;
+  --bg-color-light-blue: #ecf2ff;
+  --secondary-yellow: #ff9d43;
+
+  --btn-color-red: #ef5050;
+  --btn-color-light-blue: #d7e3ff;
+  --calendar-color-orange: #ff9d43;
+}
+
 body {
   background-color: #000;
   /* background-image: url('./assets/background.png'); */
