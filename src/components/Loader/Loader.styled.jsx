@@ -1,4 +1,4 @@
-export default Loader;
+// export default Loader;
 import styled from 'styled-components';
 
 export const LoaderStyled = styled.div`

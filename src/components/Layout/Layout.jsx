@@ -1,16 +1,18 @@
 import { Suspense } from "react";
 import { Header } from "../Header/Header";
 import { Outlet } from "react-router-dom";
+import Loader from "../Loader/Loader"
 
-export const Layout = () => {
+const Layout = () => {
     return (
       <>
         <Header />
         <main>
-          <Suspense fallback={"louder"}>
+          <Suspense fallback={<Loader/>}>
             <Outlet />
           </Suspense>
         </main>
       </>
     );
   };
+  export default Layout
