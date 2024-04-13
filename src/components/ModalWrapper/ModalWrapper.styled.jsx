@@ -42,5 +42,16 @@ margin-bottom: 24px;
     background: none;
     cursor: pointer;
   `
+
+  export const CloseIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: var(--primery-color-blue);
+
+  &:hover,
+  &:focus {
+    stroke: var(--secondary-yellow);
+  }
+  `
   export const ModalBody = styled.div``
  
