@@ -6,9 +6,7 @@ export const Backdrop = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--backdrop);
-    backdrop-filter: blur(2px);
-    z-index: 100;
+    background-color: var(--backdrop-color);
   `
   
   export const Container = styled.div`
@@ -19,13 +17,19 @@ export const Backdrop = styled.div`
     transform: translate(-50%, -50%);
     padding: 32px 24px;
     border-radius: 10px;
-    background-color: var(--primary-white);
-    z-index: 101;
+    background-color: var(--primery-color-white);
       @media screen and (min-width: 768px) {
           width: 529px;
       }
   `
-  
+  export const TitleModal = styled.h2`
+  color: var(--primery-color-black);
+font-size: 26px;
+font-weight: 500;
+line-height: 1.2;
+margin-bottom: 24px;
+  `
+
   export const ButtonClose = styled.button`
     position: absolute;
     top: 26px;
@@ -33,7 +37,7 @@ export const Backdrop = styled.div`
     padding: 8px 0;
     font-size: 28px;
     line-height: 0.6;
-    color: var(--primary-sky-blue);
+    color: var(--primery-color-blue);
     border: none;
     background: none;
     cursor: pointer;
