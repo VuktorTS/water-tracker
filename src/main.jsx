@@ -9,9 +9,9 @@ import { Provider } from 'react-redux';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <Provider store={persistor}> */}
+    {/* <Provider loading={null} store={persistor}> */}
       {/* <PersistGate> */}
-        <BrowserRouter basename="/water-tracker">
+        <BrowserRouter>
           <App />
         </BrowserRouter>
       {/* </PersistGate> */}
