@@ -17,7 +17,7 @@ const ModalPage = () => {
     <>
       <button onClick={onOpen}>Modal</button>
       {modal && (
-        <ModalWrapper onClose={onClose} title="Title Modal Window">
+        <ModalWrapper onClose={onClose} title="Title Modal">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
           inventore architecto facilis debitis ipsum ducimus hic placeat
           explicabo assumenda laborum veniam laboriosam quod eos similique
