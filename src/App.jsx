@@ -10,6 +10,7 @@ import WelcomePage from 'pages/WelcomePage';
 import RegistrationPage from 'pages/RegistrationPage';
 import HomePage from 'pages/HomePage';
 import LoginPage from 'pages/LoginPage';
+import ModalPage from './pages/ModalPage';
 
 // const Layout = lazy(() => import('./components/Layout/Layout'));
 // const HomePage = lazy(() => import('./pages/HomePage'));
@@ -47,6 +48,12 @@ export const App = () => {
               path="/signup"
               element={
                   <RegistrationPage />
+              }
+            />
+            <Route
+              path="/modal"
+              element={
+                  <ModalPage />
               }
             />
             <Route path="*" element={<Navigate to="/" replace />} />

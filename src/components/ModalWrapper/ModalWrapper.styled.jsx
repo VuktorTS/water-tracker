@@ -38,5 +38,5 @@ export const Backdrop = styled.div`
     background: none;
     cursor: pointer;
   `
-  
+  export const ModalBody = styled.div``
  

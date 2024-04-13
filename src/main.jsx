@@ -5,16 +5,16 @@ import {App} from './App.jsx';
 import './index.css';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { persistor } from './redux/store.js';
+// import { persistor } from './redux/store.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={persistor}>
-      <PersistGate>
+    {/* <Provider store={persistor}> */}
+      {/* <PersistGate> */}
         <BrowserRouter basename="/water-tracker">
           <App />
         </BrowserRouter>
-      </PersistGate>
-    </Provider>
+      {/* </PersistGate> */}
+    {/* </Provider> */}
   </React.StrictMode>,
 );
