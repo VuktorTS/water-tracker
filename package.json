@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^2.2.3",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "axios": "^1.6.8",
+    "formik": "^2.4.5",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
@@ -26,7 +27,8 @@
     "react-use": "^17.5.0",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.0.7",
-    "vite-plugin-svgr": "^3.2.0"
+    "vite-plugin-svgr": "^3.2.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.62",
