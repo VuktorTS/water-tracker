@@ -1,23 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  width: 280px;
   border-radius: 10px;
   padding: 24px 16px;
-  width: 280px;
-  height: 416px;
   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
   background: var(--bg-color-light-blue);
-  max-width: 280px;
 
   @media (min-width: 768px) {
     padding: 32px 24px;
-    min-width: 494px;
-    max-height: 332px;
+    width: 494px;
   }
 
   @media (min-width: 1440px) {
     margin-top: 34px;
-    max-width: 494px;
   }
 `;
 
@@ -30,27 +26,29 @@ export const Title = styled.h3`
 `;
 
 export const List = styled.ul`
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
+  padding-left: 0;
 `;
 
 export const Item = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-`;
-
-export const Icon = styled.svg`
-  width: 8px;
-  height: 8px;
-`;
-
-export const TextItem = styled.p`
   font-size: 16px;
   line-height: 1.25;
   color: var(--primery-color-black);
-  flex: 1;
-  margin: 0 auto;
+  position: relative;
+  padding-left: 16px;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: var(--primery-color-blue);
+    border-radius: 50%;
+  }
 `;

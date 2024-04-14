@@ -11,8 +11,8 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1440px) {
-    max-width: 439px;
-    max-height: 366px;
+    width: 439px;
+    height: 366px;
     margin-bottom: 0;
     margin-right: 81px;
   }
@@ -30,7 +30,7 @@ export const MainTitle = styled.h1`
   }
 
   @media (min-width: 1440px) {
-    font-size: 32px;
+    font-size: 35px;
   }
 `;
 
@@ -128,7 +128,7 @@ export const StyledButton = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 336px;
+    width: 384px;
     height: 44px;
     padding: 10px 30px;
   }
