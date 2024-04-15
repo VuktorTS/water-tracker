@@ -53,4 +53,26 @@ export const StyledBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:hover {
+    transition: ease-in 0.2s;
+    color: var(--secondary-yellow);
+
+    > svg {
+      transition: ease-in 0.2s;
+      stroke: var(--secondary-yellow);
+    }
+  }
+`;
+
+export const StyledIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: var(--primery-color-blue);
+  fill: none;
+`;
+
+export const ArrowIcon = styled.svg`
+  width: 16px;
+  height: 16px;
 `;

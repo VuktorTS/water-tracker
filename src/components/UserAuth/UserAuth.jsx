@@ -1,7 +1,7 @@
-import { NavbarLink } from './UserAuth.styled'
+import { NavbarLink, StyledIcon } from './UserAuth.styled'
 import { UserMenu } from '../UserMenu/UserMenu'
-import { UserOutlineSvg } from '../../img/UserOutlineSvg'
 // import { useSelector } from "react-redux";
+import icons from "img/icons.svg"
 
 export const UserAuth = () => {
   const isLoggedIn = true //useSelector(selectIsLoggedIn);
@@ -9,7 +9,9 @@ export const UserAuth = () => {
   return (
     <div>
       {isLoggedIn ? <UserMenu /> : <NavbarLink to='/signin'>Sign in
-        <UserOutlineSvg/>
+        <StyledIcon>
+          <use href={`${icons}#icon-user`}></use>
+        </StyledIcon>
         </NavbarLink>
       }
 

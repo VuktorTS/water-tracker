@@ -8,3 +8,10 @@ export const NavbarLink = styled(NavLink)`
 
   color: var(--primery-color-blue);
 `;
+
+export const StyledIcon = styled.svg`
+  width: 28px;
+  height: 28px;
+  stroke: var(--primery-color-black);
+  fill: none;
+`;

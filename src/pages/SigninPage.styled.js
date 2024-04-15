@@ -5,12 +5,8 @@ import styled from 'styled-components';
 export const StyledContainer = styled.div`
   height: 70vh;
   width: 100%;
-  height: 616px;
   margin: auto;
   padding-top: 24px;
-  background-image: url(${(props) => props.mobile});
-  background-repeat: no-repeat;
-  background-size: cover;
   color: var(--primery-color-black);
 
   @media (min-width: 320px) {
@@ -19,14 +15,12 @@ export const StyledContainer = styled.div`
 
   @media (min-width: 768px) {
     padding-top: 40px;
-    background-image: url(${(props) => props.tablet});
     width: 704px;
   }
 
   @media (min-width: 1440px) {
     padding-top: 148px;
     padding-left: 738px;
-    background-image: url(${(props) => props.desktop});
     width: 1216px;
   }
 `;
@@ -37,13 +31,6 @@ export const Title = styled.h1`
   line-height: 1.23;
   padding-bottom: 16px;
 `;
-
-// export const StyledFormik = styled(Formik)`
-//   width: 100%;
-//   height: 100%;
-//   display: block;
-//   margin: auto;
-// `;
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -70,7 +57,6 @@ export const InputBox = styled.div`
 `;
 
 export const StyledField = styled(Field)`
-  /* margin-top: 11px; */
   border: 1px solid var(--primery-color-blue);
   border-radius: 6px;
   color: var(--secondary-color-blue);
@@ -78,6 +64,7 @@ export const StyledField = styled(Field)`
   line-height: 1.23;
   letter-spacing: 0%;
   padding: 12px 10px;
+  transition: ease-in 0.2s;
 
   &.active,
   &:focus {
@@ -118,7 +105,6 @@ export const Button = styled.button`
   color: var(--primery-color-white);
   border-radius: 10px;
   background-color: var(--primery-color-blue);
-  transition: ease-in 0.2s;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
   @media (min-width: 768px) {
@@ -128,8 +114,18 @@ export const Button = styled.button`
 
 export const StyledLink = styled(NavLink)`
   color: var(--primery-color-blue);
+  transition: ease-in 0.2s;
 
   &:hover {
     color: var(--secondary-yellow);
   }
+`;
+
+export const ShowIcon = styled.svg`
+  position: absolute;
+  top: 62%;
+  right: 14px;
+  width: 14px;
+  height: 12px;
+  stroke: var(--primery-color-blue);
 `;

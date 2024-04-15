@@ -7,15 +7,15 @@ import { ToastContainer } from 'react-toastify';
 
 import Layout from 'components/Layout/Layout';
 import WelcomePage from 'pages/WelcomePage';
-import SigninPage from './pages/SigninPage/SigninPage';
-import SignupPage from './pages/SignupPage/SignupPage';
+import SigninPage from './pages/SigninPage';
+import SignupPage from './pages/SignupPage';
 import HomePage from 'pages/HomePage';
 import ModalPage from './pages/ModalPage';
 
 // const Layout = lazy(() => import('./components/Layout/Layout'));
 // const HomePage = lazy(() => import('./pages/HomePage'));
 // const WelcomePage = lazy(() => import('./pages/WelcomePage'));
-// const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
+// const SignupPage = lazy(() => import('./pages/SignupPage'));
 
 export const App = () => {
   // const dispatch = useDispatch();

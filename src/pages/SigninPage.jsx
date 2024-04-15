@@ -1,14 +1,18 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button, InputBox, Label, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SigninPage.styled';
-
-import mobileImage from '../../img/background-img-mobile.png'
-import tabletImage from '../../img/background-img-tablet.png'
-import desktopImage from '../../img/background-img-desktop.png'
+import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SigninPage.styled';
+import { useState } from 'react';
+import icons from "img/icons.svg"
 
 const SigninPage = () => {
+    const [showPassword, setShowPassword] = useState(false);
+  
+    const togglePasswordVisibility = () => {
+      setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
+
   return (
-    <StyledContainer mobile={mobileImage} tablet={tabletImage} desktop={desktopImage}>
+    <StyledContainer >
       <h1>Sign In</h1>
       <Formik
         initialValues={{
@@ -32,8 +36,10 @@ const SigninPage = () => {
           <InputBox>
             <Label htmlFor="password">Enter your password</Label>
             <StyledError name="password" component="div" />
-            <StyledField type="password" id="password" name="password" placeholder="Password" />
-          </InputBox>
+            <StyledField type={showPassword ? 'text' : 'password'} id="password" name="password" placeholder="Password" />
+              <ShowIcon type="button" onClick={togglePasswordVisibility}>
+                {showPassword ? 'Hide' && <use href={`${icons}#icon-opend`} /> : 'Show' && <use href={`${icons}#icon-closed`} />} 
+              </ShowIcon>          </InputBox>
           <Button type="submit">Sign In</Button>
         </StyledForm>
       </Formik>
