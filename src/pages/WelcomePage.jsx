@@ -1,6 +1,7 @@
-const WelcomePage = ()=>{
-    return (
-        <div>Welcome page</div>
-    )
-}
+const WelcomePage = () => {
+        return (
+                <div>Welcome page</div>
+            )
+        }
+
 export default WelcomePage;
