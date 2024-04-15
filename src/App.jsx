@@ -25,37 +25,17 @@ export const App = () => {
   //   dispatch();
   // }, [dispatch]);
 
-//TODO: реалізувати логіку приватних маршрутів
+  //TODO: реалізувати логіку приватних маршрутів
   return (
     <>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
-            <Route
-              path="/home"
-              element={
-                  <HomePage />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                  <LoginPage />
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                  <RegistrationPage />
-              }
-            />
-            <Route
-              path="/modal"
-              element={
-                  <ModalPage />
-              }
-            />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/signin" element={<LoginPage />} />
+            <Route path="/signup" element={<RegistrationPage />} />
+            <Route path="/modal" element={<ModalPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
