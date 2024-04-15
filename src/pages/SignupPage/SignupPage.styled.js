@@ -5,30 +5,28 @@ import styled from 'styled-components';
 export const StyledContainer = styled.div`
   height: 70vh;
   width: 100%;
+  height: 616px;
   margin: auto;
-  margin-top: 24px;
-
+  padding-top: 24px;
   background-image: url(${(props) => props.mobile});
   background-repeat: no-repeat;
   background-size: cover;
-  /* border: 2px red solid; */
   color: var(--primery-color-black);
 
   @media (min-width: 320px) {
-    /* padding: 0 20px; */
     width: 280px;
   }
 
   @media (min-width: 768px) {
-    /* padding-right: 32px; */
+    padding-top: 40px;
     background-image: url(${(props) => props.tablet});
-
     width: 704px;
   }
 
   @media (min-width: 1440px) {
+    padding-top: 148px;
+    padding-left: 738px;
     background-image: url(${(props) => props.desktop});
-
     width: 1216px;
   }
 `;
@@ -51,6 +49,14 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 384px;
+  }
 `;
 
 export const InputBox = styled.div`
@@ -114,6 +120,10 @@ export const Button = styled.button`
   background-color: var(--primery-color-blue);
   transition: ease-in 0.2s;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  @media (min-width: 768px) {
+    padding: 10px 30px;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
