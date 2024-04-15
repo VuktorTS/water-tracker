@@ -1,17 +1,18 @@
+import { ErrorMessage, Field, Form } from 'formik';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
   height: 70vh;
   width: 100%;
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-top: 24px;
+
   background-image: url(${(props) => props.mobile});
   background-repeat: no-repeat;
   background-size: cover;
-  border: 2px red solid;
+  /* border: 2px red solid; */
+  color: var(--primery-color-black);
 
   @media (min-width: 320px) {
     /* padding: 0 20px; */
@@ -32,11 +33,12 @@ export const StyledContainer = styled.div`
   }
 `;
 
-// export const Title = styled.h2`
-//   font-size: 1.6rem;
-//   font-weight: 600;
-//   padding-bottom: 36px;
-// `;
+export const Title = styled.h1`
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.23;
+  padding-bottom: 16px;
+`;
 
 // export const StyledFormik = styled(Formik)`
 //   width: 100%;
@@ -45,72 +47,79 @@ export const StyledContainer = styled.div`
 //   margin: auto;
 // `;
 
-// export const StyledForm = styled(Form)`
-//   display: flex;
-//   flex-direction: column;
+export const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+`;
 
-//   gap: 12px;
-//   margin-bottom: 20px;
-//   background-color: #fff;
-//   width: 50%;
-//   /* border: solid 2px #555; */
-//   border-radius: 15px;
-//   padding: 20px;
-//   box-shadow:
-//     0 6px 12px #d0d0d0,
-//     0 3px 3px rgba(0, 0, 0, 0.35);
-// `;
-// export const InputBox = styled.div`
-//   font-size: 1.8rem;
-//   font-weight: 500;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-//   position: relative;
-//   margin-bottom: 30px;
-// `;
+export const InputBox = styled.div`
+  font-size: 18px;
+  line-height: 1.33;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 16px;
+`;
 
-// export const Input = styled(Field)`
-//   margin-top: 11px;
-//   font-size: 1.4rem;
-//   border-color: #4267b3;
-//   border-radius: 3px;
+export const StyledField = styled(Field)`
+  /* margin-top: 11px; */
+  border: 1px solid var(--primery-color-blue);
+  border-radius: 6px;
+  color: var(--secondary-color-blue);
+  font-size: 16px;
+  line-height: 1.23;
+  letter-spacing: 0%;
+  padding: 12px 10px;
 
-//   &.active {
-//     border-color: #4267b3;
-//   }
-// `;
+  &.active,
+  &:focus {
+    color: var(--primery-color-blue);
+  }
 
-// export const Label = styled.label`
-//   font-size: 1.4rem;
-//   margin-bottom: 8px;
-// `;
+  &::placeholder {
+    color: var(--secondary-color-blue);
+  }
+`;
 
-// export const StyledError = styled(ErrorMessage)`
-//   color: red;
-//   font-size: 1rem;
-//   position: absolute;
-//   top: 33%;
+export const Label = styled.label`
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 8px;
+`;
 
-//   & + input {
-//     border: 2px solid red;
-//   }
-// `;
+export const StyledError = styled(ErrorMessage)`
+  color: var(--btn-color-red);
+  font-size: 14px;
+  line-height: 1.29;
+  position: absolute;
+  top: 100%;
+  color: var(--btn-color-red);
 
-// export const Button = styled.button`
-//   cursor: pointer;
-//   width: 40%;
-//   min-width: 150px;
-//   font-size: 1.4rem;
-//   padding: 5px;
-//   color: #fff;
-//   border: none;
-//   border-radius: 10px;
-//   background-color: #4267b3;
-//   transition: ease-in 0.2s;
+  & + input {
+    border: 1px solid var(--btn-color-red);
+    color: var(--btn-color-red);
+  }
+`;
 
-//   &:hover,
-//   &:active {
-//     background-color: #4287f5;
-//   }
-// `;
+export const Button = styled.button`
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  padding: 8px 30px;
+  color: var(--primery-color-white);
+  border-radius: 10px;
+  background-color: var(--primery-color-blue);
+  transition: ease-in 0.2s;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+`;
+
+export const StyledLink = styled(NavLink)`
+  color: var(--primery-color-blue);
+
+  &:hover {
+    color: var(--secondary-yellow);
+  }
+`;

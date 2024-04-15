@@ -1,7 +1,6 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { StyledContainer } from './SignupPage.styled';
+import { Button, InputBox, Label, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
 
 import mobileImage from '../../img/background-img-mobile.png'
 import tabletImage from '../../img/background-img-tablet.png'
@@ -19,36 +18,35 @@ const SignUpPage = () => {
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string().email('Invalid email').required('Required'),
-          password: Yup.string().required('Required'),
+          password: Yup.string().required('Required').min(6, 'Minimum six characters'),
           passwordVerification: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Required')
         })}
         onSubmit={(values) => {
-          // Submit logic here
           console.log(values);
         }}
       >
-        <Form>
-          <div>
-            <label htmlFor="email">Enter Your Email</label>
-            <Field type="email" id="email" name="email" />
-            <ErrorMessage name="email" component="div" />
-          </div>
-          <div>
-            <label htmlFor="password">Enter Your Password</label>
-            <Field type="password" id="password" name="password" />
-            <ErrorMessage name="password" component="div" />
-          </div>
-          <div>
-            <label htmlFor="passwordVerification">Repeat Password</label>
-            <Field type="password" id="passwordVerification" name="passwordVerification" />
-            <ErrorMessage name="passwordVerification" component="div" />
-          </div>
-          <button type="submit">Sign Up</button>
-        </Form>
+        <StyledForm>
+          <InputBox>
+            <Label htmlFor="email">Enter your email</Label>
+            <StyledError name="email" component="div" />
+            <StyledField type="email" id="email" name="email" placeholder="E-mail" />
+          </InputBox>
+          <InputBox>
+            <Label htmlFor="password">Enter your password</Label>
+            <StyledError name="password" component="div" />
+            <StyledField type="password" id="password" name="password" placeholder="Password" />
+          </InputBox>
+          <InputBox>
+            <Label htmlFor="passwordVerification">Repeat password</Label>
+            <StyledError name="passwordVerification" component="div" />
+            <StyledField type="password" id="passwordVerification" name="passwordVerification" placeholder="Repeat password"/>
+          </InputBox>
+          <Button type="submit">Sign Up</Button>
+        </StyledForm>
       </Formik>
-      <NavLink to="/signin">Sign In</NavLink>
+      <StyledLink to="/signin">Sign In</StyledLink>
     </StyledContainer>
   );
 };
