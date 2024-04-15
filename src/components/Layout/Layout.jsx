@@ -1,18 +1,21 @@
-import { Suspense } from "react";
-import { Header } from "../Header/Header";
-import { Outlet } from "react-router-dom";
-import Loader from "../Loader/Loader"
+import { Suspense } from 'react';
+import { Header } from '../Header/Header';
+import { Outlet } from 'react-router-dom';
+import Loader from '../Loader/Loader';
+import { MainContainer, StyledMain } from './Layout.styled';
 
 const Layout = () => {
-    return (
-      <>
-        <Header />
-        <main>
-          <Suspense fallback={<Loader/>}>
+  return (
+    <>
+      <Header />
+      <StyledMain>
+        <MainContainer>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-        </main>
-      </>
-    );
-  };
-  export default Layout
+        </MainContainer>
+      </StyledMain>
+    </>
+  );
+};
+export default Layout;

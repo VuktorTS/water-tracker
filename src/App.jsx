@@ -25,7 +25,7 @@ export const App = () => {
   //   dispatch();
   // }, [dispatch]);
 
-//TODO: реалізувати логіку приватних маршрутів
+  //TODO: реалізувати логіку приватних маршрутів
   return (
     <>
       <Suspense fallback={<Loader />}>
