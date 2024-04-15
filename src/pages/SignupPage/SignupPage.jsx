@@ -3,9 +3,13 @@ import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import { StyledContainer } from './SignupPage.styled';
 
+import mobileImage from '../../img/background-img-mobile.png'
+import tabletImage from '../../img/background-img-tablet.png'
+import desktopImage from '../../img/background-img-desktop.png'
+
 const SignUpPage = () => {
   return (
-    <StyledContainer>
+    <StyledContainer mobile={mobileImage} tablet={tabletImage} desktop={desktopImage}>
       <h1>Sign Up</h1>
       <Formik
         initialValues={{

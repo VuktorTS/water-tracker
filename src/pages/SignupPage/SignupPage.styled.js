@@ -8,18 +8,26 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(${(props) => props.mobile});
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px red solid;
 
   @media (min-width: 320px) {
-    padding: 0 20px;
+    /* padding: 0 20px; */
     width: 280px;
   }
 
   @media (min-width: 768px) {
-    padding-right: 32px;
+    /* padding-right: 32px; */
+    background-image: url(${(props) => props.tablet});
+
     width: 704px;
   }
 
   @media (min-width: 1440px) {
+    background-image: url(${(props) => props.desktop});
+
     width: 1216px;
   }
 `;

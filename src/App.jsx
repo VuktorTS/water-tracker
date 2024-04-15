@@ -7,9 +7,9 @@ import { ToastContainer } from 'react-toastify';
 
 import Layout from 'components/Layout/Layout';
 import WelcomePage from 'pages/WelcomePage';
-import RegistrationPage from 'pages/RegistrationPage';
+import SigninPage from './pages/SigninPage/SigninPage';
+import SignupPage from './pages/SignupPage/SignupPage';
 import HomePage from 'pages/HomePage';
-import LoginPage from 'pages/LoginPage';
 import ModalPage from './pages/ModalPage';
 
 // const Layout = lazy(() => import('./components/Layout/Layout'));
@@ -41,13 +41,13 @@ export const App = () => {
             <Route
               path="/signin"
               element={
-                  <LoginPage />
+                  <SigninPage />
               }
             />
             <Route
               path="/signup"
               element={
-                  <RegistrationPage />
+                  <SignupPage />
               }
             />
             <Route
