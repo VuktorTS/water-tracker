@@ -51,7 +51,7 @@ export const UserMenu = () => {
         </StyledBtn>
         <StyledBtn onClick={openLogoutModal}>
           <LogoutSvg />
-          Setting
+          Log out
         </StyledBtn>
       </UserLogoModal>
     </div>

@@ -2,12 +2,8 @@ import styled from 'styled-components';
 // export const Navigation = styled.nav``;
 
 export const StyledHeader = styled.header`
-  padding: 30px 0;
+  padding-top: 8px;
   display: block;
-  margin: auto;
-`;
-
-export const Container = styled.div`
   margin: 0 auto;
   height: 48px;
   
@@ -16,6 +12,7 @@ export const Container = styled.div`
   }
   
   @media (min-width: 768px) {
+    padding-top: 16px;
     width: 704px;
   }
   
@@ -24,7 +21,6 @@ export const Container = styled.div`
   }
 
   > div {
-    /* padding: 0 15px; */
     display: flex;
     flex-direction: row;
     align-items: center;
