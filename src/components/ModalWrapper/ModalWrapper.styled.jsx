@@ -63,4 +63,5 @@ export const CloseIcon = styled.svg`
     stroke: var(--secondary-yellow);
   }
 `;
-export const ModalBody = styled.div``;
+export const ModalBody = styled.div`
+ font-family: var(--font-family);`;
