@@ -11,14 +11,16 @@ import {
   StyledNavLink,
   TextItem,
   Title,
+  TitleContainer,
 } from './WaterСonsumptionTracker.styled';
 
 const WaterConsumptionTracker = () => {
   return (
     <Container>
-      <MainTitle>Water Consumption Tracker</MainTitle>
-      <Title>Record daily water intake and track</Title>
-
+      <TitleContainer>
+        <MainTitle>Water Consumption Tracker</MainTitle>
+        <Title>Record daily water intake and track</Title>
+      </TitleContainer>
       <ListContainer>
         <ListTitle>Tracker Benefits:</ListTitle>
         <List>

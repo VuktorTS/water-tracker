@@ -2,27 +2,31 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
-  margin-bottom: 40px;
-  max-width: 280px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   @media (min-width: 768px) {
-    margin-bottom: 60px;
-    max-width: 704px;
+    width: 704px;
   }
 
   @media (min-width: 1440px) {
     width: 439px;
-    height: 366px;
-    margin-bottom: 0;
-    margin-right: 81px;
   }
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const MainTitle = styled.h1`
   font-size: 28px;
   line-height: 1.14;
   color: var(--primery-color-black);
-  margin-bottom: 16px;
+  margin: 0;
 
   @media (min-width: 768px) {
     font-size: 36px;
@@ -39,18 +43,20 @@ export const Title = styled.h2`
   font-size: 24px;
   line-height: 1.25;
   color: var(--primery-color-black);
-  max-width: 246px;
+  width: 246px;
+  margin: 0;
 
   @media (min-width: 768px) {
     font-size: 26px;
     line-height: 1.23;
-    max-width: 439px;
+    width: 439px;
   }
 `;
 
 export const ListContainer = styled.div`
-  margin-top: 24px;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;
 
 export const ListTitle = styled.h3`
@@ -58,7 +64,7 @@ export const ListTitle = styled.h3`
   font-size: 18px;
   line-height: 1.11;
   color: var(--primery-color-black);
-  margin-bottom: 12px;
+  margin: 0;
 `;
 
 export const List = styled.ul`
@@ -84,7 +90,6 @@ export const Item = styled.li`
 
   @media (min-width: 768px) {
     width: 224px;
-    height: 40px;
   }
 
   @media (min-width: 1440px) {
@@ -103,7 +108,6 @@ export const Icon = styled.svg`
 `;
 
 export const TextItem = styled.p`
-  font-size: 16px;
   line-height: 1.25;
   color: var(--primery-color-black);
   flex: 1;

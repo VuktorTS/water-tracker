@@ -6,7 +6,7 @@ import backgroundDesktopSVG from '../../img/bg_main_desktop_group.svg';
 export const StyledMain = styled.main`
   &:before {
     content: '';
-    position: absolute;
+    position: fixed;
     display: block;
     width: 100%;
     height: 100%;

@@ -6,39 +6,36 @@ export const Container = styled.div`
   padding: 24px 16px;
   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
   background: var(--bg-color-light-blue);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
   @media (min-width: 768px) {
     padding: 32px 24px;
     width: 494px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-top: 34px;
   }
 `;
 
 export const Title = styled.h3`
   font-weight: 500;
   font-size: 18px;
-  line-height: 111%;
+  line-height: 1.11;
   color: var(--primery-color-black);
-  margin-bottom: 12px;
+  margin: 0;
 `;
 
 export const List = styled.ul`
   padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 export const Item = styled.li`
-  font-size: 16px;
   line-height: 1.25;
   color: var(--primery-color-black);
   position: relative;
   padding-left: 16px;
-
-  &:not(:last-child) {
-    margin-bottom: 16px;
-  }
 
   &::before {
     content: '';
