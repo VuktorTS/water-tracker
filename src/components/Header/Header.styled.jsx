@@ -5,7 +5,6 @@ export const StyledHeader = styled.header`
   padding-top: 8px;
   display: block;
   margin: 0 auto;
-  height: 48px;
   
   @media (min-width: 320px) {
     width: 280px;
