@@ -11,7 +11,7 @@ export default defineConfig({
           components: '/src/components',
           img: '/src/img',
           pages: '/src/pages',
-          redux: '/src/redux',
+          // redux: '/src/redux',
           services: "/src/services"
         },
       },
