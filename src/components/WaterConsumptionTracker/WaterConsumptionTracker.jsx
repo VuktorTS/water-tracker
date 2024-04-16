@@ -7,7 +7,6 @@ import {
   ListContainer,
   ListTitle,
   MainTitle,
-  StyledButton,
   StyledNavLink,
   TextItem,
   Title,
@@ -45,9 +44,7 @@ const WaterConsumptionTracker = () => {
         </List>
       </ListContainer>
 
-      <StyledButton>
-        <StyledNavLink to="/signup">Try tracker</StyledNavLink>
-      </StyledButton>
+      <StyledNavLink to="/signup">Try tracker</StyledNavLink>
     </Container>
   );
 };
