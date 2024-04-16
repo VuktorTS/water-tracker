@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    isLoading: false,
-    error: null
-};
+const initialState = {};
 
 const decorSlice = createSlice({
     name: 'decorate',
