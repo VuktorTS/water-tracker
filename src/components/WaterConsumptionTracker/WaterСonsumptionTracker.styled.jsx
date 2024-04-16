@@ -114,7 +114,7 @@ export const TextItem = styled.p`
   margin: 0 auto;
 `;
 
-export const StyledButton = styled.button`
+export const StyledNavLink = styled(NavLink)`
   border-radius: 10px;
   padding: 8px 30px;
   width: 100%;
@@ -122,6 +122,13 @@ export const StyledButton = styled.button`
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--primery-color-blue);
   border: none;
+
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--primery-color-white);
 
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
@@ -135,18 +142,7 @@ export const StyledButton = styled.button`
     width: 384px;
     height: 44px;
     padding: 10px 30px;
-  }
-`;
 
-export const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  text-align: center;
-  color: var(--primery-color-white);
-
-  @media (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33;
   }
