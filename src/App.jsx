@@ -7,15 +7,15 @@ import { ToastContainer } from 'react-toastify';
 
 import Layout from 'components/Layout/Layout';
 import WelcomePage from 'pages/WelcomePage';
-import RegistrationPage from 'pages/RegistrationPage';
+import SigninPage from './pages/SigninPage';
+import SignupPage from './pages/SignupPage';
 import HomePage from 'pages/HomePage';
-import LoginPage from 'pages/LoginPage';
 import ModalPage from './pages/ModalPage';
 
 // const Layout = lazy(() => import('./components/Layout/Layout'));
 // const HomePage = lazy(() => import('./pages/HomePage'));
 // const WelcomePage = lazy(() => import('./pages/WelcomePage'));
-// const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
+// const SignupPage = lazy(() => import('./pages/SignupPage'));
 
 export const App = () => {
   // const dispatch = useDispatch();
@@ -32,10 +32,30 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WelcomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/signin" element={<LoginPage />} />
-            <Route path="/signup" element={<RegistrationPage />} />
-            <Route path="/modal" element={<ModalPage />} />
+            <Route
+              path="/home"
+              element={
+                  <HomePage />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                  <SigninPage />
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                  <SignupPage />
+              }
+            />
+            <Route
+              path="/modal"
+              element={
+                  <ModalPage />
+              }
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

@@ -1,9 +1,8 @@
 import { usePopper } from "react-popper"
-import { ArrowDownSvg } from "../../img/ArrowDownSvg"
-import { Avatar, UserLogo, NickContainer, UserLogoModal, StyledBtn } from "./UserMenu.styled"
+import { Avatar, UserLogo, NickContainer, UserLogoModal, StyledBtn, StyledIcon } from "./UserMenu.styled"
 import { useState } from "react"
-import { CogToothSvg } from "../../img/CogToothSvg"
-import { LogoutSvg } from "../../img/LogoutSvg"
+import icons from "img/icons.svg"
+
 
 export const UserMenu = () => {
   const email = 'dmytro@mail.net'
@@ -36,7 +35,9 @@ export const UserMenu = () => {
       <UserLogo onClick={onClickPopup} ref={setReferenceElement}>
         <NickContainer>{nickName}</NickContainer>
         <Avatar>{nickLetter}</Avatar>
-        <ArrowDownSvg />
+        <StyledIcon>
+          <use href={`${icons}#icon-arrow-down`}></use>
+        </StyledIcon>
       </UserLogo>
       <UserLogoModal
         $visibility={visibility}
@@ -46,11 +47,15 @@ export const UserMenu = () => {
         {...attributes.popper}
       >
         <StyledBtn onClick={openSettingModal}>
-          <CogToothSvg />
+          <StyledIcon>
+              <use href={`${icons}#icon-cog-tooth`}></use>
+          </StyledIcon>
           Setting
         </StyledBtn>
         <StyledBtn onClick={openLogoutModal}>
-          <LogoutSvg />
+        <StyledIcon>
+              <use href={`${icons}#icon-log-out`}></use>
+          </StyledIcon>
           Log out
         </StyledBtn>
       </UserLogoModal>
