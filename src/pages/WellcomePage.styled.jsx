@@ -20,7 +20,7 @@ export const BackgroundContainer = styled.div`
     z-index: -10;
     background-image: url(${bgImgMob});
     background-repeat: no-repeat;
-    background-position: center bottom;
+    background-position: bottom;
     background-size: cover;
 
     @media (min-resolution: 2dppx) {
@@ -42,7 +42,6 @@ export const BackgroundContainer = styled.div`
     &:before {
       background-image: url(${bgImg});
       background-size: contain;
-      background-position: bottom;
 
       @media (min-resolution: 2dppx) {
         background-image: url(${bgImg2x});
