@@ -5,15 +5,19 @@ import { useState } from 'react';
 import icons from "img/icons.svg"
 import { useDispatch } from 'react-redux';
 import { logIn } from '../redux/auth/authOperations';
+import { toastError } from '../services/notification';
+import { useNavigate } from 'react-router-dom';
+import {emailRegex} from '../constants/validEmail'
 
 const SigninPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
-  const disp = useDispatch();
-  
-    const togglePasswordVisibility = () => {
-      setShowPassword((prevShowPassword) => !prevShowPassword);
-    };
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   return (
     <StyledContainer >
@@ -24,11 +28,13 @@ const SigninPage = () => {
           password: ''
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Invalid email').required('Required'),
-          password: Yup.string().required('Required').min(6, 'Minimum six characters')
+          email: Yup.string().trim().matches(emailRegex, 'Invalid email').required('Required'),
+          password: Yup.string().required('Required').min(8, 'Minimum eight characters').max(64, 'Too Long!')
         })}
         onSubmit={(values) => {
-          disp(logIn(values));
+          dispatch(logIn(values)).unwrap().then(() => {
+            navigate('/home')
+          }).catch(error => toastError(error))
         }}
       >
         <StyledForm>
