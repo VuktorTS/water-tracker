@@ -5,7 +5,7 @@ import { useState } from 'react';
 import icons from "img/icons.svg"
 import { useDispatch } from 'react-redux';
 import { logIn } from '../redux/auth/authOperations';
-import { toastError, toastSuccess } from '../services/notification';
+import { toastError } from '../services/notification';
 import { useNavigate } from 'react-router-dom';
 import {emailRegex} from '../constants/validEmail'
 
@@ -29,11 +29,10 @@ const SigninPage = () => {
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string().trim().matches(emailRegex, 'Invalid email').required('Required'),
-          password: Yup.string().required('Required').min(8, 'Minimum eight characters')
+          password: Yup.string().required('Required').min(8, 'Minimum eight characters').max(64, 'Too Long!')
         })}
         onSubmit={(values) => {
           dispatch(logIn(values)).unwrap().then(() => {
-            toastSuccess(`${values.email} registered successfully`)
             navigate('/home')
           }).catch(error => toastError(error))
         }}

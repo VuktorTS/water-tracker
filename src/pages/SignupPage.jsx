@@ -36,7 +36,7 @@ const SignUpPage = () => {
         }}
         validationSchema={Yup.object().shape({
           email: Yup.string().trim().matches(emailRegex, 'Invalid email').required('Required'),
-          password: Yup.string().required('Required').min(8, 'Minimum eight characters'),
+          password: Yup.string().required('Required').min(8, 'Minimum eight characters').max(64, 'Too Long!'),
           passwordVerification: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Required')
