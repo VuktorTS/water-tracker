@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
 import { useState } from 'react';
 import icons from "img/icons.svg"
+import { emailRegex } from '../helpers/constants';
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,8 +27,8 @@ const SignUpPage = () => {
           passwordVerification: ''
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Invalid email').required('Required'),
-          password: Yup.string().required('Required').min(6, 'Minimum six characters'),
+          email: Yup.string().trim().matches(emailRegex, 'Invalid email').required('Required'),
+          password: Yup.string().required('Required').min(8, 'Minimum eight characters'),
           passwordVerification: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Required')
