@@ -19,6 +19,7 @@ import ModalPage from './pages/ModalPage';
 // const WelcomePage = lazy(() => import('./pages/WelcomePage'));
 // const SignupPage = lazy(() => import('./pages/SignupPage'));
 const NotLoggedOrY = lazy(() => import('./components/NotLoggedOrY/NotLoggedOrY'));
+const LoggedInOrNot = lazy(() => import('./components/LoggedInOrNot/LoggedInOrNot'));
 
 export const App = () => {
   const isLogged = useSelector(isLoggedIn);
@@ -35,11 +36,13 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path='/' element={<Layout />}>
-            <Route path='/welcome' element={<WelcomePage />} />
+            <Route path='/welcome' element={
+              <LoggedInOrNot redirectTo='/home' component={<WelcomePage />}/>
+            } />
             <Route
               path="/home"
               element={
-                  <NotLoggedOrY component={<HomePage />}/>
+                  <NotLoggedOrY redirectTo='/welcome' component={<HomePage />}/>
               }
             />
             <Route
