@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../redux/auth/authOperations';
 import { toastError, toastSuccess } from '../services/notification';
 import { useNavigate } from 'react-router-dom';
-import {emailRegex} from '../helpers/constants'
+import {emailRegex} from '../constants/validEmail'
 
 const SigninPage = () => {
   const dispatch = useDispatch();

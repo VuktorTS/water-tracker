@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
 import { useState } from 'react';
 import icons from "img/icons.svg"
-import { emailRegex } from '../helpers/constants';
+import { emailRegex } from '../constants/validEmail';
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
