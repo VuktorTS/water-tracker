@@ -43,7 +43,7 @@ const SignUpPage = () => {
         onSubmit={ async (formData) => {
           const { email, password } = formData
           dispatch(registration({ email, password })).unwrap().then(() => {
-            toastSuccess(`${email} registered succesfuly`)
+            toastSuccess(`${email} registered successfully`)
             navigate('/signin')
           }).catch(error => toastError(error))
         }}
