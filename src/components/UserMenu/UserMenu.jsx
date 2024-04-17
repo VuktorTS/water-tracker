@@ -2,6 +2,7 @@ import { usePopper } from "react-popper"
 import { Avatar, UserLogo, NickContainer, UserLogoModal, StyledBtn, StyledIcon } from "./UserMenu.styled"
 import { useState } from "react"
 import icons from "img/icons.svg"
+import { SettingModal } from "../SettingModal/SettingModal"
 
 
 export const UserMenu = () => {
@@ -10,6 +11,7 @@ export const UserMenu = () => {
   const nickLetter = nickName.slice(0,1)
 
   const [isOpen, setIsOpen] = useState(false);
+  const [openSettingModal, setOpenSettingModal] = useState(false)
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
 
@@ -26,12 +28,21 @@ export const UserMenu = () => {
   const visibility = !isOpen ? 'hidden' : 'visible';
   const pointerEvents = !isOpen ? 'none' : 'auto';
 
-  const openSettingModal = () => console.log('SettingModal Will Be Opened')
+  const handleShowDetails = () => {
+    // const selectedProfile = friends.find(friend => friend.id === profileId);
+    setOpenSettingModal(true);
+    // setModalData(selectedProfile);
+  };
+
+  const handleCloseModal = () => {
+    setOpenSettingModal(false);
+  };
 
   const openLogoutModal = () => console.log('LogoutModal Will Be Opened')
 
   return (
     <div>
+      {openSettingModal && <SettingModal handleCloseModal={handleCloseModal} />}
       <UserLogo onClick={onClickPopup} ref={setReferenceElement}>
         <NickContainer>{nickName}</NickContainer>
         <Avatar>{nickLetter}</Avatar>
@@ -46,7 +57,7 @@ export const UserMenu = () => {
         style={styles.popper}
         {...attributes.popper}
       >
-        <StyledBtn onClick={openSettingModal}>
+        <StyledBtn onClick={handleShowDetails}>
           <StyledIcon>
               <use href={`${icons}#icon-cog-tooth`}></use>
           </StyledIcon>
