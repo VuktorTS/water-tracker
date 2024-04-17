@@ -9,6 +9,7 @@ import { toastError, toastSuccess } from '../services/notification';
 import icons from "img/icons.svg";
 
 import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
+import { emailRegex } from '../constants/validEmail';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -34,8 +35,8 @@ const SignUpPage = () => {
           passwordVerification: ''
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Invalid email').required('Required'),
-          password: Yup.string().required('Required').min(8, 'Minimum six characters'),
+          email: Yup.string().trim().matches(emailRegex, 'Invalid email').required('Required'),
+          password: Yup.string().required('Required').min(8, 'Minimum eight characters'),
           passwordVerification: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Required')
