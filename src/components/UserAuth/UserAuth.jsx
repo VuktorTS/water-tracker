@@ -1,20 +1,13 @@
-import { NavbarLink, StyledIcon } from './UserAuth.styled'
-import { UserMenu } from '../UserMenu/UserMenu'
-// import { useSelector } from "react-redux";
-import icons from "img/icons.svg"
+import css from './UserAuth.module.css';
+import { Link } from "react-router-dom"
 
 export const UserAuth = () => {
-  const isLoggedIn = true //useSelector(selectIsLoggedIn);
   
   return (
-    <div>
-      {isLoggedIn ? <UserMenu /> : <NavbarLink to='/signin'>Sign in
-        <StyledIcon>
-          <use href={`${icons}#icon-user`}></use>
-        </StyledIcon>
-        </NavbarLink>
-      }
-
+    <div className={css.allDivLink}>
+      <Link to="/signin" style={{minHeight: '100%'}}>
+      <button type="button" className={css.buttonLink}>Sign In <svg className={css.svgSpan}/></button>
+      </Link>
     </div>
   )
 }
