@@ -1,12 +1,14 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
-import { useState } from 'react';
-import icons from "img/icons.svg"
-import { useDispatch } from 'react-redux';
+
 import { registration } from '../redux/auth/authOperations';
-import { useNavigate } from 'react-router-dom';
 import { toastError, toastSuccess } from '../services/notification';
+import icons from "img/icons.svg";
+
+import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,6 @@ const SignUpPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
-  const [signedUp, setSignedUp] = useState(false)
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -45,13 +46,6 @@ const SignUpPage = () => {
             toastSuccess(`${email} registered succesfuly`)
             navigate('/signin')
           }).catch(error => toastError(error))
-            // setSignedUp(true)
-
-
-          
-          // dispatch(addContact(profileData)).unwrap().then(() => toast.success(`${name} added to Data Base!`)).catch(error => toast.error(error))
-          // e.currentTarget.reset()
-
         }}
       >
         <StyledForm>
@@ -76,7 +70,7 @@ const SignUpPage = () => {
                 {showRepeatPassword ? 'Hide' && <use href={`${icons}#icon-opend`} /> : 'Show' && <use href={`${icons}#icon-closed`} />} 
               </ShowIcon>
           </InputBox>
-          <Button type="submit" disabled={signedUp}>Sign Up</Button>
+          <Button type="submit">Sign Up</Button>
         </StyledForm>
       </Formik>
       <StyledLink to="/signin">Sign In</StyledLink>
