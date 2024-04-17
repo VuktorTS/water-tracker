@@ -4,7 +4,7 @@ export const SettingModal = ({handleCloseModal, profileData}) => {
 
   return (
     <div>
-      <ModalWrapper onClose={() => handleCloseModal()} title="Setting">
+      <ModalWrapper onClose={handleCloseModal} title="Setting">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
           inventore architecto facilis debitis ipsum ducimus hic placeat
           explicabo assumenda laborum veniam laboriosam quod eos similique
