@@ -1,22 +1,16 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-
-import { registration } from '../redux/auth/authOperations';
-import { toastError, toastSuccess } from '../services/notification';
-import icons from "img/icons.svg";
-
 import { Button, InputBox, Label, ShowIcon, StyledContainer, StyledError, StyledField, StyledForm, StyledLink } from './SignupPage.styled';
-import { emailRegex } from '../constants/validEmail';
+import { useState } from 'react';
+import icons from "img/icons.svg";
+import { useDispatch } from 'react-redux';
+import { registration } from '../redux/auth/authOperations';
 
 const SignUpPage = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+  const disp = useDispatch();
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
@@ -35,18 +29,14 @@ const SignUpPage = () => {
           passwordVerification: ''
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().trim().matches(emailRegex, 'Invalid email').required('Required'),
+          email: Yup.string().email('Invalid email').required('Required'),
           password: Yup.string().required('Required').min(8, 'Minimum eight characters'),
           passwordVerification: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Required')
         })}
-        onSubmit={ async (formData) => {
-          const { email, password } = formData
-          dispatch(registration({ email, password })).unwrap().then(() => {
-            toastSuccess(`${email} registered successfully`)
-            navigate('/signin')
-          }).catch(error => toastError(error))
+        onSubmit={(values) => {
+          disp(registration(values))
         }}
       >
         <StyledForm>
