@@ -21,7 +21,9 @@ const Layout = () => {
       <Header />
 
       <main>
-        {location.pathname === '/' && <Navigate to={isLogged ? '/home' : '/welcome'} />}
+        {(location.pathname === '/' ||
+          location.pathname === '/home' ||
+          location.pathname === '/welcome') && <Navigate to={isLogged ? '/home' : '/welcome'} />}
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
