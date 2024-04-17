@@ -29,7 +29,7 @@ export const Title = styled.h1`
   font-size: 26px;
   font-weight: 500;
   line-height: 1.23;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
 `;
 
 export const StyledForm = styled(Form)`
@@ -54,7 +54,7 @@ export const InputBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 `;
 
 export const StyledField = styled(Field)`
@@ -79,7 +79,8 @@ export const StyledField = styled(Field)`
 
 export const Label = styled.label`
   font-size: 18px;
-  line-height: 1.33;
+  font-weight: 500;
+  line-height: 1.11;
   margin-bottom: 8px;
 `;
 
