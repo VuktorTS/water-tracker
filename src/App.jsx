@@ -16,6 +16,7 @@ import ModalPage from './pages/ModalPage';
 // const HomePage = lazy(() => import('./pages/HomePage'));
 // const WelcomePage = lazy(() => import('./pages/WelcomePage'));
 // const SignupPage = lazy(() => import('./pages/SignupPage'));
+const LoggedInOrNot = lazy(() => import('./components/LoggedInOrNot/LoggedInOrNot'));
 
 export const App = () => {
   // const dispatch = useDispatch();
