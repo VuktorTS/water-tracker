@@ -3,19 +3,18 @@ import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContai
 import { useState } from "react"
 import icons from "img/icons.svg"
 import { useDispatch, useSelector } from "react-redux"
-import { getUserEmail, getUserName } from "../../redux/auth/authSelectors"
+import { getUser } from "../../redux/auth/authSelectors"
 import { LogOutModal } from "../LogOutModal/LogOutModal"
 import ModalWrapper from "../ModalWrapper/ModalWrapper"
 import { logOut } from "../../redux/auth/authOperations"
 
 export const UserLogo = () => {
   const dispatch = useDispatch()
-  const user = useSelector(store => store.auth.user)
-  
+
+  const user = useSelector(getUser)
   const { username, avatarURL } = user
 
-  console.log(user)
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
   const [logoutModal, setLogoutModal] = useState(false);
@@ -28,10 +27,10 @@ export const UserLogo = () => {
         offset: [0, 16]
       }}
   ] });
-  const onClickPopup = () => setIsOpen(!isOpen)
+  const onClickPopup = () => setIsOpenPopup(!isOpenPopup)
   
-  const visibility = !isOpen ? 'hidden' : 'visible';
-  const pointerEvents = !isOpen ? 'none' : 'auto';
+  const visibility = !isOpenPopup ? 'hidden' : 'visible';
+  const pointerEvents = !isOpenPopup ? 'none' : 'auto';
 
   const openSettingModal = () => console.log('SettingModal Will Be Opened')
 
