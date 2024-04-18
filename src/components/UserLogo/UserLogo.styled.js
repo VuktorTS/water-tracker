@@ -7,17 +7,10 @@ export const LogoContainer = styled.div`
   gap: 8px;
 `;
 
-export const Avatar = styled.div`
+export const Avatar = styled.img`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-image: url(${(props) => props.url});
-  color: var(--primery-color-white);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: capitalize;
 `;
 
 export const NameContainer = styled.div`
