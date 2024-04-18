@@ -146,6 +146,7 @@ export const DailyNormaModalContainer = styled.div`
 
   .amountDescription {
     width: 190px;
+    margin-bottom: 0;
     @media screen and (min-width: 768px) {
       width: auto;
     }

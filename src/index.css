@@ -56,3 +56,23 @@ button {
 input {
   outline: none;
 }
+
+  /* ========================= /Scroll styles ========================= */
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #9ebbff;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgba(239, 237, 232, 0.1);
+  }
+
+    /* Firefox */
+    * {
+      scrollbar-color: #9ebbff rgba(239, 237, 232, 0.1);
+    }
