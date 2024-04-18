@@ -1,6 +1,17 @@
 import axios from 'axios';
+import { Notify } from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
+
+Notify.init({
+  cssAnimationStyle: 'zoom',
+  cssAnimationDuration: 550,
+  failure: {
+    background: '#9ebbff',
+    textColor: '#fff',
+    notiflixIconColor: 'rgba(255, 0, 0, 0.2)',
+  },
+});
 
 const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -96,4 +107,25 @@ export const setCurrentUser = createAsyncThunk(
         }
     }
   }
+);
+
+const updateWaterRate = async waterRate => {
+  const { data } = await axios.patch('/users/rate', { waterRate });
+  return data;
+};
+
+export const updateWaterRateThunk = createAsyncThunk(
+  'auth/updateWaterRate',
+  async (newWaterRate, { rejectWithValue }) => {
+    try {
+      const rate = Number(newWaterRate) * 1000;
+      await updateWaterRate(rate);
+      return rate;
+    } catch (error) {
+      if (error.response.status === 400) {
+        Notify.failure(`WaterRate" must be greater than or equal to 0`);
+      }
+      return rejectWithValue(error.message);
+    }
+  },
 );

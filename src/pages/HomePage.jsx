@@ -1,5 +1,6 @@
 import ModalWrapper from '../components/ModalWrapper/ModalWrapper'; 
 import TodayListModal from '../components/TodayListModal/TodayListModal.jsx';
+import DailyNorma from '../components/DailyNorma/DailyNorma.jsx';
 import React, { useState } from 'react';
 
 const MODAL_TYPES = { ADD: "ADD", EDIT: "EDIT" };
@@ -31,6 +32,7 @@ const HomePage = () => {
             <TodayListModal title={'Correct entered data:'} onClose={onClose} data={data}></TodayListModal>
         </ModalWrapper>
       )}
+       <DailyNorma> </DailyNorma>
     </>
   );
 };
