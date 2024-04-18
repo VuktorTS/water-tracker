@@ -33,7 +33,7 @@ const authSlice = createSlice({
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user = payload;
         // state.token = payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;

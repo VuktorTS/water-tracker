@@ -48,13 +48,13 @@ export const App = () => {
             <Route
               path="/signin"
               element={
-                  <SigninPage />
+                <LoggedInOrNot redirectTo='/home' component={<SigninPage />}/>
               }
             />
             <Route
               path="/signup"
               element={
-                  <SignupPage />
+                <LoggedInOrNot redirectTo='/home' component={<SignupPage />}/>
               }
             />
             <Route
