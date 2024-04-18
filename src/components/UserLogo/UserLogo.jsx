@@ -1,6 +1,6 @@
 import { usePopper } from "react-popper"
-import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContainer } from "./UserLogo.styled"
-import { useState } from "react"
+import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContainer, Div } from "./UserLogo.styled"
+import { useEffect, useState } from "react"
 import icons from "img/icons.svg"
 import { useDispatch, useSelector } from "react-redux"
 import { getUser } from "../../redux/auth/authSelectors"
@@ -24,7 +24,7 @@ export const UserLogo = () => {
       {
         name: name,
         options: {
-        offset: [0, 16]
+        offset: [0, 0]
       }}
   ] });
   const onClickPopup = () => setIsOpenPopup(!isOpenPopup)
@@ -42,8 +42,20 @@ export const UserLogo = () => {
     onCloseLogoutModal();
   }
 
+  useEffect(() => {
+    const findPopup = (event) => {
+      const popup = event.target.closest('#logoModal')
+      if (!popup) {
+        setIsOpenPopup(false)
+      }
+    }
+
+    document.addEventListener('mousedown', findPopup)
+    return () => document.removeEventListener('mousedown', findPopup)
+  }, [])
+
   return (
-    <div>
+    <Div>
       <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
         <NameContainer>{username}</NameContainer>
         <Avatar src={avatarURL} alt='user avatar'></Avatar>
@@ -52,6 +64,7 @@ export const UserLogo = () => {
         </StyledIcon>
       </LogoContainer>
       <UserLogoModal
+        id='logoModal'
         $visibility={visibility}
         $pointerEvents={pointerEvents}
         ref={setPopperElement}
@@ -72,6 +85,6 @@ export const UserLogo = () => {
         </StyledBtn>
         {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
       </UserLogoModal>
-    </div>
+    </Div>
   )
 }
