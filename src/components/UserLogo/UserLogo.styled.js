@@ -8,9 +8,13 @@ export const LogoContainer = styled.div`
 `;
 
 export const Avatar = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
+`;
+
+export const Div = styled.div`
+  position: relative;
 `;
 
 export const NameContainer = styled.div`
