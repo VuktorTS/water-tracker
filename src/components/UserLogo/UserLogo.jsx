@@ -2,18 +2,23 @@ import { usePopper } from "react-popper"
 import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContainer } from "./UserLogo.styled"
 import { useState } from "react"
 import icons from "img/icons.svg"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getUserEmail, getUserName } from "../../redux/auth/authSelectors"
+import { LogOutModal } from "../LogOutModal/LogOutModal"
+import ModalWrapper from "../ModalWrapper/ModalWrapper"
+import { logOut } from "../../redux/auth/authOperations"
 
 export const UserLogo = () => {
-  const name = useSelector(getUserName)
-  const email = useSelector(getUserEmail)
+  const dispatch = useDispatch()
   const user = useSelector(store => store.auth.user)
-  const nickLetter = email.slice(0,1)
+  
+  const { username, avatarURL } = user
+
   console.log(user)
   const [isOpen, setIsOpen] = useState(false);
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
+  const [logoutModal, setLogoutModal] = useState(false);
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'bottom', modifiers: [
@@ -30,13 +35,19 @@ export const UserLogo = () => {
 
   const openSettingModal = () => console.log('SettingModal Will Be Opened')
 
-  const openLogoutModal = () => console.log('LogoutModal Will Be Opened')
+  const openLogoutModal = () => setLogoutModal(true)
+  const onCloseLogoutModal = () => setLogoutModal(false)
+
+  const onLogout = ()=>{
+    dispatch(logOut());
+    onCloseLogoutModal();
+  }
 
   return (
     <div>
       <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
-        <NameContainer>{email}</NameContainer>
-        <Avatar>{nickLetter}</Avatar>
+        <NameContainer>{username}</NameContainer>
+        <Avatar url={avatarURL}></Avatar>
         <StyledIcon>
           <use href={`${icons}#icon-arrow-down`}></use>
         </StyledIcon>
@@ -60,6 +71,7 @@ export const UserLogo = () => {
           </StyledIcon>
           Log out
         </StyledBtn>
+        {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
       </UserLogoModal>
     </div>
   )

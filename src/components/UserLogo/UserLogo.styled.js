@@ -11,7 +11,7 @@ export const Avatar = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: var(--secondary-yellow);
+  background-image: url(${(props) => props.url});
   color: var(--primery-color-white);
 
   display: flex;
