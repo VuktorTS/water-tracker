@@ -10,12 +10,10 @@ export const Header = () => {
 
   return (
     <StyledHeader>
-
         <div>
           <Logo />
           {isLogged ? <UserLogo/> : <UserAuth/>}
         </div>
-
     </StyledHeader>
   );
 };
