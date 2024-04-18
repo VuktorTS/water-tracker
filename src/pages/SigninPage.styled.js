@@ -2,6 +2,13 @@ import { ErrorMessage, Field, Form } from 'formik';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import bgImgMob from '../img/bg_sign_in_mob@1x.png';
+import bgImgMob2x from '../img/bg_sign_in_mob@2x.png';
+import bgImgTab from '../img/sign_in_tab@1x.png';
+import bgImgTab2x from '../img/sign_in_tab@2x.png';
+import bgImg from '../img/main_page@1x.png';
+import bgImg2x from '../img/main_page@2x.png';
+
 export const StyledContainer = styled.div`
   height: 70vh;
   width: 100%;
@@ -128,4 +135,53 @@ export const ShowIcon = styled.svg`
   width: 14px;
   height: 12px;
   stroke: var(--primery-color-blue);
+`;
+
+export const BackgroundContainer = styled.div`
+  &:before {
+    content: '';
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 108px;
+    left: 0px;
+    z-index: -10;
+    background-image: url(${bgImgMob});
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url(${bgImgMob2x});
+    }
+  }
+
+  @media (min-width: 768px) {
+    &:before {
+      background-image: url(${bgImgTab});
+      top: 0;
+
+      @media (min-resolution: 2dppx) {
+        background-image: url(${bgImgTab2x});
+      }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    width: 1404px;
+    height: 582px;
+    padding: 0 18px;
+
+    &:before {
+      background-image: url(${bgImg});
+
+      background-position: center;
+      background-size: contain;
+
+      @media (min-resolution: 2dppx) {
+        background-image: url(${bgImg2x});
+      }
+    }
+  }
 `;
