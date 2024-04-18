@@ -1,19 +1,19 @@
 import { Logo } from "../Logo/Logo";
 import { UserAuth } from "../UserAuth/UserAuth";
 import { StyledHeader } from "./Header.styled";
-// import { useSelector } from "react-redux";
+import { isLoggedIn } from "../../redux/auth/authSelectors";
+import { useSelector } from "react-redux";
+import { UserLogo } from "../UserLogo/UserLogo";
 
 export const Header = () => {
+  const isLogged = useSelector(isLoggedIn);
 
   return (
     <StyledHeader>
-
         <div>
           <Logo />
-          <UserAuth/>
-          
+          {isLogged ? <UserLogo/> : <UserAuth/>}
         </div>
-
     </StyledHeader>
   );
 };

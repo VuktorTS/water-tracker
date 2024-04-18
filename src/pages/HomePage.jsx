@@ -31,6 +31,9 @@ const getFormattedDateWithTime = date => {
   console.log("🚀 ~ getFormattedDateWithTime ~ date:", date)  
 return formatDate(new Date(date.setHours(0, 0, 0, 0)));}
 
+const MODAL_TYPES = { ADD: "ADD", EDIT: "EDIT" };
+const data = {time: '07:15 AM', ml: 250, id: 9843576}
+
 const HomePage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);

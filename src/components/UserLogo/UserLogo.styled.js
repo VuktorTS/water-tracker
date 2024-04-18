@@ -1,26 +1,23 @@
 import styled from 'styled-components';
 
-export const UserLogo = styled.div`
+export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
   gap: 8px;
 `;
 
-export const Avatar = styled.div`
-  width: 24px;
-  height: 24px;
+export const Avatar = styled.img`
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background-color: var(--secondary-yellow);
-  color: var(--primery-color-white);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: capitalize;
 `;
 
-export const NickContainer = styled.div`
+export const Div = styled.div`
+  position: relative;
+`;
+
+export const NameContainer = styled.div`
   font-family: inherit;
   font-weight: 400;
   font-size: 18px;

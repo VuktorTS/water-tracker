@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
 
-const setAuthHeader = token => {
+export const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -13,8 +13,12 @@ const clearAuthHeader = () => {
 export const registration = createAsyncThunk(
   'auth/register', 
   async (credentials, thunkAPI) => {
+    const dataForReg = {
+      email: credentials.email,
+      password: credentials.password
+    }
     try {
-      const res = await axios.post('/users/signup', credentials);
+      const res = await axios.post('/users/signup', dataForReg);
       return res.data
     } catch (e) {
         if (e.response) {

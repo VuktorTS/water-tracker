@@ -1,7 +1,12 @@
 import Loader from 'components/Loader/Loader';
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import { isLoggedIn } from './redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+
+import { getToken } from './redux/auth/authSelectors';
+import { setAuthHeader } from './redux/auth/authOperations';
 
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,8 +21,16 @@ import ModalPage from './pages/ModalPage';
 // const HomePage = lazy(() => import('./pages/HomePage'));
 // const WelcomePage = lazy(() => import('./pages/WelcomePage'));
 // const SignupPage = lazy(() => import('./pages/SignupPage'));
+const NotLoggedOrY = lazy(() => import('./components/NotLoggedOrY/NotLoggedOrY'));
+const LoggedInOrNot = lazy(() => import('./components/LoggedInOrNot/LoggedInOrNot'));
 
 export const App = () => {
+  const isLogged = useSelector(isLoggedIn);
+  const token = useSelector(getToken);
+
+  if (token) { 
+    setAuthHeader(token)
+  };
   // const dispatch = useDispatch();
   // const isLoading = useSelector();//TODO: добавити селектор
 
@@ -30,24 +43,26 @@ export const App = () => {
     <>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<WelcomePage />} />
+          <Route path='/' element={<Layout />}>
+            <Route path='/welcome' element={
+              <LoggedInOrNot redirectTo='/home' component={<WelcomePage />}/>
+            } />
             <Route
               path="/home"
               element={
-                  <HomePage />
+                  <NotLoggedOrY redirectTo='/welcome' component={<HomePage />}/>
               }
             />
             <Route
               path="/signin"
               element={
-                  <SigninPage />
+                <SigninPage />
               }
             />
             <Route
               path="/signup"
               element={
-                  <SignupPage />
+                <LoggedInOrNot redirectTo='/home' component={<SignupPage />}/>
               }
             />
             <Route
@@ -56,7 +71,7 @@ export const App = () => {
                   <ModalPage />
               }
             />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to={isLogged ? '/home' : '/welcome'} replace />} />
           </Route>
         </Routes>
         <ToastContainer autoClose={2000} />

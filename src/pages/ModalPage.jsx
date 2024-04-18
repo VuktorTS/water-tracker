@@ -3,8 +3,13 @@
 
 import { useState } from 'react';
 import ModalWrapper from '../components/ModalWrapper/ModalWrapper';
+import { LogOutModal } from '../components/LogOutModal/LogOutModal';
+import { ButtonStyle } from '../components/LogOutModal/LogOutModal.stuled';
+import { logOut } from '../redux/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 const ModalPage = () => {
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const onClose = () => {
     setModal(false);
@@ -12,24 +17,17 @@ const ModalPage = () => {
   const onOpen = () => {
     setModal(true);
   };
+  const onLogout = ()=>{
+    dispatch(logOut());
+    onClose();
+  }
 
   return (
     <>
-      <button onClick={onOpen}>Modal</button>
+      <ButtonStyle onClick={onOpen}>Log out</ButtonStyle>
       {modal && (
-        <ModalWrapper onClose={onClose} title="Title Modal">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-          inventore architecto facilis debitis ipsum ducimus hic placeat
-          explicabo assumenda laborum veniam laboriosam quod eos similique
-          ratione aut ad unde deserunt recusandae, cupiditate sunt maiores!
-          Voluptate vitae quam quae aut neque iusto quasi eum nihil, ea ullam
-          error, libero in aspernatur, facilis veritatis. Sint assumenda
-          nesciunt illum possimus incidunt quas obcaecati voluptatum non odio,
-          error aspernatur officiis praesentium corrupti facilis? Eaque nihil
-          iste amet libero voluptatem, architecto asperiores dicta quaerat
-          officia ipsam molestiae. Dolores autem qui consectetur suscipit
-          reiciendis, eius odio labore quo recusandae officiis nulla! Ea
-          excepturi at laboriosam omnis?
+        <ModalWrapper onClose={onClose} title="Log out">
+          <LogOutModal onClose={onClose} onLogout={onLogout}/>
         </ModalWrapper>
       )}
     </>
