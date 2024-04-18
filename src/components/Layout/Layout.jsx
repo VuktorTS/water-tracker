@@ -4,20 +4,14 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { isLoggedIn } from '../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
+import { StyleSheetManager } from 'styled-components';
 
 const Layout = () => {
   const isLogged = useSelector(isLoggedIn);
   const location = useLocation();
-  // const endedURL = useRef(false);
 
-  // useEffect(() => {
-  //   if (!endedURL.current) {
-  //     endedURL.current = true;
-  //     // window.location.href += (isLogged ? '/home' : '/welcome');
-  //   }
-  // }, [isLogged, endedURL]);
   return (
-    <>
+    <StyleSheetManager shouldForwardProp={(prop) => prop !== ''}>
       <Header />
 
       <main>
@@ -28,7 +22,7 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-    </>
+    </StyleSheetManager>
   );
 };
 export default Layout;
