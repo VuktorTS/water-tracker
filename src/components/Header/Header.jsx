@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { UserLogo } from "../UserLogo/UserLogo";
 
 export const Header = () => {
-  const isLogged = false //useSelector(isLoggedIn);
+  const isLogged = useSelector(isLoggedIn);
 
   return (
     <StyledHeader>
