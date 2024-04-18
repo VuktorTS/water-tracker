@@ -3,19 +3,14 @@ import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContai
 import { useState } from "react"
 import icons from "img/icons.svg"
 import { useSelector } from "react-redux"
-import { getUserEmail, getUserName, isLoggedIn } from "../../redux/auth/authSelectors"
+import { getUserEmail, getUserName } from "../../redux/auth/authSelectors"
 
 export const UserLogo = () => {
-  // const email = 'dmytro@mail.net'
-  const isLogged = useSelector(isLoggedIn);
   const name = useSelector(getUserName)
   const email = useSelector(getUserEmail)
-  console.log('isLogged', isLogged)
-  console.log('email', email)
-  console.log('name', name)
-  
-  const nickLetter = name.slice(0,1)
-
+  const user = useSelector(store => store.auth.user)
+  const nickLetter = email.slice(0,1)
+  console.log(user)
   const [isOpen, setIsOpen] = useState(false);
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
@@ -40,7 +35,7 @@ export const UserLogo = () => {
   return (
     <div>
       <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
-        <NameContainer>{name}</NameContainer>
+        <NameContainer>{email}</NameContainer>
         <Avatar>{nickLetter}</Avatar>
         <StyledIcon>
           <use href={`${icons}#icon-arrow-down`}></use>
