@@ -5,6 +5,9 @@ import { ToastContainer } from 'react-toastify';
 import { isLoggedIn } from './redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 
+import { getToken } from './redux/auth/authSelectors';
+import { setAuthHeader } from './redux/auth/authOperations';
+
 // import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from 'components/Layout/Layout';
@@ -23,6 +26,11 @@ const LoggedInOrNot = lazy(() => import('./components/LoggedInOrNot/LoggedInOrNo
 
 export const App = () => {
   const isLogged = useSelector(isLoggedIn);
+  const token = useSelector(getToken);
+
+  if (token) { 
+    setAuthHeader(token)
+  };
   // const dispatch = useDispatch();
   // const isLoading = useSelector();//TODO: добавити селектор
 
