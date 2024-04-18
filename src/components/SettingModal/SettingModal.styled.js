@@ -14,7 +14,7 @@ export const StyledContainer = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding-top: 40px;
+    padding-top: 0;
     width: 704px;
   }
 
@@ -34,14 +34,56 @@ export const Title = styled.h1`
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin: 24px 0 16px 0;
+  justify-content: start;
 
   @media (min-width: 768px) {
-    width: 336px;
+    width: 392px;
   }
 
   @media (min-width: 1440px) {
     width: 384px;
+  }
+`;
+
+export const AvatarContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const AvatarField = styled(Field)`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid seagreen;
+  display: flex;
+`;
+
+export const UploadButton = styled.button`
+  /* position: absolute;
+  top: 28px;
+  right: 12px; */
+  padding: 0;
+  line-height: 0.6;
+  color: var(--primery-color-blue);
+  border: none;
+  background: none;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    top: 36px;
+    right: 24px;
+  }
+`;
+
+export const UploadIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: var(--primery-color-blue);
+  fill: none;
+
+  &:hover,
+  &:focus {
+    stroke: var(--secondary-yellow);
   }
 `;
 
@@ -54,11 +96,15 @@ export const InputBox = styled.div`
 `;
 
 export const RadioBox = styled(InputBox)`
-  margin-top: 12px;
+  margin-bottom: 24px;
   flex-direction: row;
   justify-content: start;
   align-items: center;
   gap: 24px;
+
+  &.marginBottom {
+    margin-bottom: 24px;
+  }
 
   > div {
     display: flex;
@@ -73,6 +119,9 @@ export const RadioBox = styled(InputBox)`
 
 export const StyledFieldset = styled.fieldset`
   border: none;
+  /* display: flex;
+  flex-direction: column;
+  gap: 12px; */
   margin: 0;
   padding: 0;
 `;
@@ -108,6 +157,10 @@ export const BigLabel = styled.label`
   line-height: 1.11;
   font-weight: 500;
   margin-bottom: 8px;
+
+  &.marginBottom {
+    margin-bottom: 12px;
+  }
 `;
 
 export const StyledError = styled(ErrorMessage)`
@@ -138,6 +191,10 @@ export const Button = styled.button`
 
   @media (min-width: 768px) {
     padding: 10px 30px;
+    width: 160px;
+    position: absolute;
+    right: 24px;
+    bottom: 32px;
   }
 `;
 

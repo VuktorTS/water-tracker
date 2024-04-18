@@ -1,5 +1,5 @@
 import ModalWrapper from "../ModalWrapper/ModalWrapper"
-import { BigLabel, Button, InputBox, Label, RadioBox, ShowIcon, StyledContainer, StyledError, StyledField, StyledFieldset, StyledForm } from './SettingModal.styled';
+import { AvatarContainer, AvatarField, BigLabel, Button, InputBox, Label, RadioBox, ShowIcon, StyledContainer, StyledError, StyledField, StyledFieldset, StyledForm, UploadButton, UploadIcon } from './SettingModal.styled';
 import { emailRegex } from '../../constants/validEmail';
 // import { toastError, toastSuccess } from '../services/notification';
 import { Field, Formik } from 'formik';
@@ -59,12 +59,19 @@ export const SettingModal = ({ handleCloseModal }) => {
         <StyledForm>
           <InputBox>
             <BigLabel htmlFor="photo">Your Photo</BigLabel>
-            <span>Upload a photo</span>
-            <Field type="file" id="photo" name="photo" accept="image/*" />
+            <AvatarContainer>
+              <AvatarField type="file" id="photo" name="photo" accept="image/*" />
+                <UploadButton>
+                  <UploadIcon>
+                    <use href={`${icons}#icon-upload`} />
+                  </UploadIcon>
+                  Upload a photo
+                </UploadButton>
+              </AvatarContainer>
             <StyledError name="photo" component="div" />
           </InputBox>
-          <BigLabel>Your Gender Identity</BigLabel>
-          <RadioBox>
+          <BigLabel className="marginBottom">Your Gender Identity</BigLabel>
+          <RadioBox className="marginBottom">
             <div>
               <Field type="radio" id="woman" name="gender" value="woman" />
               <Label htmlFor="woman">Woman</Label>                  
@@ -84,14 +91,13 @@ export const SettingModal = ({ handleCloseModal }) => {
             <StyledError name="email" component="div" />
             <StyledField type="email" id="email" name="email" placeholder="E-mail" />
           </InputBox>
-          
-              <StyledFieldset >
-                <BigLabel>Password</BigLabel>
-
-          <InputBox>
-            <Label htmlFor="outdatedPassword">Outdated password</Label>
-            <StyledError name="outdatedPassword" component="div" />
-            <StyledField type={showOutdatedPassword ? 'text' : 'password'} id="outdatedPassword" name="outdatedPassword" placeholder="Password" />
+      
+          <StyledFieldset >
+            <BigLabel className="marginBottom">Password</BigLabel>
+            <InputBox>
+              <Label htmlFor="outdatedPassword">Outdated password</Label>
+              <StyledError name="outdatedPassword" component="div" />
+              <StyledField type={showOutdatedPassword ? 'text' : 'password'} id="outdatedPassword" name="outdatedPassword" placeholder="Password" />
               <ShowIcon type="button" onClick={toggleOutdatedPasswordVisibility}>
                 {showOutdatedPassword ? 'Hide' && <use href={`${icons}#icon-opend`} /> : 'Show' && <use href={`${icons}#icon-closed`} />} 
               </ShowIcon>
@@ -113,8 +119,7 @@ export const SettingModal = ({ handleCloseModal }) => {
               </ShowIcon>
           </InputBox>
               </StyledFieldset>
-              <Button type="submit">Sign Up</Button>
-              
+              <Button type="submit">Save</Button>
         </StyledForm>
       </Formik>
 
