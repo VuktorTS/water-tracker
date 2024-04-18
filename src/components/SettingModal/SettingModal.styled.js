@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
-  /* height: 70vh; */
   width: 100%;
   margin: auto;
   padding-top: 24px;
@@ -21,7 +20,7 @@ export const StyledContainer = styled.div`
   @media (min-width: 1440px) {
     padding-top: 148px;
     padding-left: 738px;
-    width: 1216px;
+    width: 960px;
   }
 `;
 
