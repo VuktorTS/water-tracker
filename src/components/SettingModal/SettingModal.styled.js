@@ -153,6 +153,7 @@ export const Label = styled.label`
 
 export const BigLabel = styled.label`
   font-size: 18px;
+  display: block;
   line-height: 1.11;
   font-weight: 500;
   margin-bottom: 8px;

@@ -7,6 +7,7 @@ import { getUser } from "../../redux/auth/authSelectors"
 import { LogOutModal } from "../LogOutModal/LogOutModal"
 import ModalWrapper from "../ModalWrapper/ModalWrapper"
 import { logOut } from "../../redux/auth/authOperations"
+import { SettingModal } from "../SettingModal/SettingModal"
 
 export const UserLogo = () => {
   const dispatch = useDispatch()
@@ -15,6 +16,7 @@ export const UserLogo = () => {
   const { username, avatarURL } = user
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [openSettingModal, setOpenSettingModal] = useState(false)
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
   const [logoutModal, setLogoutModal] = useState(false);
@@ -32,7 +34,14 @@ export const UserLogo = () => {
   const visibility = !isOpenPopup ? 'hidden' : 'visible';
   const pointerEvents = !isOpenPopup ? 'none' : 'auto';
 
-  const openSettingModal = () => console.log('SettingModal Will Be Opened')
+
+  const handleShowDetails = () => {
+    // const selectedProfile = friends.find(friend => friend.id === profileId);
+    setOpenSettingModal(true);
+    // setModalData(selectedProfile);
+  };  const handleCloseModal = () => {
+    setOpenSettingModal(false);
+  };
 
   const openLogoutModal = () => setLogoutModal(true)
   const onCloseLogoutModal = () => setLogoutModal(false)
@@ -71,7 +80,7 @@ export const UserLogo = () => {
         style={styles.popper}
         {...attributes.popper}
       >
-        <StyledBtn onClick={openSettingModal}>
+        <StyledBtn onClick={handleShowDetails}>
           <StyledIcon>
               <use href={`${icons}#icon-cog-tooth`}></use>
           </StyledIcon>
@@ -83,6 +92,7 @@ export const UserLogo = () => {
           </StyledIcon>
           Log out
         </StyledBtn>
+        {openSettingModal && <SettingModal handleCloseModal={handleCloseModal} />}
         {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
       </UserLogoModal>
     </Div>
