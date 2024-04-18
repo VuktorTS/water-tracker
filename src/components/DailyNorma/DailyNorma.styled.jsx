@@ -7,6 +7,12 @@ export const ContainerOne = styled.div`
   @media (min-width: 768px) {
     padding-top: 40px;
     padding-left: 32px;
+    display: flex;
+  }
+
+  @media (min-width: 1440px) {
+    padding-top: 22px;
+    padding-left: 38px;
   }
 `;
 
@@ -22,6 +28,12 @@ export const DailyNormaContainer = styled.div`
 
   @media (min-width: 768px) {
     height: 76px;
+    position: absolute;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 30px;
+    margin-left: 74px;
   }
 `;
 
@@ -74,9 +86,21 @@ export const ImgWrapper = styled.div`
   // width: 400px;
   display: flex;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 1440px) {
+    justify-content: flex-start;
+    width: 0%;
+  }
 `;
 
-export const ImgBotl = styled.img`
-  width: 280px;
-  height: 208px;
-`;
+// export const ImgBotl = styled.img`
+//   width: 280px;
+//   height: 208px;
+// `;
