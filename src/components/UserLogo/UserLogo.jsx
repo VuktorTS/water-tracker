@@ -1,20 +1,77 @@
-import { NavbarLink, StyledIcon } from './UserLogo.styled';
-import { UserMenu } from '../UserMenu/UserMenu';
-// import { useSelector } from "react-redux";
-import icons from "img/icons.svg";
+import { usePopper } from "react-popper"
+import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContainer } from "./UserLogo.styled"
+import { useState } from "react"
+import icons from "img/icons.svg"
+import { useDispatch, useSelector } from "react-redux"
+import { getUser } from "../../redux/auth/authSelectors"
+import { LogOutModal } from "../LogOutModal/LogOutModal"
+import ModalWrapper from "../ModalWrapper/ModalWrapper"
+import { logOut } from "../../redux/auth/authOperations"
 
-export const UserLogo = () => { 
-  const isLoggedIn = true //useSelector(selectIsLoggedIn);
+export const UserLogo = () => {
+  const dispatch = useDispatch()
+
+  const user = useSelector(getUser)
+  const { username, avatarURL } = user
+
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [referenceElement, setReferenceElement] = useState();
+  const [popperElement, setPopperElement] = useState();
+  const [logoutModal, setLogoutModal] = useState(false);
+
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: 'bottom', modifiers: [
+      {
+        name: name,
+        options: {
+        offset: [0, 16]
+      }}
+  ] });
+  const onClickPopup = () => setIsOpenPopup(!isOpenPopup)
+  
+  const visibility = !isOpenPopup ? 'hidden' : 'visible';
+  const pointerEvents = !isOpenPopup ? 'none' : 'auto';
+
+  const openSettingModal = () => console.log('SettingModal Will Be Opened')
+
+  const openLogoutModal = () => setLogoutModal(true)
+  const onCloseLogoutModal = () => setLogoutModal(false)
+
+  const onLogout = ()=>{
+    dispatch(logOut());
+    onCloseLogoutModal();
+  }
 
   return (
     <div>
-      {isLoggedIn ? <UserMenu /> : <NavbarLink to='/signin'>Sign in
+      <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
+        <NameContainer>{username}</NameContainer>
+        <Avatar src={avatarURL} alt='user avatar'></Avatar>
         <StyledIcon>
-          <use href={`${icons}#icon-user`}></use>
+          <use href={`${icons}#icon-arrow-down`}></use>
         </StyledIcon>
-        </NavbarLink>
-      }
-
+      </LogoContainer>
+      <UserLogoModal
+        $visibility={visibility}
+        $pointerEvents={pointerEvents}
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+      >
+        <StyledBtn onClick={openSettingModal}>
+          <StyledIcon>
+              <use href={`${icons}#icon-cog-tooth`}></use>
+          </StyledIcon>
+          Setting
+        </StyledBtn>
+        <StyledBtn onClick={openLogoutModal}>
+        <StyledIcon>
+              <use href={`${icons}#icon-log-out`}></use>
+          </StyledIcon>
+          Log out
+        </StyledBtn>
+        {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
+      </UserLogoModal>
     </div>
   )
-};
+}
