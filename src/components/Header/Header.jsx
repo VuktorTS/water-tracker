@@ -6,16 +6,14 @@ import { useSelector } from "react-redux";
 import { UserLogo } from "../UserLogo/UserLogo";
 
 export const Header = () => {
-  const isLogged = useSelector(isLoggedIn);
+  const isLogged = false //useSelector(isLoggedIn);
 
   return (
     <StyledHeader>
-
         <div>
           <Logo />
           {isLogged ? <UserLogo/> : <UserAuth/>}
         </div>
-
     </StyledHeader>
   );
 };
