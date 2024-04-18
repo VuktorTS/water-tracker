@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Backdrop, ButtonClose, CloseIcon, Container, ModalBody, TitleModal } from './ModalWrapper.styled';
 import icons from "img/icons.svg"
-console.log("🚀 ~ icons:", `${icons}#icon-close-setting`)
 
 const modalRoot = document.querySelector('#modal');
 
