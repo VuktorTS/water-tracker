@@ -55,7 +55,6 @@ export const App = () => {
               path="/signup"
               element={
                 <LoggedInOrNot redirectTo='/home' component={<SignupPage />}/>
-                
               }
             />
             <Route
