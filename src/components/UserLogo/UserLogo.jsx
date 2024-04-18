@@ -46,7 +46,7 @@ export const UserLogo = () => {
     <div>
       <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
         <NameContainer>{username}</NameContainer>
-        <Avatar url={avatarURL}></Avatar>
+        <Avatar src={avatarURL} alt='user avatar'></Avatar>
         <StyledIcon>
           <use href={`${icons}#icon-arrow-down`}></use>
         </StyledIcon>
