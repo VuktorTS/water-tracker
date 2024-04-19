@@ -24,9 +24,6 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-
-      <DailyNormaModal/>
-
     </StyleSheetManager>
   );
 };
