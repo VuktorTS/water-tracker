@@ -220,10 +220,10 @@ export const BottleImg = styled.div`
       background-image: url(${bottleImgTab});
       width: 736px;
       height: 548px;
-      top: 15%;
-      transform: translateY(-15%);
-      left: 180%;
-      transform: translateX(-180%);
+      top: 17%;
+      transform: translateY(-17%);
+      left: 250%;
+      transform: translateX(-250%);
 
       background-size: contain;
 
@@ -265,7 +265,7 @@ export const Wrapper = styled.div`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    padding: 0 32px;
+    padding: 0;
   }
 
   @media (min-width: 1440px) {
