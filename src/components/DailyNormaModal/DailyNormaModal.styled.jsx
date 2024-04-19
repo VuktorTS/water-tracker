@@ -148,3 +148,58 @@ export const InpDiv = styled.div`
 display: flex;
 flex-direction: column;
 `;
+
+export const Result = styled.div`
+display: flex;
+gap: 6px;
+align-items: center;
+margin: 0 0 24px 0;
+`;
+
+export const ValueResult = styled.p`
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.33;
+  color: var(--primery-color-blue);
+  min-width: 57px;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+`;
+
+export const DivButton = styled.div`
+  width: 100%;
+  display: flex;
+
+  @media screen and (min-width: 768px) {
+    justify-content: end;
+  }
+`;
+
+export const Button = styled.button`
+  width: 100%;
+  height: 36px;
+  border-radius: 6px;
+  color: var(--primery-color-white);
+  background-color: var(--primery-color-blue);
+  margin: 24px 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    width: 160px;
+    height: 44px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+    height: 712px;
+  }
+
+  &:hover{
+    box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
+  }
+`;

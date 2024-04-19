@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import {
-  Backdrop, ButtonClose, CloseIcon, Container, ModalBody, TitleModal,
+  Backdrop,
+  ButtonClose,
+  CloseIcon,
+  Container,
+  ModalBody,
+  TitleModal,
   AllFormulesDiv,
   FormulesDiv,
   Formule,
@@ -11,7 +16,11 @@ import {
   Form,
   TitleForm,
   RadioDiv,
-  InpDiv
+  InpDiv,
+  Result,
+  ValueResult,
+  DivButton,
+  Button
 } from "./DailyNormaModal.styled";
 import InputDaNormMod from "../InputDaNormMod/InputDaNormMod";
 import icons from "img/icons.svg"
@@ -19,15 +28,19 @@ import icons from "img/icons.svg"
 const DailyNormaModal = () => {
   const [weight, setWeight] = useState(0);
   const [hours, setHours] = useState(0);
+  const [willDr, setWillDr] = useState(0);
+  const [result, setResult] = useState(0);
 
   const onChangeW = (e) => {
     setWeight(e.currentTarget.value);
-    console.log('e.currentTurget.value: ', e.currentTarget.value);
   };
 
   const onChangeH = (e) => {
     setHours(e.currentTarget.value);
-    console.log('e.currentTurget.value: ', e.currentTarget.value);
+  };
+
+  const onChangeWillDr = (e) => {
+    setWillDr(e.currentTarget.value);
   };
 
   const onClose = () => {
@@ -81,27 +94,37 @@ const DailyNormaModal = () => {
       <Form>
         <TitleForm>Calculate your rate:</TitleForm>
         <RadioDiv>
-          <InputDaNormMod type='radio' name='gender' value="woman" textInp='For woman' checked={true} height='14px' width='14px'/>
-          <InputDaNormMod type='radio' name='gender' value="man" textInp='For man' height='14px' width='14px'/>
+          <InputDaNormMod type='radio' name='gender' value="woman" textInp='For woman' checked={true} height='14px' width='14px' gap='8px' />
+          <InputDaNormMod type='radio' name='gender' value="man" textInp='For man' height='14px' width='14px' gap='8px' />
         </RadioDiv>
         <InpDiv>
         <InputDaNormMod
           title='Your weight in kilograms:'
           type='number'
-          name='gender'
+          name='weight'
           value={weight}
           onChange={onChangeW}
         />
         <InputDaNormMod
           title="The time of active participation in sports or other activities with a high physical. load in hours:"
           type='number'
-          name='gender'
+          name='hours'
           value={hours}
           onChange={onChangeH}
         />
-          </InpDiv>
-          
-        <TitleForm>Write down how much water you will drink:</TitleForm>
+            </InpDiv>
+            <Result>
+              <Formule>The required amount of water in liters per day:</Formule>
+              <ValueResult>{ result } L</ValueResult>
+            </Result>
+            <TitleForm>Write down how much water you will drink:</TitleForm>
+            <InputDaNormMod
+          type='number'
+          name='willDr'
+          value={willDr}
+          onChange={onChangeWillDr}
+            />
+            <DivButton><Button>Save</Button></DivButton>
       </Form>
         </ModalBody>
       </Container>
