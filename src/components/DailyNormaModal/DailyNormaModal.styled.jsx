@@ -194,10 +194,6 @@ export const Button = styled.button`
     width: 160px;
     height: 44px;
   }
-  @media screen and (min-width: 1440px) {
-    width: 592px;
-    height: 712px;
-  }
 
   &:hover{
     box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);

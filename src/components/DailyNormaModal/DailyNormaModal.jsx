@@ -30,6 +30,11 @@ const DailyNormaModal = () => {
   const [hours, setHours] = useState(0);
   const [willDr, setWillDr] = useState(0);
   const [result, setResult] = useState(0);
+  const [selectedGender, setSelectedGender] = useState('girl');
+
+  const handleGenderChange = (event) => {
+    setSelectedGender(event.target.value);
+  };
 
   const onChangeW = (e) => {
     setWeight(e.currentTarget.value);
@@ -46,6 +51,19 @@ const DailyNormaModal = () => {
   const onClose = () => {
     console.log(1);
   };
+
+  const handelClickButton = (e) => {
+    e.preventDefault();
+    onClose();
+  };
+
+  useEffect(() => { 
+    if (selectedGender === 'girl') {
+      setResult((weight*0.03) + (hours*0.4))
+    } else {
+      setResult((weight*0.04) + (hours*0.6))
+    }
+  }, [selectedGender, weight, hours]);
 
   useEffect(() => {
     const onEscPress = e => {
@@ -94,8 +112,26 @@ const DailyNormaModal = () => {
       <Form>
         <TitleForm>Calculate your rate:</TitleForm>
         <RadioDiv>
-          <InputDaNormMod type='radio' name='gender' value="woman" textInp='For woman' checked={true} height='14px' width='14px' gap='8px' />
-          <InputDaNormMod type='radio' name='gender' value="man" textInp='For man' height='14px' width='14px' gap='8px' />
+          <InputDaNormMod 
+          type='radio' 
+          name='gender' 
+          value="girl" 
+          textInp='For girl' 
+          checked={selectedGender === 'girl'} 
+          onChange={handleGenderChange}
+          height='14px' 
+          width='14px' 
+          gap='8px' />
+          <InputDaNormMod 
+          type='radio' 
+          name='gender' 
+          value="man" 
+          textInp='For man' 
+          checked={selectedGender === 'man'}
+          onChange={handleGenderChange}
+          height='14px' 
+          width='14px' 
+          gap='8px' />
         </RadioDiv>
         <InpDiv>
         <InputDaNormMod
@@ -124,7 +160,11 @@ const DailyNormaModal = () => {
           value={willDr}
           onChange={onChangeWillDr}
             />
-            <DivButton><Button>Save</Button></DivButton>
+            <DivButton>
+              <Button onClick={handelClickButton}>
+                Save
+              </Button>
+            </DivButton>
       </Form>
         </ModalBody>
       </Container>
