@@ -86,13 +86,13 @@ export const UserLogo = () => {
           </StyledIcon>
           Setting
         </StyledBtn>
+        {openSettingModal && <ModalWrapper onClose={handleCloseModal} title="Setting" stylesSetting={true}><SettingModal handleCloseModal={handleCloseModal} profileData={user} /></ModalWrapper>}
         <StyledBtn onClick={openLogoutModal}>
         <StyledIcon>
               <use href={`${icons}#icon-log-out`}></use>
           </StyledIcon>
           Log out
         </StyledBtn>
-        {openSettingModal && <SettingModal handleCloseModal={handleCloseModal} />}
         {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
       </UserLogoModal>
     </Div>

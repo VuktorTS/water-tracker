@@ -18,8 +18,6 @@ export const StyledContainer = styled.div`
   }
 
   @media (min-width: 1440px) {
-    padding-top: 148px;
-    padding-left: 738px;
     width: 960px;
   }
 `;
@@ -41,21 +39,44 @@ export const StyledForm = styled(Form)`
   }
 
   @media (min-width: 1440px) {
-    width: 384px;
+    /* width: 384px; */
+  }
+`;
+
+export const TextInputsContainer = styled.div`
+  @media (min-width: 1440px) {
+    display: flex;
+    gap: 24px;
+
+    width: 960px;
   }
 `;
 
 export const AvatarContainer = styled.div`
   display: flex;
   gap: 8px;
+  margin-bottom: 24px;
 `;
 
 export const AvatarField = styled(Field)`
+  border: 1px solid seagreen;
+  display: flex;
+  > input {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+`;
+
+export const Avatar = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 1px solid seagreen;
+  background-color: var(--secondary-yellow);
+
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const UploadButton = styled.button`
@@ -92,6 +113,12 @@ export const InputBox = styled.div`
   justify-content: space-between;
   position: relative;
   margin-bottom: 16px;
+
+  @media (min-width: 1440px) {
+    width: 392px;
+    margin-bottom: 0px;
+    margin-top: 12px;
+  }
 `;
 
 export const RadioBox = styled(InputBox)`
@@ -118,11 +145,19 @@ export const RadioBox = styled(InputBox)`
 
 export const StyledFieldset = styled.fieldset`
   border: none;
-  /* display: flex;
-  flex-direction: column;
-  gap: 12px; */
   margin: 0;
   padding: 0;
+  @media (min-width: 1440px) {
+    /* width: 384px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 272px;
+
+    > label:first-child {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 export const StyledField = styled(Field)`
@@ -142,6 +177,10 @@ export const StyledField = styled(Field)`
 
   &::placeholder {
     color: var(--secondary-color-blue);
+  }
+
+  &.userName {
+    text-transform: capitalize;
   }
 `;
 

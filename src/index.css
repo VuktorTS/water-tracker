@@ -56,3 +56,10 @@ button {
 input {
   outline: none;
 }
+
+#setting {
+  @media (min-width: 1440px) {  
+    width: 1008px;
+    height: 592px;
+    }
+}
