@@ -4,10 +4,17 @@ import styled from 'styled-components';
 
 import bgImgMob from '../img/bg_sign_in_mob@1x.png';
 import bgImgMob2x from '../img/bg_sign_in_mob@2x.png';
-import bgImgTab from '../img/sign_in_tab@1x.png';
-import bgImgTab2x from '../img/sign_in_tab@2x.png';
+import bgImgTab from '../img/bg_sign_in_tab@1x.png';
+import bgImgTab2x from '../img/bg_sign_in_tab@2x.png';
 import bgImg from '../img/main_page@1x.png';
 import bgImg2x from '../img/main_page@2x.png';
+
+// import bottleImgMob from '../img/sign_in_mob@1x.png';
+// import bottleImgMob2x from '../img/sign_in_mob@2x.png';
+// import bottleImgTab from '../img/sign_in_tab@1x.png';
+// import bottleImgTab2x from '../img/sign_in_tab@2x.png';
+// import bottleImg from '../img/sign_in@1x.png';
+// import bottleImg2x from '../img/sign_in@2x.png';
 
 export const StyledContainer = styled.div`
   height: 70vh;
@@ -160,7 +167,7 @@ export const BackgroundContainer = styled.div`
   @media (min-width: 768px) {
     &:before {
       background-image: url(${bgImgTab});
-      top: 0;
+      background-position: center;
 
       @media (min-resolution: 2dppx) {
         background-image: url(${bgImgTab2x});
