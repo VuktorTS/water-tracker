@@ -9,12 +9,12 @@ import bgImgTab2x from '../img/bg_sign_in_tab@2x.png';
 import bgImg from '../img/main_page@1x.png';
 import bgImg2x from '../img/main_page@2x.png';
 
-// import bottleImgMob from '../img/sign_in_mob@1x.png';
-// import bottleImgMob2x from '../img/sign_in_mob@2x.png';
-// import bottleImgTab from '../img/sign_in_tab@1x.png';
-// import bottleImgTab2x from '../img/sign_in_tab@2x.png';
-// import bottleImg from '../img/sign_in@1x.png';
-// import bottleImg2x from '../img/sign_in@2x.png';
+import bottleImgMob from '../img/sign_in_mob@1x.png';
+import bottleImgMob2x from '../img/sign_in_mob@2x.png';
+import bottleImgTab from '../img/sign_in_tab@1x.png';
+import bottleImgTab2x from '../img/sign_in_tab@2x.png';
+import bottleImg from '../img/sign_in@1x.png';
+import bottleImg2x from '../img/sign_in@2x.png';
 
 export const StyledContainer = styled.div`
   height: 70vh;
@@ -166,6 +166,7 @@ export const BackgroundContainer = styled.div`
 
   @media (min-width: 768px) {
     &:before {
+      top: 0;
       background-image: url(${bgImgTab});
       background-position: center;
 
@@ -190,5 +191,85 @@ export const BackgroundContainer = styled.div`
         background-image: url(${bgImg2x});
       }
     }
+  }
+`;
+
+export const BottleImg = styled.div`
+  &:before {
+    content: '';
+    position: fixed;
+    display: block;
+    width: 280px;
+    height: 210px;
+    top: 450px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -5;
+    background-image: url(${bottleImgMob});
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+
+    @media (min-resolution: 2dppx) {
+      background-image: url(${bottleImgMob2x});
+    }
+  }
+
+  &:before {
+    @media (min-width: 768px) {
+      background-image: url(${bottleImgTab});
+      width: 736px;
+      height: 548px;
+      top: 15%;
+      transform: translateY(-15%);
+      left: 180%;
+      transform: translateX(-180%);
+
+      background-size: contain;
+
+      @media (min-resolution: 2dppx) {
+        background-image: url(${bottleImgTab2x});
+      }
+    }
+
+    @media (min-width: 840px) and (max-width: 1439px) {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+    @media (min-width: 840px) and (max-width: 1439px) {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+  }
+
+  &:before {
+    @media (min-width: 1440px) {
+      width: 916px;
+      height: 680px;
+      background-image: url(${bottleImg});
+      top: 8%;
+      left: -15%;
+      transform: translateX(15%);
+      @media (min-resolution: 2dppx) {
+        background-image: url(${bottleImg2x});
+      }
+    }
+  }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 0 32px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 18px;
+    flex-direction: row-reverse;
   }
 `;
