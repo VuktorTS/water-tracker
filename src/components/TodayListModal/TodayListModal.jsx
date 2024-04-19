@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import sprite from '../../img/icons.svg';
 import { getTimeOptions } from '../../services/timeOptions';
-import { Mlspan, ValueHeader, RoundBtn, SectionHeader, BtnSection, TimeSelect, ValueInput, SubmitSection, SubmitBtn, BottomMl, Icon, DataBox, GlassIcon, EditMlSpan, TimeSpan } from './TodayListModal.styled';
+import { Mlspan, ValueHeader, RoundBtn, SectionHeader, BtnSection, TimeSelect, ValueInput, SubmitSection, SubmitBtn, BottomMl, Icon, DataBox, GlassIcon, EditMlSpan, TimeSpan, ErrMessage } from './TodayListModal.styled';
 
 const MIN_VALUE = 1;
 const MAX_VALUE = 5000;
 const STEP = 50;
 
 const TodayListModal = ({title, onClose, data}) => {
-  const [ml, setMl] = useState(data?.ml ?? '0');
-  const [time, setTime] = useState(data?.time ?? "");
+  const [ml, setMl] = useState(data?.ml ?? 0);
+  const [time, setTime] = useState(data?.time ?? null);
   const [inputValue, setInputValue] = useState(ml);
+  const [err, setErr] = useState(false);
   const currentDate = new Date().toJSON().slice(0, 11);
+
+  useEffect(() => {
+    if (!data) {
+      toast.info('No notes yet.')
+    }
+  }, []);
   
-      const addMl = () => {
+  const addMl = () => {
+    setErr(false);
     if (ml >= MAX_VALUE) {
       return;
     }
@@ -22,6 +32,7 @@ const TodayListModal = ({title, onClose, data}) => {
   };
 
   const decreaseMl = () => {
+        setErr(false);
     if (ml <= STEP) {
       return;
     }
@@ -37,8 +48,20 @@ const TodayListModal = ({title, onClose, data}) => {
   
   const handleBlur = evt => {
     const { value } = evt.currentTarget;
+    if (value <= 0 || value > 5000) {
+      setErr(true);
+      return;
+    }
     setMl(Number(value));
-
+  }
+  const handleChange = (evt) => {
+    setErr(false);
+    const newValue = evt.currentTarget.value;
+    if (/^\d*$/.test(newValue)) {
+      setInputValue(newValue);
+      return;
+    }
+    setErr(true);
   }
 
   const dataSubmit = evt => {
@@ -95,16 +118,17 @@ const TodayListModal = ({title, onClose, data}) => {
                 id="ml"
                 type="number"
                 value={inputValue}
-                min={MIN_VALUE}
-                max={MAX_VALUE}
-      onChange={(evt) => setInputValue(evt.currentTarget.value)}
+      onChange={handleChange}
       onBlur={handleBlur}
-              ></ValueInput>
+      err={err}
+    ></ValueInput>
+    {err && <ErrMessage>* Please enter a valid amount of water between {MIN_VALUE} and {MAX_VALUE} ml.</ErrMessage>}  
               <SubmitSection>
                       <BottomMl>{ml}ml</BottomMl>
           <SubmitBtn
             type="submit"
-            onClick={dataSubmit}
+        onClick={dataSubmit}
+        disabled={!time || !ml}
           >
             Save
           </SubmitBtn>

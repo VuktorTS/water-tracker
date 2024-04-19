@@ -95,13 +95,17 @@ margin: 0;
 padding: 0;
 background: var(--primery-color-white)`
 
+export const ErrMessage = styled.div`
+position: absolute;
+top: 440px;
+color: var(--btn-color-red)`
+
 export const TimeSpan = styled.span`
 font-family: var(--font-family);
 display: inline-block;
 font-size: 12px;
 line-height: 200%;
 height: 24px;`
-
 
 export const ValueInput = styled.input`
 
@@ -113,9 +117,8 @@ export const ValueInput = styled.input`
 font-family: inherit;
 font-size: 16px;
 line-height: 1.25;
-color: var(--primery-color-blue);
-
-border: 1px solid #D7E3FF;
+color: ${({ err }) => (err ? 'var(--btn-color-red)' : 'var(--primery-color-blue)')};
+border: 1px solid ${({ err }) => (err ? 'var(--btn-color-red)' : '#D7E3FF')};
 border-radius: 6px;
 padding: 12px 10px;
 width: 120px;
@@ -155,6 +158,10 @@ height: 36px;
 
 box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
 background: var(--primery-color-blue);
+
+&:disabled {
+    cursor: not-allowed; 
+  }
 
    @media screen and (min-width: 768px) {
     padding: 10px 30px;
