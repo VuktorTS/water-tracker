@@ -1,55 +1,14 @@
-import ModalWrapper from 'components/ModalWrapper/ModalWrapper.jsx';
-
-import React, { useState } from 'react';
-import { eachDayOfInterval, endOfMonth, format, formatDate, isToday, startOfMonth } from 'date-fns';
-import monthWater from "../date.json"
 import { BottleImg, ContentWraper, HomePageSection } from './HomePage.styled.jsx';
 import { DailyNorma } from 'components/DailyNorma/DailyNorma.jsx';
 import { WaterRatio } from 'components/WaterRatio/WaterRatio.jsx';
 import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList.jsx';
 
+import { BackgroundContainer } from './HomePage.styled.jsx';
 
-const getFormattedDateWithTime = date => {
-  console.log("🚀 ~ getFormattedDateWithTime ~ date:", date)  
-return formatDate(new Date(date.setHours(0, 0, 0, 0)));}
-
-const MODAL_TYPES = { ADD: "ADD", EDIT: "EDIT" };
-const data = {time: '07:15 AM', ml: 250, id: 9843576}
 
 const HomePage = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => {
-    setIsOpen(false);
-  };
-  const onOpen = () => {
-    setIsOpen(true);
-  };
-  const getMonth = date => {
-    return {
-      start: startOfMonth(date),
-      end: endOfMonth(date),
-    };
-  };
-
-  const getMonthDays = date => {
-    const { start, end } = getMonth(date);
-
-    return eachDayOfInterval({ start, end });
-  };
-  const getBorderStyle = percentage => {
-    if (percentage !== 0 && percentage < 100) {
-      return 'border';
-    } else if (percentage >= 100) {
-      return 'border-green';
-    }
-  };
-  const formatDate = (dateString, formatString = 'yyyy-MM-dd ') => {
-    const date = new Date(dateString);
-    return format(date, formatString);
-  }
   return (
-    <>
+    <BackgroundContainer>
       <HomePageSection>
         <ContentWraper>
           <DailyNorma/>
@@ -118,15 +77,7 @@ const HomePage = () => {
           </div> */}
         </ContentWraper>
       </HomePageSection>
-
-      <div>
-        {isOpen && (
-          <ModalWrapper onClose={onClose} title="Add water">
-            <AddWaterModal></AddWaterModal>
-          </ModalWrapper>
-        )}
-      </div>
-    </>
+</BackgroundContainer>
   );
 };
 
