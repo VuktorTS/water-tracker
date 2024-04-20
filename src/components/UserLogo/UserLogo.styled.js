@@ -7,10 +7,24 @@ export const LogoContainer = styled.div`
   gap: 8px;
 `;
 
-export const Avatar = styled.img`
+export const AvatarImg = styled.img`
   width: 28px;
   height: 28px;
   border-radius: 50%;
+`;
+
+export const AvatarDiv = styled.div`
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--secondary-color-blue);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primery-color-black);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Div = styled.div`
@@ -20,11 +34,16 @@ export const Div = styled.div`
 export const NameContainer = styled.div`
   font-family: inherit;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 133%;
+  font-size: 16px;
+  line-height: 1.25;
   text-align: right;
   color: var(--primery-color-black);
   text-transform: capitalize;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33;
+  }
 `;
 
 export const UserLogoModal = styled.div`

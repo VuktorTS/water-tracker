@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { AvatarContainer, AvatarField, AvatarImg, AvatarInput, Avatar, BigLabel, Button, InputBox, Label, RadioBox, ShowIcon, StyledContainer, StyledError, StyledField, StyledFieldset, StyledForm, TextInputsContainer, UploadButton, UploadIcon } from './SettingModal.styled';
+import { AvatarContainer, AvatarField, AvatarImg, AvatarInput, BigLabel, Button, InputBox, Label, RadioBox, ShowIcon, StyledContainer, StyledError, StyledField, StyledFieldset, StyledForm, TextInputsContainer, UploadButton, UploadIcon, AvatarDiv } from './SettingModal.styled';
 import icons from "img/icons.svg";
 
 import { emailRegex } from '../../constants/validEmail';
@@ -87,9 +87,9 @@ export const SettingModal = ({ handleCloseModal, profileData }) => {
                   {previewPhoto ? (
                     <AvatarImg src={previewPhoto} alt="Avatar" />
                   ) : (
-                    <Avatar>
+                    <AvatarDiv>
                       {username ? username.charAt(0).toUpperCase() : email.charAt(0).toUpperCase()}
-                    </Avatar>
+                    </AvatarDiv>
                   )}
                   <AvatarField name="imageFile">
                     {({ field }) => (

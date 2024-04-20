@@ -86,7 +86,7 @@ export const AvatarImg = styled.img`
   height: 80px;
   border-radius: 50%;
 `;
-export const Avatar = styled.div`
+export const AvatarDiv = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 50%;

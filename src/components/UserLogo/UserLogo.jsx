@@ -1,5 +1,5 @@
 import { usePopper } from "react-popper"
-import { Avatar, UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContainer, Div } from "./UserLogo.styled"
+import { UserLogoModal, StyledBtn, StyledIcon, LogoContainer, NameContainer, Div, AvatarImg, AvatarDiv } from "./UserLogo.styled"
 import { useEffect, useState } from "react"
 import icons from "img/icons.svg"
 import { useDispatch, useSelector } from "react-redux"
@@ -14,7 +14,7 @@ export const UserLogo = () => {
 
   const user = useSelector(getUser)
   console.log('object user', user)
-  const { username, avatarURL } = user
+  const { username, email, photo } = user
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [openSettingModal, setOpenSettingModal] = useState(false)
@@ -68,7 +68,13 @@ export const UserLogo = () => {
     <Div>
       <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
         <NameContainer>{username}</NameContainer>
-        <Avatar src={avatarURL} alt='user avatar'></Avatar>
+        {photo ? (
+          <AvatarImg src={photo} alt='user avatar' />
+          ) : (
+          <AvatarDiv>
+            {username ? username.charAt(0).toUpperCase() : email.charAt(0).toUpperCase()}
+          </AvatarDiv>
+        )}
         <StyledIcon>
           <use href={`${icons}#icon-arrow-down`}></use>
         </StyledIcon>
