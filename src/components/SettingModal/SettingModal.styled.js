@@ -55,24 +55,45 @@ export const TextInputsContainer = styled.div`
 export const AvatarContainer = styled.div`
   display: flex;
   gap: 8px;
+  margin-top: 0;
   margin-bottom: 24px;
 `;
 
 export const AvatarField = styled(Field)`
   border: 1px solid seagreen;
   display: flex;
-  > input {
+  /* > input {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-  }
+  } */
 `;
 
-export const Avatar = styled.div`
+export const AvatarInput = styled.input`
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background-color: var(--secondary-yellow);
+  /* opacity: 0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid saddlebrown;
+`;
+
+export const AvatarImg = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+`;
+export const Avatar = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--secondary-color-blue);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--primery-color-black);
 
   display: flex;
   align-items: center;
@@ -80,18 +101,33 @@ export const Avatar = styled.div`
 `;
 
 export const UploadButton = styled.button`
-  /* position: absolute;
-  top: 28px;
-  right: 12px; */
   padding: 0;
   line-height: 0.6;
   color: var(--primery-color-blue);
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 500;
   border: none;
   background: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &:hover,
+  &:focus {
+    transition: ease-in 0.2s;
+    color: var(--secondary-yellow);
+
+    > svg {
+      transition: ease-in 0.2s;
+      stroke: var(--secondary-yellow);
+    }
+  }
+
   @media screen and (min-width: 768px) {
     top: 36px;
     right: 24px;
+    gap: 8px;
   }
 `;
 
@@ -100,6 +136,7 @@ export const UploadIcon = styled.svg`
   height: 24px;
   stroke: var(--primery-color-blue);
   fill: none;
+  transition: ease-in 0.2s;
 
   &:hover,
   &:focus {
@@ -117,7 +154,7 @@ export const InputBox = styled.div`
   @media (min-width: 1440px) {
     width: 392px;
     margin-bottom: 0px;
-    margin-top: 12px;
+    /* margin-top: 12px; */
   }
 `;
 
@@ -165,7 +202,8 @@ export const StyledField = styled(Field)`
   border-radius: 6px;
   color: var(--secondary-color-blue);
   font-size: 16px;
-  line-height: 1.23;
+  height: 44px;
+  line-height: 1.25;
   letter-spacing: 0%;
   padding: 12px 10px;
   transition: ease-in 0.2s;

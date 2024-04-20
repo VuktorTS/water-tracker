@@ -13,6 +13,7 @@ export const UserLogo = () => {
   const dispatch = useDispatch()
 
   const user = useSelector(getUser)
+  console.log('object user', user)
   const { username, avatarURL } = user
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
