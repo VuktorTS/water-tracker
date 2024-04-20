@@ -157,7 +157,7 @@ display: flex;
     padding: 10px 75px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1440px) {
     width: 178px;
     height: 44px;
     padding: 10px 20px;
