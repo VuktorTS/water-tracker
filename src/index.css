@@ -7,6 +7,7 @@
   --primery-color-white: #fff;
   --primery-color-blue: #407bff;
   --primery-color-gray: #8f8f8f;
+  --calendar-color-green: #43ff4c;
 
   --secondary-color-blue: #9ebbff;
   --bg-color-light-blue: #ecf2ff;
@@ -56,4 +57,30 @@ button {
 
 input {
   outline: none;
+}
+.calendarDayBtn.border {
+  border: 1px solid var(--calendar-color-orange);
+}
+
+.calendarDayBtn.border-green {
+  border: 1px solid var(--calendar-color-green);
+}
+.calendarDayBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--primery-color-white);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  transition: all 0.3s;
+}
+.calendarDayBtn:hover {
+  background-color: var(--secondary-color-blue);
+}
+
+.today {
+  background-color: var(--secondary-color-blue);
 }
