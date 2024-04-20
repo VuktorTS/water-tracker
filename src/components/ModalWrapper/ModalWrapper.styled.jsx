@@ -7,6 +7,7 @@ export const Backdrop = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: var(--backdrop-color);
+  overflow: 'auto';
 `;
 
 export const Container = styled.div`
@@ -64,4 +65,4 @@ export const CloseIcon = styled.svg`
   }
 `;
 export const ModalBody = styled.div`
- font-family: var(--font-family);`;
+  font-family: var(--font-family);`;
