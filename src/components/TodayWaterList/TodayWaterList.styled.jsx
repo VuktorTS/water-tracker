@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const TodayContainer = styled.div`
-margin-bottom: 24px;
 `
 export const TodayTitle = styled.h3`
 font-size: 24px;
@@ -18,6 +17,9 @@ margin-bottom: 16px;
 export const TodayList = styled.ul`
 height: 212px;
 overflow: auto;
+@media screen and (min-width: 768px) {
+  height: 183px;
+}
 `
 export const TodayItem = styled.li`
 display: flex;
@@ -29,11 +31,11 @@ border-bottom: 1px solid var(--btn-color-light-blue);
 export const TodayInfo = styled.div`
 display: flex;
 align-items: center;
+gap: 12px;
 `
 export const TodayClass = styled.svg`
 width: 26px;
 height: 26px;
-margin-right: 12px;
 
 @media screen and (min-width: 768px) {
   width: 36px;
@@ -45,7 +47,6 @@ font-size: 18px;
 font-weight: 400;
 line-height: 1.33;
 color: var(--primery-color-blue);
-margin-right: 16px;
 `
 export const TodayTime = styled.p`
 font-size: 12px;
@@ -58,11 +59,6 @@ display: flex;
 gap: 18px;
 `
 export const ButtonEdit = styled.button`
-background-color: transparent;
-  padding: 0;
-  width: 20px;
-  height: 20px;
-
   & svg {
     stroke: var(--secondary-color-blue);
     fill: transparent;

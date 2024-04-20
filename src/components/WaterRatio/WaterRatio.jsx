@@ -8,7 +8,7 @@ export const WaterRatio = () => {
     const dailyNorm = 6000;
 
     // const dailyDrank = useSelector(отримати загальну випиту воду за день);
-    const dailyDrank = 5500;
+    const dailyDrank = 500;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
   

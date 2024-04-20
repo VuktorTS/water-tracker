@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const WaterRatioContainer = styled.div`
-width: 280px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  margin-top: 15px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -25,8 +24,6 @@ position: relative;
 height: 102px;
 display: flex;
 flex-direction: column;
-padding-left: 11px;
-padding-right: 11px;
 
 @media screen and (min-width: 768px) {
   width: 356px;
@@ -35,16 +32,18 @@ padding-right: 11px;
 `
 export const WaterRangeTitle = styled.h3`
 font-size: 18px;
-line-height: 24px;
-letter-spacing: 0em;
+line-height: 0.75;
 text-align: left;
-margin-bottom: 16px;
+font-weight: 400;
+margin-bottom: 11px;
 color: #407bff;
 `
 export const WaterRange = styled.input`
+padding: 0 13px;
 &[type='range'] {
     appearance: none;
-    width: 100%;
+    width: 256px;
+    margin: 0 auto;
     border-radius: 10px;
     background-color: #d7e3ff;
     background-image: linear-gradient(to right, #9ebbff, #9ebbff);
@@ -77,7 +76,6 @@ export const WaterRange = styled.input`
   }
 `
 export const RateContainer = styled.div`
-height: 32px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
