@@ -40,6 +40,7 @@ export const UserLogoModal = styled.div`
   justify-content: center;
   align-items: start;
   gap: 16px;
+  z-index: 1;
 
   visibility: ${({ $visibility }) => `${$visibility}`};
   pointer-events: ${({ $pointerEvents }) => `${$pointerEvents}`};

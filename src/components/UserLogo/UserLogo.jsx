@@ -7,14 +7,17 @@ import { getUser } from "../../redux/auth/authSelectors"
 import { LogOutModal } from "../LogOutModal/LogOutModal"
 import ModalWrapper from "../ModalWrapper/ModalWrapper"
 import { logOut } from "../../redux/auth/authOperations"
+import { SettingModal } from "../SettingModal/SettingModal"
 
 export const UserLogo = () => {
   const dispatch = useDispatch()
 
   const user = useSelector(getUser)
+  console.log('object user', user)
   const { username, avatarURL } = user
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [openSettingModal, setOpenSettingModal] = useState(false)
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
   const [logoutModal, setLogoutModal] = useState(false);
@@ -32,7 +35,14 @@ export const UserLogo = () => {
   const visibility = !isOpenPopup ? 'hidden' : 'visible';
   const pointerEvents = !isOpenPopup ? 'none' : 'auto';
 
-  const openSettingModal = () => console.log('SettingModal Will Be Opened')
+
+  const handleShowDetails = () => {
+    // const selectedProfile = friends.find(friend => friend.id === profileId);
+    setOpenSettingModal(true);
+    // setModalData(selectedProfile);
+  };  const handleCloseModal = () => {
+    setOpenSettingModal(false);
+  };
 
   const openLogoutModal = () => setLogoutModal(true)
   const onCloseLogoutModal = () => setLogoutModal(false)
@@ -71,12 +81,13 @@ export const UserLogo = () => {
         style={styles.popper}
         {...attributes.popper}
       >
-        <StyledBtn onClick={openSettingModal}>
+        <StyledBtn onClick={handleShowDetails}>
           <StyledIcon>
               <use href={`${icons}#icon-cog-tooth`}></use>
           </StyledIcon>
           Setting
         </StyledBtn>
+        {openSettingModal && <ModalWrapper onClose={handleCloseModal} title="Setting" stylesSetting={true}><SettingModal handleCloseModal={handleCloseModal} profileData={user} /></ModalWrapper>}
         <StyledBtn onClick={openLogoutModal}>
         <StyledIcon>
               <use href={`${icons}#icon-log-out`}></use>

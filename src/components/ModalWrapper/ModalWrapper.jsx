@@ -6,7 +6,7 @@ import icons from "img/icons.svg"
 
 const modalRoot = document.querySelector('#modal');
 
-const ModalWrapper = ({ onClose, children, title }) => {
+const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
   useLockBodyScroll(true);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const ModalWrapper = ({ onClose, children, title }) => {
 
   return createPortal(
     <Backdrop onClick={handleClick}>
-      <Container>
+      <Container id={stylesSetting ? 'setting' : ''}>
         <TitleModal>{title}</TitleModal>
         <ButtonClose
           type="button"

@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import{registration, logIn, logOut, getCurrUserParams, setCurrentUser} from "./authOperations"
+import {
+  registration,
+  logIn,
+  logOut,
+  getCurrUserParams,
+  setCurrentUser,
+} from './authOperations';
+import { assignValues } from '../../helpers/objectOperations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -7,33 +14,32 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isLoading: false,
-  error: null
+  error: null,
 };
 
 const forPending = (state) => {
-    state.isLoading = true;
-    state.error = null;
+  state.isLoading = true;
+  state.error = null;
 };
 
 const forRejected = (state, action) => {
-    state.isLoading = false;
-    state.error = action.payload;
-    if(state.error === '401'){
-        state.token = null;
-      state.isLoggedIn = false;
-      state.user = { name: null, email: null };
-      state.specialMess = '';
-    }
+  state.isLoading = false;
+  state.error = action.payload;
+  if (state.error === '401') {
+    state.token = null;
+    state.isLoggedIn = false;
+    state.user = { name: null, email: null };
+    state.specialMess = '';
+  }
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
-        console.log('payload: ', payload);
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
@@ -72,16 +78,14 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(getCurrUserParams.rejected)
-    .addCase(setCurrentUser.pending, forPending)
+      .addCase(setCurrentUser.pending, forPending)
       .addCase(setCurrentUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        assignValues(payload, state.user);
         state.specialMess = '';
-        state.token = null;
-        state.isLoggedIn = false;
         state.isLoading = false;
         state.error = null;
       })
-    .addCase(setCurrentUser.rejected)
+      .addCase(setCurrentUser.rejected);
   },
 });
 export default authSlice.reducer;
