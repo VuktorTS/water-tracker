@@ -28,14 +28,10 @@ export const DailyNorma = () => {
             Edit
           </DailyNormaEdit>
           {normaWaterModal && <div>Modal Window</div>}
+          {/* Тут треба підставити нормальне вікно яке має відкриватися на My daily norma */}
         </DailyNormaContainerMini>
       </DailyNormaContainer>
       <ImgWrapper>
-        {/* <ImgBotl
-          srcSet="/src/img/home_mob@1x.png 1x, /src/img/home_mob@2x.png 2x"
-          src="/src/img/home_mob@1x.png"
-        ></ImgBotl> */}
-
         <picture>
           <source
             srcSet="/src/img/home@1x.png 1x, /src/img/home@2x.png 2x"
@@ -55,23 +51,3 @@ export const DailyNorma = () => {
     </ContainerOne>
   );
 };
-
-// @media (min-width: 768px) {
-//   &:before {
-//     background-image: url(${bgImgTab});
-
-//     @media (min-resolution: 2dppx) {
-//       background-image: url(${bgImgTab2x});
-//     }
-//   }
-// }
-
-// @media (min-width: 1440px) {
-//   &:before {
-//     background-image: url(${bgImg});
-//     background-size: contain;
-
-//     @media (min-resolution: 2dppx) {
-//       background-image: url(${bgImg2x});
-//     }
-//   }

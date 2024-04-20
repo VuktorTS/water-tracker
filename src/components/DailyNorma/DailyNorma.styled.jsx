@@ -99,8 +99,3 @@ export const ImgWrapper = styled.div`
     width: 0%;
   }
 `;
-
-// export const ImgBotl = styled.img`
-//   width: 280px;
-//   height: 208px;
-// `;
