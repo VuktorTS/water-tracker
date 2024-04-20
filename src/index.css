@@ -58,14 +58,14 @@ button {
 input {
   outline: none;
 }
-<<<<<<< HEAD
+
 
 #setting {
   @media (min-width: 1440px) {  
     width: 1008px;
     height: 592px;
     }
-=======
+
 .calendarDayBtn.border {
   border: 1px solid var(--calendar-color-orange);
 }
@@ -91,5 +91,4 @@ input {
 
 .today {
   background-color: var(--secondary-color-blue);
->>>>>>> main
 }
