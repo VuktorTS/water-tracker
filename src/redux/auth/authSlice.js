@@ -40,7 +40,6 @@ const authSlice = createSlice({
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
-        console.log('payload: ', payload);
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;

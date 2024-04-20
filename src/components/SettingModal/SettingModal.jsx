@@ -69,7 +69,6 @@ export const SettingModal = ({ handleCloseModal, profileData }) => {
 
             const notEmptyData = checkEmptyEntries(updatedData)
             const validData = checkDuplicateEntries(profileData, notEmptyData)
-            console.log(validData)
             if (Object.keys(validData).length === 0) {
               handleCloseModal()
               return
