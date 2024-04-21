@@ -1,26 +1,27 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { makeFormData } from '../../helpers/objectOperations';
-axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
+import { reqCurrent, reqLogin, reqSignOut, reqSignUp, reqUpdateUser } from '../../services/api';
+// axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
 
-export const setAuthHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// export const setAuthHeader = (token) => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+// const clearAuthHeader = () => {
+//   axios.defaults.headers.common.Authorization = '';
+// };
 
 export const registration = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
-    const dataForReg = {
-      email: credentials.email,
-      password: credentials.password,
-    };
+    // const dataForReg = {
+    //   email: credentials.email,
+    //   password: credentials.password,
+    // };
     try {
-      const res = await axios.post('/users/signup', dataForReg);
-      return res.data;
+      const res = await reqSignUp(credentials);
+      return res;
     } catch (e) {
       if (e.response) {
         return thunkAPI.rejectWithValue(e.response.data.message);
@@ -35,9 +36,8 @@ export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/users/signin', credentials);
-      setAuthHeader(res.data.token);
-      return res.data;
+      const res = await reqLogin(credentials);
+      return res;
     } catch (e) {
       if (e.response) {
         return thunkAPI.rejectWithValue(e.response.data.message);
@@ -50,11 +50,8 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const res = await axios.post('/users/signout');
-    if (res) {
-      clearAuthHeader();
-      return res.data;
-    }
+    const res = reqSignOut();
+      return res;
   } catch (e) {
     if (e.response) {
       return thunkAPI.rejectWithValue(e.response.data.message);
@@ -68,8 +65,8 @@ export const getCurrUserParams = createAsyncThunk(
   'auth/params',
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get('users/current');
-      return res.data;
+      const res = await reqCurrent();
+      return res;
     } catch (e) {
       if (e.response) {
         return thunkAPI.rejectWithValue(e.response.data.message);
@@ -85,12 +82,8 @@ export const setCurrentUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const formData = makeFormData(credentials);
-      const res = await axios.patch('users/', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      return res.data;
+      const res = await reqUpdateUser(formData);
+      return res;
     } catch (e) {
       if (e.response) {
         return thunkAPI.rejectWithValue(e.response.data.message);
