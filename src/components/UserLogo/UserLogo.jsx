@@ -13,8 +13,7 @@ export const UserLogo = () => {
   const dispatch = useDispatch()
 
   const user = useSelector(getUser)
-  console.log('object user', user)
-  const { username, email, photo } = user
+  const { username, email, avatarURL } = user
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [openSettingModal, setOpenSettingModal] = useState(false)
@@ -35,14 +34,8 @@ export const UserLogo = () => {
   const visibility = !isOpenPopup ? 'hidden' : 'visible';
   const pointerEvents = !isOpenPopup ? 'none' : 'auto';
 
-
-  const handleShowDetails = () => {
-    // const selectedProfile = friends.find(friend => friend.id === profileId);
-    setOpenSettingModal(true);
-    // setModalData(selectedProfile);
-  };  const handleCloseModal = () => {
-    setOpenSettingModal(false);
-  };
+  const handleShowDetails = () => setOpenSettingModal(true);
+  const handleCloseModal = () => setOpenSettingModal(false);
 
   const openLogoutModal = () => setLogoutModal(true)
   const onCloseLogoutModal = () => setLogoutModal(false)
@@ -68,8 +61,8 @@ export const UserLogo = () => {
     <Div>
       <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
         <NameContainer>{username}</NameContainer>
-        {photo ? (
-          <AvatarImg src={photo} alt='user avatar' />
+        {avatarURL ? (
+          <AvatarImg src={avatarURL} alt='user avatar' />
           ) : (
           <AvatarDiv>
             {username ? username.charAt(0).toUpperCase() : email.charAt(0).toUpperCase()}
