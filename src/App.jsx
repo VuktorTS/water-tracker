@@ -6,7 +6,6 @@ import { isLoggedIn } from './redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 
 import { getToken } from './redux/auth/authSelectors';
-import { setAuthHeader } from './redux/auth/authOperations';
 
 // import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,6 +15,7 @@ import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from 'pages/HomePage';
 import ModalPage from './pages/ModalPage';
+import { setAuthHeader } from './services/api';
 
 // const Layout = lazy(() => import('./components/Layout/Layout'));
 // const HomePage = lazy(() => import('./pages/HomePage'));

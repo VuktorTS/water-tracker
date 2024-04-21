@@ -27,24 +27,19 @@ export const MonthStatistic = () => {
     return eachDayOfInterval(month);
   };
   const getBorderStyle = (percentage) => {
-    console.log("🚀 ~ getBorderStyle ~ percentage:", percentage)
     if (percentage !== 0 && percentage < 100) {
-        console.log("border")
       return 'border';
     } else if (percentage >= 100) {
-        console.log("border-green")
       return 'border-green';
     }
   };
 
   const percentageWater = (monthWater, date)=>{
-    // console.log(isToday(date))
     const result =  monthWater.find(
         (item) =>
           getFormattedDateWithTime(new Date(item._id)) ===
           getFormattedDateWithTime(date)
       )?.persent
-    //   console.log("🚀 ~ percentageWater ~ result:", result)
       return result;
   }
   const getFormattedDateWithTime = (date) =>
