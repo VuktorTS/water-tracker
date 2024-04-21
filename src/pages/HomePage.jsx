@@ -9,8 +9,17 @@ import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList.jsx';
 
 import { BackgroundContainer } from './HomePage.styled.jsx';
 import { MonthStatistic } from 'components/MonthStatistic/MonthStatistic.jsx';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch();
+  }, [dispatch]);
+
   return (
     <BackgroundContainer>
       <HomePageSection>
