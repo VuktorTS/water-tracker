@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { MAX_VALUE, MIN_VALUE, STEP } from '../../constants/addWater';
+import { adjustedTimeString } from '../../constants/currentDate';
 import sprite from '../../img/icons.svg';
 import { toastInfo } from '../../services/notification';
 import { getTimeOptions } from '../../services/timeOptions';
 import { Mlspan, ValueHeader, RoundBtn, SectionHeader, BtnSection, TimeSelect, ValueInput, SubmitSection, SubmitBtn, BottomMl, Icon, DataBox, GlassIcon, EditMlSpan, TimeSpan, ErrMessage, TimeInput } from './TodayListModal.styled';
+const currentDate = adjustedTimeString.slice(0, 16);
+
 
 const TodayListModal = ({title, onClose, data}) => {
   const [waterVolume, setWaterVolume] = useState(data?.waterVolume ?? 0);
-  const [time, setTime] = useState(data?.time.slice(11, 16) ?? '');
+  const [time, setTime] = useState(data?.time.slice(11, 16) ?? currentDate.slice(11, 16));
   const [inputValue, setInputValue] = useState(waterVolume);
   const [err, setErr] = useState(false);
-  const currentDate = new Date().toJSON().slice(0, 16);
 
   useEffect(() => {
     if (!data) {
@@ -56,7 +58,7 @@ const TodayListModal = ({title, onClose, data}) => {
     setErr(true);
   }
   const customContentRenderer = () => (
-    <TimeInput>{time !== "" ? time : `Select time...`}</TimeInput>
+    <TimeInput>{time}</TimeInput>
 )
 
   const handleTimeChange = (values) => {
@@ -64,7 +66,6 @@ const TodayListModal = ({title, onClose, data}) => {
       setTime(values[0].time)
     }
   }
-
 
   const dataSubmit = evt => {
     const finalTime = `${currentDate.slice(0, 11)}${time.slice(0, 5)}`;
