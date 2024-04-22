@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const TodayContainer = styled.div`
+margin-bottom: 24px;
 `
 export const TodayTitle = styled.h3`
 font-size: 24px;
@@ -49,10 +50,10 @@ line-height: 1.33;
 color: var(--primery-color-blue);
 `
 export const TodayTime = styled.p`
+margin-left: 12px;
+line-height: 24px;
 font-size: 12px;
-font-weight: 400;
-line-height: 2;
-color: var(--primery-color-black);
+color: #2f2f2f;
 `
 export const TodayTools = styled.div`
 display: flex;
@@ -65,16 +66,27 @@ export const ButtonEdit = styled.button`
     width: 16px;
     height: 16px;
   }
+  height: 16px;
+  position: relative;
+  background-color: transparent;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 16px;
+    height: 1px;
+    background-color: #9ebbff;
+    transition: 350ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0;
+    transform: translateX(-50%);
+  }
 
-  &:hover {
-    border-bottom: 1px solid var(--secondary-color-blue);
+  &:is(:hover, :focus)::after {
+    opacity: 1;
   }
 `
 export const ButtonDelete = styled.button`
-background-color: transparent;
-padding: 0;
-width: 20px;
-height: 20px;
 
 & svg {
   stroke: var(--btn-color-red);
@@ -83,8 +95,26 @@ height: 20px;
   height: 16px;
 }
 
-&:hover {
-  border-bottom: 1px solid var(--btn-color-red);
+height: 16px;
+background-color: transparent;
+position: relative;
+margin-right: 4px;
+
+&::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 16px;
+  height: 1px;
+  background-color: #ef5050;
+  transition: 350ms cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+&:is(:hover, :focus)::after {
+  opacity: 1;
 }
 `
 export const AddWaterBtn = styled.button`
@@ -116,6 +146,6 @@ stroke: var(--primery-color-blue);
   stroke: var(--secondary-yellow);
 }
 `
-export const l = styled.div`
+// export const l = styled.div`
 
-`
+// `

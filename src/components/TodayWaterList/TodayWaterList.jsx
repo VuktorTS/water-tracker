@@ -93,7 +93,7 @@ export const TodayWaterList = () => {
         <svg>
           <use href={`${icons}#icon-add`}></use>
         </svg>
-        addWater
+        Add water
       </AddWaterBtn>
        {modal && modalType  === MODAL_TYPES.ADD && (
         <ModalWrapper onClose={onClose} title="Add water">

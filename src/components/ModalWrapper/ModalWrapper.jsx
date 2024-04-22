@@ -1,7 +1,7 @@
 import { useLockBodyScroll } from 'react-use';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Backdrop, ButtonClose, CloseIcon, Container, ModalBody, TitleModal } from './ModalWrapper.styled';
+import { Backdrop, ButtonClose, CloseIcon, Container, ModalBody, TitleModal, TitleBox } from './ModalWrapper.styled';
 import icons from "img/icons.svg"
 
 const modalRoot = document.querySelector('#modal');
@@ -30,6 +30,7 @@ const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
   return createPortal(
     <Backdrop onClick={handleClick}>
       <Container id={stylesSetting ? 'setting' : ''}>
+      <TitleBox>
         <TitleModal>{title}</TitleModal>
         <ButtonClose
           type="button"
@@ -40,6 +41,7 @@ const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
               <use href={`${icons}#icon-outline`}></use>
             </CloseIcon>
         </ButtonClose>
+        </TitleBox>
         <ModalBody>
           {children}
         </ModalBody>

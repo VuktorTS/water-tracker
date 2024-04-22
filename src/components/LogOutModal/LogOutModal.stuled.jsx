@@ -1,7 +1,24 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  position: absolute;
+  width: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px 12px;
+  border-radius: 10px;
+  background-color: var(--primery-color-white);
+  @media screen and (min-width: 768px) {
+    width: 592px;
+    padding: 32px 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+  }
+`;
+
 export const BoxModal = styled.div`
-  padding: 0 24px 32px;
 `;
 export const TextStyle = styled.p`
   font-size: 18px;
@@ -17,15 +34,18 @@ export const ButtonBox = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row-reverse;
   }
+  @media screen and (min-width: 1440px) {
+    justify-content: flex-end;
+  }
 `;
+
 export const ButtonStyle = styled.button`
   display: inline-block;
   width: 100%;
   padding: 8px 30px;
   color: #fff;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 16x;
   background-color: var(--btn-color-red);
   box-shadow: 0 4px 8px rgba(64, 123, 255, 0.34);
   border-radius: 10px;
@@ -48,3 +68,5 @@ export const ButtonStyle = styled.button`
     padding: 10px 30px;
   }
 `;
+
+

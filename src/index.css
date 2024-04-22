@@ -92,3 +92,20 @@ input {
 .today {
   background-color: var(--secondary-color-blue);
 }
+
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ebbff;
+  border-radius: 8px;
+  
+}
+
+::-webkit-scrollbar-track {
+  width: 2px;
+  background-color: #D7E3FF;
+}
+

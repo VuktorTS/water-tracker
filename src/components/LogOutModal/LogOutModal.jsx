@@ -2,14 +2,14 @@ import { BoxModal, ButtonBox, ButtonStyle, TextStyle } from './LogOutModal.stule
 
 export const LogOutModal = ({ onClose, onLogout }) => {
   return (
-    <BoxModal>
+      <BoxModal>
       <TextStyle>Do you really want to leave?</TextStyle>
       <ButtonBox>
         <ButtonStyle type="button" onClick={onLogout}>
-          logOut
+          Log out
         </ButtonStyle>
         <ButtonStyle type="button" onClick={onClose}>
-          cancel
+          Cancel
         </ButtonStyle>
       </ButtonBox>
     </BoxModal>

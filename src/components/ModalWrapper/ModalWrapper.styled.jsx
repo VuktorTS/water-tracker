@@ -28,19 +28,25 @@ export const Container = styled.div`
     width: 592px;
   }
 `;
+
+export const TitleBox = styled.div`
+display: flex;
+-webkit-box-pack: justify;
+justify-content: space-between;
+margin-bottom: 24px;
+`;
+
+
 export const TitleModal = styled.h2`
   color: var(--primery-color-black);
   font-size: 26px;
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: 26px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 24px;
-  }
+
 `;
 
 export const ButtonClose = styled.button`
-  position: absolute;
+  // position: absolute;
   top: 28px;
   right: 12px;
   padding: 0;
