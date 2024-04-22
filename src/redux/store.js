@@ -12,7 +12,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { waterReducer } from './water/waterSlice';
-import { waterReducer } from './water/waterSlice.js';
 
 const middleware = (getDefaultMiddleware) =>
   getDefaultMiddleware({
