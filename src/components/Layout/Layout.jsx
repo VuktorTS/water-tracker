@@ -6,8 +6,6 @@ import { isLoggedIn } from '../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import { StyleSheetManager } from 'styled-components';
 
-import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
-
 const Layout = () => {
   const isLogged = useSelector(isLoggedIn);
   const location = useLocation();

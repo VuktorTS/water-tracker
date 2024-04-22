@@ -10,6 +10,7 @@ export const Backdrop = styled.div`
   height: 100vh;
   background-color: var(--backdrop-color);
   overflow-y: auto;
+  z-index: 9999;
 `;
 
 export const Container = styled.div`
