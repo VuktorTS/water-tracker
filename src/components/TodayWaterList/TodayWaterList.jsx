@@ -20,9 +20,8 @@ import { LogOutModal } from '../LogOutModal/LogOutModal.jsx';
 import { useSelector } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
+import { MODAL_TYPES } from '../../constants/addWater';
 
-
-const MODAL_TYPES = { ADD: "ADD", EDIT: "EDIT" };
 const data = { date: '2024-04-20T10:21', waterVolume: 250, time: '2024-04-20T07:10:00.000Z', _id: '6623a80d55d991d499ce6e9' };
 
 export const TodayWaterList = () => {
@@ -34,8 +33,9 @@ export const TodayWaterList = () => {
 
   const onClose = () => {
     setModal(false);
-};
+  }
   const onOpen = (type) => {
+
     setModal(true);
     setModalType(type);
   };
@@ -62,7 +62,7 @@ export const TodayWaterList = () => {
               <TodayTime>{formatTime(item.time)}</TodayTime>
             </TodayInfo>
             <TodayTools>
-              <ButtonEdit onClick={() => onOpen(MODAL_TYPES.EDIT)}>
+              <ButtonEdit onClick={() => onOpen(MODAL_TYPES.EDIT, item.id)}>
                 <svg>
                   <use href={`${icons}#icon-edit`}></use>
                 </svg>

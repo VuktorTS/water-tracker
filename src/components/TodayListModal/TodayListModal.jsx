@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { MAX_VALUE, MIN_VALUE, STEP } from '../../constants/addWater';
 import { adjustedTimeString } from '../../constants/currentDate';
-import sprite from '../../img/icons.svg';
+import { addWater, editWater } from '../../redux/water/waterOperations';
 import { toastInfo } from '../../services/notification';
-import { getTimeOptions } from '../../services/timeOptions';
-import { Mlspan, ValueHeader, RoundBtn, SectionHeader, BtnSection, TimeSelect, ValueInput, SubmitSection, SubmitBtn, BottomMl, Icon, DataBox, GlassIcon, EditMlSpan, TimeSpan, ErrMessage, TimeInput } from './TodayListModal.styled';
+import EditData from '../EditData/EditData';
+import TimeForm from '../TimeForm/TimeForm';
+import WaterForm from '../WaterForm/WaterForm';
+import { ValueHeader, SectionHeader,  ValueInput, SubmitSection, SubmitBtn, BottomMl, ErrMessage } from './TodayListModal.styled';
 const currentDate = adjustedTimeString.slice(0, 16);
 
 
@@ -14,6 +17,7 @@ const TodayListModal = ({title, onClose, data}) => {
   const [time, setTime] = useState(data?.time.slice(11, 16) ?? currentDate.slice(11, 16));
   const [inputValue, setInputValue] = useState(waterVolume);
   const [err, setErr] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!data) {
@@ -57,9 +61,6 @@ const TodayListModal = ({title, onClose, data}) => {
     }
     setErr(true);
   }
-  const customContentRenderer = () => (
-    <TimeInput>{time}</TimeInput>
-)
 
   const handleTimeChange = (values) => {
     if (values.length !== 0) {
@@ -68,77 +69,49 @@ const TodayListModal = ({title, onClose, data}) => {
   }
 
   const dataSubmit = evt => {
-    const finalTime = `${currentDate.slice(0, 11)}${time.slice(0, 5)}`;
-    const fulldata = { date: currentDate, waterVolume, time: finalTime};
     evt.preventDefault();
+    const finalTime = `${currentDate.slice(0, 11)}${time.slice(0, 5)}`;
+    if (!data) {
+      const fulldata = { date: finalTime, waterVolume, time: finalTime };
+       console.log(fulldata);
+      dispatch(addWater(fulldata))
+    }
+    if (data) {
+      const fulldata = { date: finalTime, waterVolume, time: finalTime, _id: data._id };
+       console.log(fulldata);
+      dispatch(editWater(fulldata))
+    }
     onClose();
-    console.log(fulldata);
     }
 
   return (<>
-    {data &&
-  <DataBox>
-    <GlassIcon>
-      <use href={`${sprite}#icon-glass`}></use>
-    </GlassIcon>
-    <EditMlSpan>{waterVolume} ml</EditMlSpan>
-    <TimeSpan>{time}</TimeSpan>
-  </DataBox>}
-  <ValueHeader>{title}</ValueHeader>
-     <SectionHeader>Amount of water:</SectionHeader>
-          <BtnSection>
-              <RoundBtn type="button" onClick={decreaseMl}>
-                  <Icon>
-                   <use href={`${sprite}#icon-decrement-outline`}></use>
-                  </Icon>
-                </RoundBtn>
-                <Mlspan>{waterVolume}ml</Mlspan>
-              <RoundBtn type="button" onClick={addMl}>
-                  <Icon>
-                      <use href={`${sprite}#icon-add`}></use>
-                </Icon>
-              </RoundBtn>
-          </BtnSection>
-          
-      <SectionHeader>Recording time:</SectionHeader>
-          <TimeSelect
-              id="time"
-              options={getTimeOptions()}
-              labelField="time"
-              valueField="id"
-              onChange={(values) => handleTimeChange(values)}
-              closeOnSelect="true"
-              dropdownHandle='false'
-      searchable='false'
-              contentRenderer={customContentRenderer}
-              dropdownHandleRenderer={() => (<span></span>)}        
-              required
-    ></TimeSelect>
-          <ValueHeader>
-            Enter the value of the water used:
-          </ValueHeader>
-          <ValueInput
-              id="waterVolume"
-              type="number"
-              value={inputValue}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              err={err.toString()}
-           ></ValueInput>
-        {err && <ErrMessage>* Enter amount of water between {MIN_VALUE} and {MAX_VALUE} ml.</ErrMessage>}  
-      <SubmitSection>
-          <BottomMl>{waterVolume}ml</BottomMl>
-          <SubmitBtn
-            type="submit"
-            onClick={dataSubmit}
-            disabled={time === "" || !waterVolume}
-          >
-            Save
-          </SubmitBtn>
-      </SubmitSection>
-          
-                  </>
-                   )  
+    {data && <EditData waterVolume={waterVolume} time={time}></EditData>}
+    <ValueHeader>{title}</ValueHeader>
+    <SectionHeader>Amount of water:</SectionHeader>
+    <WaterForm decreaseMl={decreaseMl} addMl={addMl} waterVolume={waterVolume}></WaterForm>
+    <SectionHeader>Recording time:</SectionHeader>
+    <TimeForm time={time} handleTimeChange={handleTimeChange}></TimeForm>
+    <ValueHeader>Enter the value of the water used:</ValueHeader>
+    <ValueInput
+      id="waterVolume"
+      type="number"
+      value={inputValue}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      err={err.toString()}
+    ></ValueInput>
+    {err && <ErrMessage>* Enter amount of water between {MIN_VALUE} and {MAX_VALUE} ml.</ErrMessage>}
+    <SubmitSection>
+      <BottomMl>{waterVolume}ml</BottomMl>
+      <SubmitBtn
+        type="submit"
+        onClick={dataSubmit}
+        disabled={!waterVolume}>
+        Save
+      </SubmitBtn>
+    </SubmitSection>
+  </>
+  )  
 }
 
 export default TodayListModal;

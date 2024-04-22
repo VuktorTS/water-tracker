@@ -71,6 +71,7 @@ const waterSlice = createSlice({
           editWater.rejected
         ),
         (state, action) => {
+          console.log(state, action);
           state.isLoading = false;
           state.error = action.payload;
         }
