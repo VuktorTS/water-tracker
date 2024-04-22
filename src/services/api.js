@@ -27,17 +27,30 @@ export const reqSignOut = async () => {
   return data;
 };
 
-export const reqCurrent = async () => {
-  const { data } = await axios.get('users/current');
-  return data;
-};
-
 export const reqUpdateUser = async (formData) => {
   const { data } = await axios.patch('users/', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   });
+  return data;
+};
+export const reqCurrent = async () => {
+  const { data } = await axios.get('users/current');
+  return data;
+};
+
+// ----------- water -------------------
+
+export const reqTodayWater = async () => {
+  const { data } = await axios.get('/trackers/today');
+  return data[0];
+};
+
+export const reqMonthWater = async ({ currentYear, currentMonth }) => {
+  const { data } = await axios.get(
+    `/trackers/month/${currentYear}/${currentMonth}`
+  );
   return data;
 };
 

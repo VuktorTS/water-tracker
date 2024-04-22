@@ -9,7 +9,13 @@ import {
 import { assignValues } from '../../helpers/objectOperations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    username: null,
+    email: null,
+    gender: null,
+    avatarURL: null,
+    dailyWaterNorm: null,
+  },
   specialMess: '',
   token: null,
   isLoggedIn: false,
@@ -72,8 +78,6 @@ const authSlice = createSlice({
       .addCase(getCurrUserParams.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.specialMess = '';
-        state.token = null;
-        state.isLoggedIn = false;
         state.isLoading = false;
         state.error = null;
       })
