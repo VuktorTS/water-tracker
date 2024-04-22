@@ -54,3 +54,8 @@ export const editWaterAmount = async (formData) => {
   });
   return data;
 };
+
+export const deleteWaterAmount = async (_id) => {
+  const { data } = await axios.delete(`trackers/waterEntries/${_id}`);
+  return data;
+};
