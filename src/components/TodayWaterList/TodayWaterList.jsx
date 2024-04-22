@@ -17,17 +17,20 @@ import {
 } from './TodayWaterList.styled';
 import icons from 'img/icons.svg';
 import { LogOutModal } from '../LogOutModal/LogOutModal.jsx';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
+import { deleteWater } from '../../redux/water/waterOperations.js';
 
 const data = { date: '2024-04-20T10:21', waterVolume: 250, time: '2024-04-20T07:10:00.000Z', _id: '6623a80d55d991d499ce6e9' };
 
 export const TodayWaterList = () => {
+  const disp = useDispatch();
   const [modal, setModal] = useState(false);
   const [modalType, setModalType] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
+  const [idForDel, setIdForDel] = useState(null);
 
   const waterList = useSelector(selectTodayWater);
 
@@ -42,10 +45,15 @@ export const TodayWaterList = () => {
 
   const onCloseDeleteModal = () => setDeleteModal(false);
 
-  const onDelete = ()=>{
-    console.log('delete');
+  const onDelete = () => {
+    disp(deleteWater(idForDel));
     onCloseDeleteModal();
   }
+
+  const openDelMod = (id) => {
+    setDeleteModal(true);
+    setIdForDel(id);
+  };
 
 
   return (
@@ -67,7 +75,7 @@ export const TodayWaterList = () => {
                   <use href={`${icons}#icon-edit`}></use>
                 </svg>
               </ButtonEdit>
-              <ButtonDelete onClick={() => setDeleteModal(true)}>
+              <ButtonDelete onClick={() => openDelMod(item._id)}>
                 <svg>
                   <use href={`${icons}#icon-delete`}></use>
                 </svg>

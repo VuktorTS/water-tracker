@@ -103,7 +103,7 @@ const DailyNormaModal = ({ closeMod }) => {
         <ModalBody>
       <AllFormulesDiv>
         <FormulesDiv>
-          <Formule>For girl: <BodyFormules>V=(M*0,03) + (T*0,4)</BodyFormules></Formule>
+          <Formule>For woman: <BodyFormules>V=(M*0,03) + (T*0,4)</BodyFormules></Formule>
         </FormulesDiv>
         <FormulesDiv>
           <Formule>For man: <BodyFormules>V=(M*0,04) + (T*0,6)</BodyFormules></Formule>
@@ -119,7 +119,7 @@ const DailyNormaModal = ({ closeMod }) => {
           type='radio' 
           name='gender' 
           value="girl" 
-          textInp='For girl' 
+          textInp='For woman' 
           checked={selectedGender === 'girl'} 
           onChange={handleGenderChange}
           height='14px' 
