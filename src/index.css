@@ -36,6 +36,11 @@
   --bg-home-page-img: url('img/main_page@1x.png');
   --bg-home-page-img2x: url('img/main_page@2x.png');
 
+  --home-page-bottle-img-tab: url('img/home_tab@1x.png');
+  --home-page-bottle-img-tab2x: url('img/home_tab@2x.png');
+  --home-page-bottle-img-mob: url('img/home_mob@1x.png');
+  --home-page-bottle-img-mob2x: url('img/home_mob@2x.png');
+
   --bg-signin-img-mob: url('img/bg_sign_in_mob@1x.png');
   --bg-signin-img-mob2x: url('img/bg_sign_in_mob@2x.png');
   --bg-signin-img-tab: url('img/bg_sign_in_tab@1x.png');
@@ -83,6 +88,11 @@
   --bg-home-page-img-tab2x: url('img/bg_home_tab_dark@2x.png');
   --bg-home-page-img: url('img/main_page_dark@1x.png');
   --bg-home-page-img2x: url('img/main_page_dark@2x.png');
+
+  --home-page-bottle-img-tab: url('img/home_tab_dark@1x.png');
+  --home-page-bottle-img-tab2x: url('img/home_tab_dark@2x.png');
+  --home-page-bottle-img-mob: url('img/home_mob_dark@1x.png');
+  --home-page-bottle-img-mob2x: url('img/home_mob_dark@2x.png');
 
   --bg-signin-img-mob: url('img/bg_sign_in_mob_dark@1x.png');
   --bg-signin-img-mob2x: url('img/bg_sign_in_mob_dark@2x.png');
