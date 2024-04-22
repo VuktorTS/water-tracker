@@ -1,15 +1,17 @@
 import { BoxModal, ButtonBox, ButtonStyle, TextStyle } from './LogOutModal.stuled';
 
-export const LogOutModal = ({ onClose, onLogout }) => {
+export const LogOutModal = ({question, butText, onClose, onLogout, marginR='auto' }) => {
   return (
     <BoxModal>
-      <TextStyle>Do you really want to leave?</TextStyle>
+      <TextStyle>{question}</TextStyle>
       <ButtonBox>
-        <ButtonStyle type="button" onClick={onLogout}>
-          logOut
+        <ButtonStyle style={{ 
+          marginRight: window.innerWidth >= 1440 ? marginR : 0
+        }} type="button" onClick={onLogout}>
+          {butText}
         </ButtonStyle>
         <ButtonStyle type="button" onClick={onClose}>
-          cancel
+          Cancel
         </ButtonStyle>
       </ButtonBox>
     </BoxModal>
