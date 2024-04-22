@@ -1,8 +1,18 @@
 import { useState } from "react";
 import { BtnAddWater, EndMark, Icon, MiddleMark, RateContainer, StartMark, WaterRange, WaterRangeContainer, WaterRangeTitle, WaterRatioContainer } from "./WaterRatio.styled";
 import icons from 'img/icons.svg';
+import ModalWrapper from "../ModalWrapper/ModalWrapper";
+import TodayListModal from "../TodayListModal/TodayListModal";
 
 export const WaterRatio = () => {
+  const [modal, setModal] = useState(false);
+
+  const onClose = () => {
+    setModal(false);
+ };
+  const onOpen = (type) => {
+    setModal(true);
+  };
 
     // const dailyNorm = useSelector(отримати норму);
     const dailyNorm = 6000;
@@ -31,7 +41,7 @@ export const WaterRatio = () => {
       };
 
       const isShow = waterPercent > 0 && waterPercent <= 100;
-  return (
+  return (<>
     <WaterRatioContainer>
       <WaterRangeContainer>
         <WaterRangeTitle>Today</WaterRangeTitle>
@@ -54,12 +64,18 @@ export const WaterRatio = () => {
           <EndMark>100%</EndMark>
         </RateContainer>
       </WaterRangeContainer>
-      <BtnAddWater type="button" onClick={()=>{console.log("add water")}}>
+      <BtnAddWater type="button" onClick={() => onOpen()}>
         <Icon>
           <use href={`${icons}#icon-add-button`}></use>
         </Icon>
         add Water
       </BtnAddWater>
     </WaterRatioContainer>
+    {modal && (
+        <ModalWrapper onClose={onClose} title="Add water">
+            <TodayListModal title={'Choose a value:'} onClose={onClose}></TodayListModal>
+        </ModalWrapper>
+      )}
+    </>
   );
 };
