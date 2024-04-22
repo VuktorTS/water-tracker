@@ -12,8 +12,9 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { decorReducer } from './decorSlice';
+import { waterReducer } from './water/waterSlice.js';
 
-const middleware = getDefaultMiddleware =>
+const middleware = (getDefaultMiddleware) =>
   getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
@@ -29,7 +30,8 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
-    decorate: decorReducer
+    water: waterReducer,
+    decorate: decorReducer,
   },
   middleware,
 });
