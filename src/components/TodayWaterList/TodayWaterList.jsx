@@ -21,9 +21,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
-import { deleteWater } from '../../redux/water/waterOperations.js';
-
-const data = { date: '2024-04-20T10:21', waterVolume: 250, time: '2024-04-20T07:10:00.000Z', _id: '6623a80d55d991d499ce6e9' };
 
 export const TodayWaterList = () => {
   const disp = useDispatch();
@@ -31,16 +28,18 @@ export const TodayWaterList = () => {
   const [modalType, setModalType] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
   const [idForDel, setIdForDel] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const waterList = useSelector(selectTodayWater);
 
   const onClose = () => {
     setModal(false);
+    setSelectedItem(null);
   }
-  const onOpen = (type) => {
-
+  const onOpen = (type, item) => {
     setModal(true);
     setModalType(type);
+    setSelectedItem(item);
   };
 
   const onCloseDeleteModal = () => setDeleteModal(false);
@@ -70,7 +69,7 @@ export const TodayWaterList = () => {
               <TodayTime>{formatTime(item.time)}</TodayTime>
             </TodayInfo>
             <TodayTools>
-              <ButtonEdit onClick={() => onOpen(MODAL_TYPES.EDIT, item.id)}>
+              <ButtonEdit onClick={() => onOpen(MODAL_TYPES.EDIT, item)}>
                 <svg>
                   <use href={`${icons}#icon-edit`}></use>
                 </svg>
@@ -88,16 +87,16 @@ export const TodayWaterList = () => {
         <svg>
           <use href={`${icons}#icon-add`}></use>
         </svg>
-        addWater
+        Add water
       </AddWaterBtn>
        {modal && modalType  === MODAL_TYPES.ADD && (
         <ModalWrapper onClose={onClose} title="Add water">
-            <TodayListModal title={'Choose a value:'} onClose={onClose}></TodayListModal>
+            <TodayListModal title={'Choose a value:'} onClose={onClose} waterList={waterList}></TodayListModal>
         </ModalWrapper>
       )}
       {modal && modalType  === MODAL_TYPES.EDIT && (
         <ModalWrapper onClose={onClose} title="Edit the entered amount of water">
-            <TodayListModal title={'Correct entered data:'} onClose={onClose} data={data}></TodayListModal>
+            <TodayListModal title={'Correct entered data:'} onClose={onClose} data={selectedItem}></TodayListModal>
         </ModalWrapper>
       )}
       {deleteModal && <ModalWrapper onClose={onCloseDeleteModal} title="Delete entry"><LogOutModal question="Are you sure you want to delete the entry?" butText="Delete" onClose={onCloseDeleteModal} onLogout={onDelete} marginR='0'/></ModalWrapper>}
