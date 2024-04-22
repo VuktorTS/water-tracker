@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BoxModal = styled.div`
-  padding: 0 24px 32px;
+  padding: 0 24px 32px 0;
 `;
 export const TextStyle = styled.p`
   font-size: 18px;

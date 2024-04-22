@@ -1,6 +1,6 @@
 import ModalWrapper from '../ModalWrapper/ModalWrapper'; 
 import TodayListModal from '../TodayListModal/TodayListModal.jsx';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   AddWaterBtn,
   ButtonDelete,
@@ -16,6 +16,7 @@ import {
   TodayValue,
 } from './TodayWaterList.styled';
 import icons from 'img/icons.svg';
+import { LogOutModal } from '../LogOutModal/LogOutModal.jsx';
 
 
 const waterList = [
@@ -52,14 +53,23 @@ const data = { date: '2024-04-20T10:21', waterVolume: 250, time: '2024-04-20T07:
 export const TodayWaterList = () => {
   const [modal, setModal] = useState(false);
   const [modalType, setModalType] = useState("");
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const onClose = () => {
     setModal(false);
- };
+};
   const onOpen = (type) => {
     setModal(true);
     setModalType(type);
   };
+
+  const onCloseDeleteModal = () => setDeleteModal(false);
+
+  const onDelete = ()=>{
+    // dispatch(logOut());
+    onCloseDeleteModal();
+  }
+
 
   return (
     <TodayContainer>
@@ -80,7 +90,7 @@ export const TodayWaterList = () => {
                   <use href={`${icons}#icon-edit`}></use>
                 </svg>
               </ButtonEdit>
-              <ButtonDelete onClick={() => console.log('delete')}>
+              <ButtonDelete onClick={() => setDeleteModal(true)}>
                 <svg>
                   <use href={`${icons}#icon-delete`}></use>
                 </svg>
@@ -105,6 +115,7 @@ export const TodayWaterList = () => {
             <TodayListModal title={'Correct entered data:'} onClose={onClose} data={data}></TodayListModal>
         </ModalWrapper>
       )}
+      {deleteModal && <ModalWrapper onClose={onCloseDeleteModal} title="Delete entry"><LogOutModal question="Are you sure you want to delete the entry?" butText="Delete" onClose={onCloseDeleteModal} onLogout={onDelete} marginR='0'/></ModalWrapper>}
     </TodayContainer>
   );
 };
