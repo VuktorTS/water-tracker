@@ -57,7 +57,6 @@ export const TodayWaterList = () => {
     setModal(false);
  };
   const onOpen = (type) => {
-    console.log(`open`);
     setModal(true);
     setModalType(type);
   };
