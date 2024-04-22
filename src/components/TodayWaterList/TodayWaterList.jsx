@@ -66,7 +66,7 @@ export const TodayWaterList = () => {
   const onCloseDeleteModal = () => setDeleteModal(false);
 
   const onDelete = ()=>{
-    // dispatch(logOut());
+    console.log('delete');
     onCloseDeleteModal();
   }
 
