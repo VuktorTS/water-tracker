@@ -16,35 +16,10 @@ import {
   TodayValue,
 } from './TodayWaterList.styled';
 import icons from 'img/icons.svg';
+import { useSelector } from 'react-redux';
+import { selectTodayWater } from '../../redux/water/waterSelectors.js';
+import { formatTime } from '../../helpers/formatDate.js';
 
-
-const waterList = [
-  {
-    id: 1,
-    waterVolume: 100,
-    time: '1:05 PM',
-  },
-  {
-    id: 2,
-    waterVolume: 150,
-    time: '3:05 PM',
-  },
-  {
-    id: 3,
-    waterVolume: 300,
-    time: '5:05 PM',
-  },
-  {
-    id: 4,
-    waterVolume: 250,
-    time: '8:05 PM',
-  },
-  {
-    id: 5,
-    waterVolume: 250,
-    time: '8:05 PM',
-  },
-];
 
 const MODAL_TYPES = { ADD: "ADD", EDIT: "EDIT" };
 const data = { date: '2024-04-20T10:21', waterVolume: 250, time: '2024-04-20T07:10:00.000Z', _id: '6623a80d55d991d499ce6e9' };
@@ -52,6 +27,8 @@ const data = { date: '2024-04-20T10:21', waterVolume: 250, time: '2024-04-20T07:
 export const TodayWaterList = () => {
   const [modal, setModal] = useState(false);
   const [modalType, setModalType] = useState("");
+
+  const waterList = useSelector(selectTodayWater);
 
   const onClose = () => {
     setModal(false);
@@ -67,13 +44,13 @@ export const TodayWaterList = () => {
       <TodayTitle>Today</TodayTitle>
       <TodayList>
         {waterList.map((item) => (
-          <TodayItem key={item.id}>
+          <TodayItem key={item._id}>
             <TodayInfo>
               <TodayClass>
                 <use href={`${icons}#icon-glass`}></use>
               </TodayClass>
               <TodayValue>{`${item.waterVolume} ml`}</TodayValue>
-              <TodayTime>{item.time}</TodayTime>
+              <TodayTime>{formatTime(item.time)}</TodayTime>
             </TodayInfo>
             <TodayTools>
               <ButtonEdit onClick={() => onOpen(MODAL_TYPES.EDIT)}>

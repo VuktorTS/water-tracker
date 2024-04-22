@@ -41,3 +41,18 @@ export const setAuthHeader = (token) => {
       });
       return data;
   }
+
+    // ----------- water -------------------
+
+    export const reqTodayWater = async () => {
+      const { data } = await axios.get('/trackers/today');
+      return data[0];
+    };
+
+    export const reqMonthWater = async ({currentYear, currentMonth}) => {
+      const { data } = await axios.get(
+        `/trackers/month/${currentYear}/${currentMonth}`
+      );
+      return data;
+    };
+    
