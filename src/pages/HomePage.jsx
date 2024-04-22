@@ -11,10 +11,15 @@ import { BackgroundContainer } from './HomePage.styled.jsx';
 import { MonthStatistic } from 'components/MonthStatistic/MonthStatistic.jsx';
 import { useDispatch } from 'react-redux';
 import { getCurrUserParams } from '../redux/auth/authOperations.js';
+import { useEffect } from 'react';
 
 const HomePage = () => {
   const dispatch = useDispatch()
-  dispatch(getCurrUserParams())
+
+  useEffect(() => {
+    dispatch(getCurrUserParams())
+
+  }, [dispatch])
 
   return (
     <BackgroundContainer>
