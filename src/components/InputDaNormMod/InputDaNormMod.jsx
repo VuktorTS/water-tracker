@@ -21,7 +21,7 @@ const InputDaNormMod = ({ title = '', type, name, value, onChange, textInp, chec
       placeholder="0"
         value={value}
         defaultChecked={checked}
-        onChange={onChange}
+          onChange={onChange}
       />
       <PInput>{textInp}</PInput>
     </DivInp>
