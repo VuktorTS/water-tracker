@@ -6,59 +6,21 @@ export const ValueHeader = styled.h3`
 font-weight: 500;
 font-size: 18px;
 line-height: 1.11;
-color: var(--primery-color-black);
+color: var(--primery-color-bl ack);
 margin-bottom: 24px;
 @media screen and (min-width: 768px) {
     margin-bottom: 24px;
   }
 `;
 
-export const DataBox = styled.div`
-width: 256px;
-height: 52px;
-padding: 8px 24px;
-border-radius: 10px;
-margin-bottom: 24px;
-display: flex;
-gap: 12px;
-align-items: center;
-background: var(--bg-color-light-blue);
-
-
-@media screen and (min-width: 768px) {
-    width: 254px;
-  }
-`
-
 export const SectionHeader = styled.p`
 margin-top: 0;
 margin-bottom: 12px;
-
 `
-export const BtnSection = styled.div`
-text-align: baseline;
-margin: 0 0  24px 0`
-
-export const RoundBtn = styled.button`
-border: 1px solid var(--secondary-color-4);
-border-radius: 30px;
-padding: 10px;
-width: 44px;
-height: 44px;
-
-box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
-background: var(--primery-color-white);`
 
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
-`;
-
-export const GlassIcon = styled.svg`
-  width: 36px;
-  height: 36px;
-  fill: black;
-  color: black;
 `;
 
 export const Mlspan = styled.span`
@@ -79,15 +41,6 @@ height: 36px;
 
 background: var(--btn-color-light-blue);
 `
-
-export const EditMlSpan = styled.span`
-display: inline-block;
-font-weight: 400;
-font-size: 18px;
-line-height: 133%;
-text-align: center;
-color: var(--primery-color-blue);`
-
 
 export const BottomMl = styled(Mlspan)`
 height: auto;
@@ -110,12 +63,12 @@ color: var(--btn-color-red);
   }
 `
 
-export const TimeSpan = styled.span`
-font-family: var(--font-family);
-display: inline-block;
-font-size: 12px;
-line-height: 200%;
-height: 24px;`
+// export const TimeSpan = styled.span`
+// font-family: var(--font-family);
+// display: inline-block;
+// font-size: 12px;
+// line-height: 200%;
+// height: 24px;`
 
 export const ValueInput = styled.input`
 
@@ -178,90 +131,3 @@ background: var(--primery-color-blue);
     width: 160px;
   }
   `
-export const TimeInput = styled.div`
-font-size: 16px;
-line-height: 1.25;
-color: var(--primery-color-blue);
-height: 20px`
-
-export const TimeSelect1 = styled(Select)`
-width: 120px;
-color: var(--primery-color-blue);
-border: red; 
-height: 44px;
-`
-export const TimeSelect = styled(Select)`
-outline: none;
-color: var(--primery-color-blue) !important;
-border: 1px solid var(--btn-color-light-blue) !important;
-border-radius: 6px !important;
-padding: 12px 10px !important;
-width: 120px !important;
-height: 44px !important;
-margin-bottom: 24px !important;
-
-&:focus {
-        box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.2) !important;
-}
-
-font-family: var(--font-family) !important;
-font-weight: 400 !important;
-font-size: 16px !important;
-line-height: 1.25 !important;
-
-
-//////плейсхолдер в інпуті
-.react-dropdown-select-input {
-  font-size: 16px;
-  line-height: 1.25 !important;
-  color: var(--primery-color-black) !important;
-  
-}
-
-//////обраний час в інпуті
-.react-dropdown-select-content {
-  color: var(--primery-color-blue) !important;
-        
-}
-
-////// випадаюче меню
-
-  .react-dropdown-select-dropdown {
-    border-radius: 6px;
-    max-height: 200px;
-    box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
-    background: var(--primery-color-white);
-    color: var(--primery-color-blue) !important;
-      @media screen and (min-width: 768px) {
-    width: 100% !important;
-  }
-
-  }
-
-  //////колір букв в випадаючому списку варіантів часу
-
-  .react-dropdown-select-item {
-    color: var( --primery-color-black);
-    opacity: 0.6;
-    font-family: var(--font-family);
-    border: 1px solid  var(--btn-color-light-blue);
-       
-    :hover {
-       color: #ffffff80;
-    }
-  }
-////// колір цифр в випадаючому меню коли один варіант години вибраний
-
-  .react-dropdown-select-item.react-dropdown-select-item-selected,
-  .react-dropdown-select-item.react-dropdown-select-item-active {
-    color: var(--primery-color-blue);
-    background: var(--bg-color-light-blue);
-    font-weight: 700;
-    outline: none;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 100% !important;
-  }
-
-`
