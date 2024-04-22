@@ -9,6 +9,7 @@ import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList.jsx';
 
 import { BackgroundContainer } from './HomePage.styled.jsx';
 import { MonthStatistic } from 'components/MonthStatistic/MonthStatistic.jsx';
+import { getCurrUserParams } from '../redux/auth/authOperations.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -26,6 +27,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getTodayWater())
     dispatch(getMonthWater({currentYear, currentMonth}));
+    dispatch(getCurrUserParams());
   }, [dispatch]);
 
   return (
