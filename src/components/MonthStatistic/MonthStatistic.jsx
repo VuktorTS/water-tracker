@@ -9,7 +9,17 @@ import {
 } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import monthWater from '../../date.json';
-import { CalendarStyle, DateText, Day, Month, MonthNav, MonthSelectionContainer, NavBtn, PercentFromNorma, Title } from './MonthStatistic.styled';
+import {
+  CalendarStyle,
+  DateText,
+  Day,
+  Month,
+  MonthNav,
+  MonthSelectionContainer,
+  NavBtn,
+  PercentFromNorma,
+  Title,
+} from './MonthStatistic.styled';
 export const MonthStatistic = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -34,19 +44,19 @@ export const MonthStatistic = () => {
     }
   };
 
-  const percentageWater = (monthWater, date)=>{
-    const result =  monthWater.find(
-        (item) =>
-          getFormattedDateWithTime(new Date(item._id)) ===
-          getFormattedDateWithTime(date)
-      )?.persent
-      return result;
-  }
+  const percentageWater = (monthWater, date) => {
+    const result = monthWater.find(
+      (item) =>
+        getFormattedDateWithTime(new Date(item._id)) ===
+        getFormattedDateWithTime(date)
+    )?.persent;
+    return result;
+  };
   const getFormattedDateWithTime = (date) =>
     formatDate(new Date(date.setHours(0, 0, 0, 0)));
 
-    const currentMonth = format(currentDate, 'MMMM');
-    const currentYear = format(currentDate, 'yyyy');
+  const currentMonth = format(currentDate, 'MMMM');
+  const currentYear = format(currentDate, 'yyyy');
 
   return (
     <CalendarStyle>
@@ -58,7 +68,9 @@ export const MonthStatistic = () => {
               <use href={`${icons}#icon-arrow-left`}></use>
             </svg>
           </NavBtn>
-          <DateText>{currentMonth},{currentYear}</DateText>
+          <DateText>
+            {currentMonth},{currentYear}
+          </DateText>
           <NavBtn onClick={() => console.log('1')}>
             <svg width="14" height="14">
               <use href={`${icons}#icon-arrow-right`}></use>
@@ -70,15 +82,14 @@ export const MonthStatistic = () => {
         {getMonthDays(currentDate).map((date) => (
           <Day key={format(date, 'yyyy-MM-dd')}>
             <button
-              className={`calendarDayBtn ${
-                isToday(date) ? 'today' : ''
-              } ${getBorderStyle(percentageWater(monthWater, date)) || ""}`}
+              className={`calendarDayBtn ${isToday(date) ? 'today' : ''} ${
+                getBorderStyle(percentageWater(monthWater, date)) || ''
+              }`}
             >
               {format(date, 'd')}
             </button>
             <PercentFromNorma>
-              {percentageWater(monthWater, date).toFixed(0) || 0}
-              %
+              {percentageWater(monthWater, date).toFixed(0) || 0}%
             </PercentFromNorma>
           </Day>
         ))}

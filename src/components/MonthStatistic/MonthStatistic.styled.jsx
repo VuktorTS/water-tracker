@@ -24,17 +24,17 @@ export const MonthNav = styled.div`
   align-items: center;
 `;
 export const NavBtn = styled.button`
-    display: flex;
-    border: 1px solid transparent;
-    background-color: transparent;
-    border-radius: 50%;
-    justify-content: center;
-    transition: border-radius background-color stroke 0.3s;
+  display: flex;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  justify-content: center;
+  transition: border-radius background-color stroke 0.3s;
 
   &:hover {
     background-color: var(--primery-color-white);
     border: 1px solid var(--calendar-color-orange);
-
+  }
 `;
 export const DateText = styled.h2`
   color: var(--primery-color-blue);
