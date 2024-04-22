@@ -93,7 +93,7 @@ export const UserLogo = () => {
           </StyledIcon>
           Log out
         </StyledBtn>
-        {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
+        {logoutModal && <ModalWrapper onClose={onCloseLogoutModal} title="Log out"><LogOutModal question="Do you really want to leave?" butText="Log out" onClose={onCloseLogoutModal} onLogout={onLogout}/></ModalWrapper>}
       </UserLogoModal>
     </Div>
   )
