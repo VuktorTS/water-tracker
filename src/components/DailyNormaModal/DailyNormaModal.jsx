@@ -7,8 +7,8 @@ import {
 import InputDaNormMod from "../InputDaNormMod/InputDaNormMod";
 import icons from "img/icons.svg"
 import { setCurrentUser } from "../../redux/auth/authOperations";
-import { useDispatch, useSelector } from "react-redux";
-import { error } from "../../redux/auth/authSelectors";
+import { useDispatch } from "react-redux";
+import { toastError } from '../../services/notification';
 
 const DailyNormaModal = ({ closeMod }) => {
   const disp = useDispatch();
@@ -17,8 +17,6 @@ const DailyNormaModal = ({ closeMod }) => {
   const [willDr, setWillDr] = useState(0);
   const [result, setResult] = useState(0);
   const [selectedGender, setSelectedGender] = useState('girl');
-  const [endWorkWithMod, setEndWorkWithMod] = useState(false);
-  const err = useSelector(error);
 
   const handleGenderChange = (e) => {
     setSelectedGender(e.target.value);
@@ -50,8 +48,11 @@ const DailyNormaModal = ({ closeMod }) => {
   const handelClickButton = (e) => {
     e.preventDefault();
     const currentData = { dailyWaterNorm: result };
-    disp(setCurrentUser(currentData));
-    setEndWorkWithMod(true);
+    disp(setCurrentUser(currentData)).unwrap()
+      .then(() => {
+          closeMod();
+        })
+      .catch((error) => toastError(error));
   };
 
   useEffect(() => { 
@@ -65,10 +66,6 @@ const DailyNormaModal = ({ closeMod }) => {
   }, [selectedGender, weight, hours]);
 
   useEffect(() => {
-    if(endWorkWithMod && !err){
-      closeMod()
-    };
-
     const onEscPress = e => {
       if (e.code === 'Escape')  closeMod();
     };
@@ -78,7 +75,7 @@ const DailyNormaModal = ({ closeMod }) => {
     return () => {
       window.removeEventListener('keydown', onEscPress);
     };
-  }, [closeMod, endWorkWithMod, err]);
+  }, [closeMod]);
 
   const handleClick = e => {
     if (e.target === e.currentTarget) {

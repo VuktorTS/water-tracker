@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DailyNormaContainer = styled.div`
-// z-index: 1;
+z-index: 1;
 display: flex;
 flex-direction: column;
 gap: 12px;
@@ -30,9 +30,8 @@ font-weight: 700;
 line-height: 1;
 font-size: 22px;
 `
-export const EditWaterBtn = styled.div`
+export const EditWaterBtn = styled.button`
   color: var(--secondary-color-blue);
   line-height: 0.8;
   cursor: pointer;
 `
-export const l = styled.div``

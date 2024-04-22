@@ -81,7 +81,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(getCurrUserParams.rejected)
+      .addCase(getCurrUserParams.rejected, forRejected)
       .addCase(setCurrentUser.pending, forPending)
       .addCase(setCurrentUser.fulfilled, (state, { payload }) => {
         assignValues(payload, state.user);
@@ -89,7 +89,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(setCurrentUser.rejected);
+      .addCase(setCurrentUser.rejected, forRejected);
   },
 });
 export default authSlice.reducer;
