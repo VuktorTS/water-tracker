@@ -15,7 +15,7 @@ export const BackgroundContainer = styled.div`
     display: block;
     width: 100%;
     height: 100%;
-    top: 108px;
+    top: 0;
     left: 0px;
     z-index: -10;
     background-image: url(${bgImgMob});
@@ -30,7 +30,6 @@ export const BackgroundContainer = styled.div`
 
   @media (min-width: 768px) {
     &:before {
-      top: 88px;
       background-image: url(${bgImgTab});
 
       @media (min-resolution: 2dppx) {
@@ -41,7 +40,6 @@ export const BackgroundContainer = styled.div`
 
   @media (min-width: 1440px) {
     &:before {
-      top: 80px;
       background-image: url(${bgImg});
       background-position: center;
       background-size: contain;
@@ -100,10 +98,10 @@ export const ContentWraper = styled.div`
   }
 `;
 export const BottleImg = styled.div`
-    width: 280px;
-    height: 208px;
-    background-image: url(${bottle});
-    background-size: contain;
+  width: 280px;
+  height: 208px;
+  background-image: url(${bottle});
+  background-size: contain;
 
   @media screen and (min-width: 768px) {
     width: 518px;
@@ -120,4 +118,5 @@ export const BottleImg = styled.div`
   @media screen and (min-width: 1440px) {
     width: 570px;
     height: 500px;
-    `;
+  }
+`;
