@@ -29,7 +29,8 @@ const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
 
   return createPortal(
     <Backdrop onClick={handleClick}>
-      <Container id={stylesSetting ? 'setting' : ''}>
+      <div>
+        <Container id={stylesSetting ? 'setting' : ''}>
         <TitleModal>{title}</TitleModal>
         <ButtonClose
           type="button"
@@ -44,6 +45,7 @@ const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
           {children}
         </ModalBody>
       </Container>
+      </div>
     </Backdrop>,
     modalRoot,
   );
