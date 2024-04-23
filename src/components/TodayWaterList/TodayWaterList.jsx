@@ -64,6 +64,7 @@ export const TodayWaterList = () => {
       <TodayList>
         {waterList.map((item) => (
           <TodayItem key={item._id}>
+          {console.log("🚀 ~ TodayWaterList ~ item:", item)}
             <TodayInfo>
               <TodayClass>
                 <use href={`${icons}#icon-glass`}></use>

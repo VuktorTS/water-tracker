@@ -34,10 +34,23 @@ export const MonthStatistic = () => {
 
   const monthWater = useSelector(selectMonthWater);
 
+  const dispatch = useDispatch();
+
+  const currentMonth = format(currentDate, 'MM');
+  const currentYear = format(currentDate, 'yyyy');
+  useEffect(()=>{    
+    dispatch(getMonthWater({currentYear, currentMonth}));
+  },[dispatch,currentDate])
+
   // const dispatch = useDispatch();
-  const formatDate = (dateString, formatString = 'yyyy-MM-dd ') => {
-    const date = new Date(dateString);
-    return format(date, formatString);
+  // const formatDate = (dateString, formatString = 'yyyy-MM-dd ') => {
+  //   const date = new Date(dateString);
+  //   return format(date, formatString);
+  // };
+  const handleChangeMonth = offset => {
+    setCurrentDate(
+      prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() + offset)
+    );
   };
 
   const getMonthDays = (date) => {
@@ -58,31 +71,28 @@ export const MonthStatistic = () => {
 
   const percentageWater = (date) => {
     const result = monthWater.find((item) => {
-     const [day, month] = item.date.split(',')
+      const [day, month] = item.date.split(',');
 
       return day === format(date, 'd');
-    })?.percentageConsumed;
+    })?.percentage;
 
     return result;
   };
-
-  const currentMonth = format(currentDate, 'MMMM');
-  const currentYear = format(currentDate, 'yyyy');
 
   return (
     <CalendarStyle>
       <MonthSelectionContainer>
         <Title>Month</Title>
         <MonthNav>
-          <NavBtn onClick={() => console.log('-1')}>
+          <NavBtn onClick={() => handleChangeMonth(-1)}>
             <svg width="14" height="14">
               <use href={`${icons}#icon-arrow-left`}></use>
             </svg>
           </NavBtn>
           <DateText>
-            {currentMonth},{currentYear}
+            {format(currentDate, 'MMMM')},{currentYear}
           </DateText>
-          <NavBtn onClick={() => console.log('1')}>
+          <NavBtn onClick={() => handleChangeMonth(1)}>
             <svg width="14" height="14">
               <use href={`${icons}#icon-arrow-right`}></use>
             </svg>
