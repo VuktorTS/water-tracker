@@ -37,7 +37,6 @@ export const TodayWaterList = () => {
   const onClose = () => {
     setModal(false);
     setSelectedItem(null);
-    disp(getTodayWater())
   }
   const onOpen = (type, item) => {
     setModal(true);
