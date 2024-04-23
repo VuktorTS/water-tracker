@@ -83,12 +83,10 @@ export const DailyNormaContainerMini = styled.div`
 `;
 
 export const ImgWrapper = styled.div`
-  // width: 400px;
   display: flex;
   justify-content: center;
 
   @media (min-width: 768px) {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -96,6 +94,52 @@ export const ImgWrapper = styled.div`
 
   @media (min-width: 1440px) {
     justify-content: flex-start;
-    width: 0%;
+    width: auto;
+  }
+`;
+
+export const ImgBottle = styled.img`
+@media (min-width: 320px) {
+  display: block;
+}
+
+@media (min-width: 768px) {
+display: none;
+}
+
+@media (min-width: 1440px) {
+  display: none;
+}
+  
+  }
+`;
+export const ImgBottleTablet = styled.img`
+@media (min-width: 320px) {
+  display: none;
+}
+
+@media (min-width: 768px) {
+display: block;
+}
+
+@media (min-width: 1440px) {
+  display: none;
+}
+  
+  }
+`;
+export const ImgBottlePC = styled.img`
+@media (min-width: 320px) {
+  display: none;
+}
+
+@media (min-width: 768px) {
+display: none;
+}
+
+@media (min-width: 1440px) {
+  display: block;
+}
+  
   }
 `;
