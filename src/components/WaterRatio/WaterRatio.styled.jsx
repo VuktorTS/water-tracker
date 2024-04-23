@@ -147,6 +147,7 @@ display: flex;
   color: #fff;
   border: none;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  transition: box-shadow 0.3s ease;
 
   &:hover {
    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
