@@ -19,14 +19,10 @@ import { selectMonthWater } from '../redux/water/waterSelectors.js';
 
 
 const HomePage = () => {
-  const dispatch = useDispatch();  
-  const currentMonth = format(new Date(), 'M');
-  const currentYear = format(new Date(), 'yyyy');
-
-
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getTodayWater())
-    dispatch(getMonthWater({currentYear, currentMonth}));
     dispatch(getCurrUserParams());
   }, [dispatch]);
 
