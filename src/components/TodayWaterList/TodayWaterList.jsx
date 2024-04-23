@@ -99,7 +99,7 @@ export const TodayWaterList = () => {
             <TodayListModal title={'Correct entered data:'} onClose={onClose} data={selectedItem}></TodayListModal>
         </ModalWrapper>
       )}
-      {deleteModal && <ModalWrapper onClose={onCloseDeleteModal} title="Delete entry"><LogOutModal question="Are you sure you want to delete the entry?" butText="Delete" onClose={onCloseDeleteModal} onLogout={onDelete} marginR='0'/></ModalWrapper>}
+      {deleteModal && <ModalWrapper onClose={onCloseDeleteModal} title="Delete entry" alignItems='center'><LogOutModal question="Are you sure you want to delete the entry?" butText="Delete" onClose={onCloseDeleteModal} onLogout={onDelete} marginR='0'/></ModalWrapper>}
     </TodayContainer>
   );
 };

@@ -1,25 +1,26 @@
 import styled from 'styled-components';
 
 export const Backdrop = styled.div`
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: var(--backdrop-color);
-  overflow: 'auto';
+  overflow-y: auto;
   z-index: 2;
 `;
 
 export const Container = styled.div`
-  position: absolute;
+  display: inline-block;
   width: 280px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 20px 0;
   padding: 24px 12px;
   border-radius: 10px;
   background-color: var(--primery-color-white);
+  position:relative;
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 32px 24px;
@@ -28,6 +29,7 @@ export const Container = styled.div`
     width: 592px;
   }
 `;
+
 export const TitleModal = styled.h2`
   color: var(--primery-color-black);
   font-size: 26px;
@@ -66,4 +68,5 @@ export const CloseIcon = styled.svg`
   }
 `;
 export const ModalBody = styled.div`
-  font-family: var(--font-family);`;
+  font-family: var(--font-family);
+`;

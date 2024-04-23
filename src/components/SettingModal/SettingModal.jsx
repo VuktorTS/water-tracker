@@ -64,20 +64,18 @@ export const SettingModal = ({ handleCloseModal, profileData }) => {
             })
         })}
         onSubmit={async (formData) => {
-            console.log('formdata', formData)
             const { email, gender, outdatedPassword, password, username } = formData
             const updatedData = { email, gender, password: outdatedPassword, passwordNew: password, avatar: userPhoto, username }
 
             const notEmptyData = checkEmptyEntries(updatedData)
             const validData = checkDuplicateEntries(profileData, notEmptyData)
-            console.log('req', validData)
             if (Object.keys(validData).length === 0) {
               handleCloseModal()
               return
             }
               dispatch(setCurrentUser(validData)).unwrap().then(() => {
-             toastSuccess(`Profile changed successfully`)
-             handleCloseModal()
+              toastSuccess(`Profile changed successfully`)
+              handleCloseModal()
           }).catch(error => toastError(error))
         }}
         >
