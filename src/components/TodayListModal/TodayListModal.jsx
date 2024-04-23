@@ -69,8 +69,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
     }
   }
 
-  const dataSubmit = evt => {
-    evt.preventDefault();
+  const dataSubmit = () => {
     const finalTime = `${currentDate.slice(0, 11)}${time.slice(0, 5)}`;
     if (!data) {
       const fulldata = { date: finalTime, waterVolume, time: finalTime };
@@ -78,7 +77,6 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
     }
     if (data) {
       const fulldata = { waterVolume, time: finalTime, _id: data._id};
-       console.log(fulldata);
       dispatch(editWater(fulldata))
     }
     onClose();
@@ -104,7 +102,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
     <SubmitSection>
       <BottomMl>{waterVolume}ml</BottomMl>
       <SubmitBtn
-        type="submit"
+        type="button"
         onClick={dataSubmit}
         disabled={!waterVolume}>
         Save
