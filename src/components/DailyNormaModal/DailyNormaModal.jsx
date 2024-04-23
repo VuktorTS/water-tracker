@@ -49,15 +49,18 @@ const DailyNormaModal = ({ closeMod }) => {
 
   const handelClickButton = (e) => {
     e.preventDefault();
-    if (willDr > 0) {
+    if (willDr > 0 && willDr <= 15) {
       const currentData = { dailyWaterNorm: willDr*1000 };
     disp(setCurrentUser(currentData)).unwrap()
       .then(() => {
           closeMod();
         })
       .catch((error) => toastError(error));
+    } else if(willDr < 1) {
+      toastError('The planned amount of water cannot be equal to 0.');
     } else {
-      toastError('The planned amount of water cannot be equal to 0.')
+      toastError('The planned amount of water cannot be more than 15 liters.');
+
     }
   };
 

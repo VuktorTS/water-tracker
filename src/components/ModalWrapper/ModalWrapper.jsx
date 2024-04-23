@@ -6,7 +6,7 @@ import icons from "img/icons.svg"
 
 const modalRoot = document.querySelector('#modal');
 
-const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
+const ModalWrapper = ({ onClose, children, title, stylesSetting, alignItems='none' }) => {
   useLockBodyScroll(true);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const ModalWrapper = ({ onClose, children, title, stylesSetting }) => {
   };
 
   return createPortal(
-    <Backdrop onClick={handleClick}>
+    <Backdrop onClick={handleClick} style={{alignItems: alignItems}}>
       <div>
         <Container id={stylesSetting ? 'setting' : ''}>
         <TitleModal>{title}</TitleModal>
