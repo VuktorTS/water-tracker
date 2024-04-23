@@ -68,7 +68,7 @@ export const WaterRatio = () => {
         <Icon>
           <use href={`${icons}#icon-add-button`}></use>
         </Icon>
-        add Water
+        Add water
       </BtnAddWater>
     </WaterRatioContainer>
     {modal && (

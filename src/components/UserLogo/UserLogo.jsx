@@ -120,8 +120,13 @@ export const UserLogo = () => {
           </StyledIcon>
           Log out
         </StyledBtn>
+
         {logoutModal && (
-          <ModalWrapper onClose={onCloseLogoutModal} title="Log out">
+          <ModalWrapper
+            onClose={onCloseLogoutModal}
+            title="Log out"
+            alignItems="center"
+          >
             <LogOutModal
               question="Do you really want to leave?"
               butText="Log out"

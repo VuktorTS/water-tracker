@@ -9,13 +9,7 @@ import {
 import { assignValues } from '../../helpers/objectOperations';
 
 const initialState = {
-  user: {
-    username: null,
-    email: null,
-    gender: null,
-    avatarURL: null,
-    dailyWaterNorm: null,
-  },
+  user: {},
   specialMess: '',
   token: null,
   isLoggedIn: false,
@@ -29,12 +23,13 @@ const forPending = (state) => {
 };
 
 const forRejected = (state, action) => {
+  console.log('action: ', action);
   state.isLoading = false;
   state.error = action.payload;
-  if (state.error === '401') {
+  if (state.error === 'invalid signature') {
     state.token = null;
     state.isLoggedIn = false;
-    state.user = { name: null, email: null };
+    state.user = {};
     state.specialMess = '';
   }
 };
@@ -66,7 +61,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, forRejected)
       .addCase(logOut.pending, forPending)
       .addCase(logOut.fulfilled, (state, { payload }) => {
-        state.user = { name: null, email: null };
+        state.user = {};
         state.specialMess = payload.message;
         state.token = null;
         state.isLoggedIn = false;

@@ -146,10 +146,10 @@ display: flex;
   background-color: #407bff;
   color: #fff;
   border: none;
-  box-shadow: 0 4px 8px rgba(64, 123, 255, 0.34);
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
 
   &:hover {
-    box-shadow: '0 4px 14px rgba(64, 123, 255, 0.54)';
+   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
   }
 
   @media screen and (min-width: 768px) {

@@ -28,11 +28,13 @@ export const reqSignOut = async () => {
 };
 
 export const reqUpdateUser = async (formData) => {
-  const { data } = await axios.patch('users/', formData, {
+  const { data } = await axios.patch('users/', formData,
+    {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
-  });
+    }
+  );
   return data;
 };
 export const reqCurrent = async () => {
@@ -69,6 +71,6 @@ export const editWaterAmount = async (formData) => {
 };
 
 export const deleteWaterAmount = async (_id) => {
-  const { data } = await axios.delete(`trackers/waterEntries/${_id}`);
+  const { data } = await axios.delete(`trackers/waterEntry/${_id}`);
   return data;
 };
