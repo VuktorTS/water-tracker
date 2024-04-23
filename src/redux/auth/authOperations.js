@@ -1,24 +1,10 @@
-// import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { makeFormData } from '../../helpers/objectOperations';
 import { reqCurrent, reqLogin, reqSignOut, reqSignUp, reqUpdateUser } from '../../services/api';
-// axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
-
-// export const setAuthHeader = (token) => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
-
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
 
 export const registration = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
-    // const dataForReg = {
-    //   email: credentials.email,
-    //   password: credentials.password,
-    // };
     try {
       const res = await reqSignUp(credentials);
       return res;
