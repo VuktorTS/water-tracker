@@ -21,6 +21,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
+import { deleteWater } from '../../redux/water/waterOperations.js';
 
 export const TodayWaterList = () => {
   const disp = useDispatch();
