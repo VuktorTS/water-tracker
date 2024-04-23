@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
 import { MAX_VALUE, MIN_VALUE, STEP } from '../../constants/addWater';
 import { adjustedTimeString } from '../../constants/currentDate';
 import { addWater, editWater } from '../../redux/water/waterOperations';
@@ -65,7 +64,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
 
   const handleTimeChange = (values) => {
     if (values.length !== 0) {
-      setTime(values[0].time)
+      setTime(values[0].id)
     }
   }
 
