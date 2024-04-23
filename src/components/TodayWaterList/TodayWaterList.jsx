@@ -23,7 +23,7 @@ import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
 
 export const TodayWaterList = () => {
-  const disp = useDispatch();
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [modalType, setModalType] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
@@ -45,7 +45,7 @@ export const TodayWaterList = () => {
   const onCloseDeleteModal = () => setDeleteModal(false);
 
   const onDelete = () => {
-    disp(deleteWater(idForDel));
+    dispatch(deleteWater(idForDel));
     onCloseDeleteModal();
   }
 

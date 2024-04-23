@@ -11,7 +11,7 @@ import { getUser } from "../../redux/auth/authSelectors";
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
 
 const DailyNormaModal = ({ closeMod }) => {
-  const disp = useDispatch();
+  const dispatch = useDispatch();
   const dailyWaterNorm = useSelector(getUser).dailyWaterNorm / 1000;
   const usersGender = useSelector(getUser).gender.toLowerCase();
   const [weight, setWeight] = useState(0);
@@ -28,7 +28,21 @@ const DailyNormaModal = ({ closeMod }) => {
     let newVal = e.currentTarget.value.replace(/[^0-9.]/g, '');
     if (newVal.length > 1 && newVal[0] === '0' && newVal[1] !== '.') {
         newVal = newVal.slice(1);
-    }
+    };
+
+    const arrNewVal = newVal.split('');
+    const arrIndexes = [];
+    arrNewVal.forEach((el, index) => {
+      if (el === '.') {
+        arrIndexes.push(index)
+      }
+    });
+    if (arrIndexes.length > 1) {
+      const indexSecDot = arrIndexes[1];
+      arrNewVal.splice(indexSecDot, 1);
+    };
+    newVal = arrNewVal.join('');
+
     return newVal
   };
 
@@ -51,7 +65,7 @@ const DailyNormaModal = ({ closeMod }) => {
     e.preventDefault();
     if (willDr > 0 && willDr <= 15) {
       const currentData = { dailyWaterNorm: willDr*1000 };
-    disp(setCurrentUser(currentData)).unwrap()
+    dispatch(setCurrentUser(currentData)).unwrap()
       .then(() => {
           closeMod();
         })
