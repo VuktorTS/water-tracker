@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.button`
   display: flex;
   align-items: center;
   position: relative;
   gap: 8px;
+
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
+    transition: box-shadow 0.3s ease;
+    background: none;
+    border-radius: 10px;
+  }
 `;
 
 export const AvatarImg = styled.img`
@@ -92,4 +99,6 @@ export const StyledIcon = styled.svg`
 export const ArrowIcon = styled.svg`
   width: 16px;
   height: 16px;
+  stroke: var(--primery-color-blue);
+  fill: none;
 `;
