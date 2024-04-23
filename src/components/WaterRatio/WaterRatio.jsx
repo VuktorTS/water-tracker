@@ -3,9 +3,12 @@ import { BtnAddWater, EndMark, Icon, MiddleMark, RateContainer, StartMark, Water
 import icons from 'img/icons.svg';
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import TodayListModal from "../TodayListModal/TodayListModal";
+import { useSelector } from "react-redux";
+import { selectTodayWater } from "../../redux/water/waterSelectors";
 
 export const WaterRatio = () => {
   const [modal, setModal] = useState(false);
+  const waterList = useSelector(selectTodayWater);
 
   const onClose = () => {
     setModal(false);
@@ -73,7 +76,7 @@ export const WaterRatio = () => {
     </WaterRatioContainer>
     {modal && (
         <ModalWrapper onClose={onClose} title="Add water">
-            <TodayListModal title={'Choose a value:'} onClose={onClose}></TodayListModal>
+            <TodayListModal title={'Choose a value:'} onClose={onClose} waterList={waterList}></TodayListModal>
         </ModalWrapper>
       )}
     </>

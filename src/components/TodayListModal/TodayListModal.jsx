@@ -20,7 +20,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!waterList) {
+    if (waterList?.length === 0) {
       toastInfo('No notes yet.')
     }
   }, []);
