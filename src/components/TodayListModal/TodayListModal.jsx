@@ -13,7 +13,7 @@ import { ValueHeader, SectionHeader,  ValueInput, SubmitSection, SubmitBtn, Bott
 const currentDate = adjustedTimeString.slice(0, 16);
 
 
-const TodayListModal = ({title, onClose, data }) => {
+const TodayListModal = ({title, onClose, data, waterList }) => {
   const [waterVolume, setWaterVolume] = useState(data?.waterVolume ?? 0);
   const [time, setTime] = useState(data?.time.slice(11, 16) ?? currentDate.slice(11, 16));
   const [inputValue, setInputValue] = useState(waterVolume);
@@ -21,7 +21,7 @@ const TodayListModal = ({title, onClose, data }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!data) {
+    if (!waterList) {
       toastInfo('No notes yet.')
     }
   }, []);
