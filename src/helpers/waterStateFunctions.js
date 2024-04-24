@@ -20,6 +20,7 @@ export const findConsuption = (today) => {
 };
 
 export const changePercentage = (monthArr, portion) => {
+  console.log("🚀 ~ changePercentage ~ portion:", portion)
   const todayObj = monthArr.find((obj) => obj.date === stringDate);
   todayObj.percentage = portion.percentage;
 };
