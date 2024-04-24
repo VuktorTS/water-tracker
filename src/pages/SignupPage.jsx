@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { registration } from '../redux/auth/authOperations';
+import { registration, deleteUser } from '../redux/auth/authOperations';
 import { toastError, toastSuccess } from '../services/notification';
 import icons from 'img/icons.svg';
+import ModalWrapper from '../components/ModalWrapper/ModalWrapper';
+import { ResendVerifyModal } from '../components/ResendVerifyModal/ResendVerifyModal';
 
 import {
   Button,
@@ -24,8 +25,9 @@ import { BackgroundContainer, BottleImg, Wrapper } from './SigninPage.styled';
 
 const SignUpPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
+  const [endRegistration, setEndRegistration] = useState(false);
+  const [emailForResend, setEmailForResend] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -34,6 +36,11 @@ const SignUpPage = () => {
 
   const toggleRepeatPasswordVisibility = () => {
     setShowRepeatPassword((prevRepeatShowPassword) => !prevRepeatShowPassword);
+  };
+
+  const onCloseModal = () => {
+    setEndRegistration(false);
+    dispatch(deleteUser({email: emailForResend}));
   };
 
   return (
@@ -66,7 +73,8 @@ const SignUpPage = () => {
                 .unwrap()
                 .then(() => {
                   toastSuccess(`${email} registered successfully`);
-                  navigate('/signin');
+                  setEndRegistration(true);
+                  setEmailForResend(email);
                 })
                 .catch((error) => toastError(error));
             }}
@@ -122,6 +130,7 @@ const SignUpPage = () => {
         </StyledContainer>
         <BottleImg />
       </Wrapper>
+      {endRegistration && <ModalWrapper onClose={onCloseModal} alignItems='center'><ResendVerifyModal question="Please, go to your email for verification." butText="Send the letter for validation again" email={emailForResend && emailForResend}/></ModalWrapper>}
     </BackgroundContainer>
   );
 };

@@ -13,12 +13,14 @@ import ModalWrapper from '../ModalWrapper/ModalWrapper';
 const DailyNormaModal = ({ closeMod }) => {
   const dispatch = useDispatch();
   const dailyWaterNorm = useSelector(getUser).dailyWaterNorm / 1000;
-  const usersGender = useSelector(getUser).gender.toLowerCase();
-  const [weight, setWeight] = useState(0);
-  const [hours, setHours] = useState(0);
+  const usersGender = useSelector(getUser).gender;
+  const usersWeight = useSelector(getUser).weight;
+  const usersSportTime = useSelector(getUser).sportTime;
+  const [weight, setWeight] = useState(usersWeight ? usersWeight : 0);
+  const [hours, setHours] = useState(usersSportTime ? usersSportTime : 0);
   const [willDr, setWillDr] = useState(dailyWaterNorm ? dailyWaterNorm : 0);
   const [result, setResult] = useState(0);
-  const [selectedGender, setSelectedGender] = useState(usersGender ? usersGender : 'woman');
+  const [selectedGender, setSelectedGender] = useState(usersGender ? usersGender.toLowerCase() : 'man');
 
   const handleGenderChange = (e) => {
     setSelectedGender(e.target.value);
@@ -64,7 +66,11 @@ const DailyNormaModal = ({ closeMod }) => {
   const handelClickButton = (e) => {
     e.preventDefault();
     if (willDr > 0 && willDr <= 15) {
-      const currentData = { dailyWaterNorm: willDr*1000 };
+      const currentData = {
+        weight: weight,
+        sportTime: hours,
+        dailyWaterNorm: willDr * 1000
+      };
     dispatch(setCurrentUser(currentData)).unwrap()
       .then(() => {
           closeMod();

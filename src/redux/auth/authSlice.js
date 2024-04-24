@@ -5,6 +5,8 @@ import {
   logOut,
   getCurrUserParams,
   setCurrentUser,
+  resendVerify,
+  deleteUser
 } from './authOperations';
 import { assignValues } from '../../helpers/objectOperations';
 import { AUTH_ERRORS } from '../../constants/authErrors';
@@ -38,12 +40,15 @@ const forRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setToken(state, action) { state.token = action.payload },
+    setIsLoggedIn(state, action) {state.isLoggedIn = action.payload}
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.token = payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
@@ -85,7 +90,23 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(setCurrentUser.rejected, forRejected);
+      .addCase(setCurrentUser.rejected, forRejected)
+      .addCase(resendVerify.pending, forPending)
+      .addCase(resendVerify.fulfilled, (state, { payload }) => {
+        state.specialMess = payload.message;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(resendVerify.rejected, forRejected)
+      .addCase(deleteUser.pending, forPending)
+      .addCase(deleteUser.fulfilled, (state, { payload }) => {
+        state.specialMess = payload.message;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(deleteUser.rejected, forRejected);
   },
 });
 export default authSlice.reducer;
+export const {setToken, setIsLoggedIn} = authSlice.actions;
+

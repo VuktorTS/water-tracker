@@ -1,3 +1,4 @@
+
 import { Logo } from '../Logo/Logo';
 import { UserAuth } from '../UserAuth/UserAuth';
 import { StyledHeader, StyledCheckbox, Switcher, Icon } from './Header.styled';
