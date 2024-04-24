@@ -77,9 +77,14 @@ export const Day = styled.li`
     p {
       color: #00000063;
     }
+
     > button {
       color: var(--primery-color-black);
     }
+  }
+
+  > button {
+    color: var(--primery-color-black);
   }
 `;
 
