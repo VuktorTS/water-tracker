@@ -36,7 +36,7 @@ const waterSlice = createSlice({
         state.month = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
-        state.today.push(payload.waterEntries);
+        state.today.push(payload.waterEntries[0]);
         changePercentage(state.month, payload);
         state.percentage = payload.percentage;
         state.isLoading = false;
