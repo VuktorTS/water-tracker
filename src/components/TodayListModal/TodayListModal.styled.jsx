@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import Select  from 'react-dropdown-select';
 
 export const ValueHeader = styled.h3`
   font-family: var(--font-family);
 font-weight: 500;
 font-size: 18px;
 line-height: 1.11;
-color: var(--primery-color-bl ack);
+color: var(--primery-color-black);
 margin-bottom: 24px;
 @media screen and (min-width: 768px) {
     margin-bottom: 24px;
@@ -18,36 +17,20 @@ margin-top: 0;
 margin-bottom: 12px;
 `
 
-export const Icon = styled.svg`
-  width: 24px;
-  height: 24px;
-`;
-
-export const Mlspan = styled.span`
+export const BottomMl = styled.span`
 display: inline-block;
 font-weight: 700;
 font-size: 18px;
 line-height: 1.33;
-text-align: center;
 color: var(--primery-color-blue);
-margin: 4px 7px;
-width: 92px;
-height: 36px;
-
-border-radius: 40px;
 padding: 6px 10px;
 width: 92px;
-height: 36px;
-
-background: var(--btn-color-light-blue);
-`
-
-export const BottomMl = styled(Mlspan)`
 height: auto;
 text-align: center;
 margin: 0;
 padding: 0;
-background: var(--primery-color-white)`
+background: var(--primery-color-white)
+`
 
 export const ErrMessage = styled.div`
 position: absolute;
@@ -62,13 +45,6 @@ color: var(--btn-color-red);
     top: 440px;
   }
 `
-
-// export const TimeSpan = styled.span`
-// font-family: var(--font-family);
-// display: inline-block;
-// font-size: 12px;
-// line-height: 200%;
-// height: 24px;`
 
 export const ValueInput = styled.input`
 
@@ -121,6 +97,11 @@ height: 36px;
 
 box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
 background: var(--primery-color-blue);
+transition: box-shadow 0.3s ease;
+
+&:hover {
+  box-shadow: 0 4px 15px 0 rgba(64, 123, 255, 0.54);
+}
 
 &:disabled {
     cursor: not-allowed; 

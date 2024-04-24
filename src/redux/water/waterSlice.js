@@ -1,4 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import {
+  changePercentage,
+  deleteWaterEntry,
+  editWaterEntry,
+} from '../../helpers/waterStateFunctions';
 
 import {
   addWater,
@@ -30,17 +35,20 @@ const waterSlice = createSlice({
         state.month = payload;
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
-        state.today = payload.waterEntries;
+        state.today.push(payload.waterEntries);
+        changePercentage(state.month, payload);
         state.percentage = payload.percentage;
         state.isLoading = false;
       })
       .addCase(editWater.fulfilled, (state, { payload }) => {
-        state.today = payload.waterEntries;
+        editWaterEntry(state.today, payload.waterEntries);
+        changePercentage(state.month, payload);
         state.percentage = payload.percentage;
         state.isLoading = false;
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
-        state.today = payload.waterEntries;
+        state.today = deleteWaterEntry(state.today, payload.waterEntries);
+        changePercentage(state.month, payload);
         state.percentage = payload.percentage;
         state.isLoading = false;
       })

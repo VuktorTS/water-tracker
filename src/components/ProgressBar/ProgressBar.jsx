@@ -5,9 +5,11 @@ import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import TodayListModal from "../TodayListModal/TodayListModal";
 import { useSelector } from "react-redux";
 import { selectDailyWaterNorm, selectWaterPercentage } from "../../redux/water/waterSelectors";
+import { selectTodayWater } from "../../redux/water/waterSelectors";
 
 export const ProgressBar = () => {
   const [modal, setModal] = useState(false);
+  const waterList = useSelector(selectTodayWater);
 
   const onClose = () => {
     setModal(false);
@@ -70,7 +72,7 @@ export const ProgressBar = () => {
     </WaterRatioContainer>
     {modal && (
         <ModalWrapper onClose={onClose} title="Add water">
-            <TodayListModal title={'Choose a value:'} onClose={onClose}></TodayListModal>
+            <TodayListModal title={'Choose a value:'} onClose={onClose} waterList={waterList}></TodayListModal>
         </ModalWrapper>
       )}
     </>

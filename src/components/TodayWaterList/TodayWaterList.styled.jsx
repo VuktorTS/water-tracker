@@ -109,14 +109,19 @@ margin-bottom: 24px;
 & svg {
   width: 24px;
   height: 24px;
-  fill: transparent;
+  fill: var(--primery-color-blue); 
 }
 
 &:hover {
   color: var(--secondary-yellow);
   stroke: var(--secondary-yellow);
 }
+
+ &:hover svg {
+    fill: var(--secondary-yellow); 
+  }
 `
 export const l = styled.div`
 
 `
+//Видалена частинка коду зі спрайту fill="#407bff" style="fill: var(--color1, #407bff)" string 85

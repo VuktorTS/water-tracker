@@ -21,11 +21,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
-import { getTodayWater } from '../../redux/water/waterOperations';
 import { deleteWater } from '../../redux/water/waterOperations';
 
 export const TodayWaterList = () => {
-  const disp = useDispatch();
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [modalType, setModalType] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
@@ -37,7 +36,6 @@ export const TodayWaterList = () => {
   const onClose = () => {
     setModal(false);
     setSelectedItem(null);
-    disp(getTodayWater())
   }
   const onOpen = (type, item) => {
     setModal(true);
@@ -48,7 +46,7 @@ export const TodayWaterList = () => {
   const onCloseDeleteModal = () => setDeleteModal(false);
 
   const onDelete = () => {
-    disp(deleteWater(idForDel));
+    dispatch(deleteWater(idForDel));
     onCloseDeleteModal();
   }
 

@@ -23,9 +23,12 @@ const forPending = (state) => {
 };
 
 const forRejected = (state, action) => {
+  console.log('action: ', action);
   state.isLoading = false;
   state.error = action.payload;
-  if (state.error === '401') {
+  if (state.error === 'invalid signature'
+    || state.error === 'User already signout'
+  ) {
     state.token = null;
     state.isLoggedIn = false;
     state.user = {};
