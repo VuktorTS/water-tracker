@@ -18,6 +18,8 @@
   --btn-color-light-blue: #d7e3ff;
   --calendar-color-orange: #ff9d43;
 
+  --secondary-color-gray: #00000063;
+
   --bg-welcome-page-img-mob: url('img/bg_main_page_mob@1x.png');
   --bg-welcome-page-img-mob2x: url('img/bg_main_page_mob@2x.png');
   --bg-welcome-page-img-tab: url('img/bg_main_page_tab@1x.png');
@@ -72,6 +74,8 @@
   --btn-color-red: #f16161;
   --btn-color-light-blue: #2a3052;
   --calendar-color-orange: #ffa756;
+
+  --secondary-color-gray: #8f8f8f45;
 
   --bg-welcome-page-img-mob: url('img/bg_main_page_mob_dark@1x.png');
   --bg-welcome-page-img-mob2x: url('img/bg_main_page_mob_dark@2x.png');
