@@ -9,7 +9,9 @@ import {
   isWithinInterval,
 } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
+
 // import monthWater from '../../date.json';
+
 import {
   CalendarStyle,
   DateText,
@@ -21,6 +23,7 @@ import {
   PercentFromNorma,
   Title,
 } from './MonthStatistic.styled';
+
 import { getMonthWater } from '../../redux/water/waterOperations';
 import { selectMonthWater } from '../../redux/water/waterSelectors';
 
@@ -53,7 +56,7 @@ export const MonthStatistic = () => {
 
     return eachDayOfInterval(month);
   };
-  
+
   const getBorderStyle = (percentage) => {
     if (percentage !== 0 && percentage < 100) {
       return 'border';

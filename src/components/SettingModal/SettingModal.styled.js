@@ -273,6 +273,10 @@ export const Button = styled.button`
     right: 24px;
     bottom: 32px;
   }
+
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
 `;
 
 export const StyledLink = styled(NavLink)`

@@ -36,8 +36,8 @@ export const WaterRangeTitle = styled.h3`
   color: #407bff;
 `;
 export const WaterRange = styled.input`
-padding: 0;
-&[type='range'] {
+  padding: 0;
+  &[type='range'] {
     appearance: none;
     min-width: 256px;
     margin: 0 auto;
@@ -71,15 +71,17 @@ padding: 0;
     -webkit-appearance: none;
     margin-top: -4px;
   }
+
   @media screen and (min-width: 768px) {
     &[type='range'] {
-    min-width: 335px;
+      min-width: 335px;
     }
   }
   @media screen and (min-width: 1440px) {
     &[type='range'] {
       min-width: 360px;
-      }
+    }
+  }
 `;
 export const RateContainer = styled.div`
   display: flex;
@@ -99,13 +101,15 @@ export const RateContainer = styled.div`
       color: #9ebbff;
     }
   }
-  & span.progress { 
+  & span.progress {
     font-weight: 500;
     font-size: 16px;
+  }
 `;
 export const StartMark = styled.span``;
 export const MiddleMark = styled.span``;
 export const EndMark = styled.span``;
+
 export const BtnAddWater = styled.button`
   display: flex;
   gap: 10px;
@@ -114,7 +118,7 @@ export const BtnAddWater = styled.button`
   border-radius: 10px;
   padding: 6px 72px;
   background-color: #407bff;
-  color: #fff;
+  color: var(--primery-color-white);
   border: none;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   transition: box-shadow 0.3s ease;
@@ -138,6 +142,7 @@ export const Icon = styled.svg`
   width: 24px;
   height: 24px;
   fill: transparent;
-  stroke: #ffffff;
+
+  stroke: var(--primery-color-white);
 `;
 export const l = styled.div``;
