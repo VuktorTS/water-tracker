@@ -1,4 +1,4 @@
-import { addHours, format, parseISO, addMinutes } from 'date-fns';
+import { addHours, format, parseISO, addMinutes, startOfHour } from 'date-fns';
 
 export function formatTime(dateString, formatString = 'HH:mm') {
   const date = addHours(parseISO(dateString), -3);
@@ -11,10 +11,13 @@ const currentMonth = format(currentDate, 'MMMM');
 export const stringDate = `${currentDay}, ${currentMonth}`;
 export const getTimeOptions = () => {
   const options = [];
-  const baseTime = new Date();
+  const baseTime = startOfHour(new Date());
   const timeFormat = 'hh:mm a';
 
-  for (let i = 0; i < 24 * 60; i += 5) {
+  const currentMinute = baseTime.getMinutes();
+  const nearestMultipleOfFive = Math.ceil(currentMinute / 5) * 5;
+
+  for (let i = nearestMultipleOfFive; i < 60; i += 5) {
     const currentTime = addMinutes(baseTime, i);
     const time = format(currentTime, timeFormat);
     options.push({
