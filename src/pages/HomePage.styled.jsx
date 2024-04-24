@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-import bottle from '../img/home@1x.png';
-import bgImgMob from '../img/bg_home_mob@1x.png';
-import bgImgMob2x from '../img/bg_home_mob@2x.png';
-import bgImgTab from '../img/bg_home_tab@1x.png';
-import bgImgTab2x from '../img/bg_home_tab@2x.png';
-import bgImg from '../img/main_page@1x.png';
-import bgImg2x from '../img/main_page@2x.png';
-
 export const BackgroundContainer = styled.div`
   &:before {
     content: '';
@@ -18,34 +10,37 @@ export const BackgroundContainer = styled.div`
     top: 0;
     left: 0px;
     z-index: -10;
-    background-image: url(${bgImgMob});
+    background-image: var(--bg-home-page-img-mob);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
 
     @media (min-resolution: 2dppx) {
-      background-image: url(${bgImgMob2x});
+      background-image: var(--bg-home-page-img-mob2x);
     }
   }
 
   @media (min-width: 768px) {
     &:before {
-      background-image: url(${bgImgTab});
+      top: 88px;
+      background-image: var(--bg-home-page-img-tab);
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImgTab2x});
+        background-image: var(--bg-home-page-img-tab2x);
       }
     }
   }
 
   @media (min-width: 1440px) {
     &:before {
-      background-image: url(${bgImg});
+      top: 80px;
+      background-image: var(--bg-home-page-img);
+
       background-position: center;
       background-size: contain;
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImg2x});
+        background-image: var(--bg-home-page-img2x);
       }
     }
   }
@@ -100,8 +95,13 @@ export const ContentWraper = styled.div`
 export const BottleImg = styled.div`
   width: 280px;
   height: 208px;
-  background-image: url(${bottle});
+
+  background-image: var(--home-page-bottle-img);
   background-size: contain;
+
+  @media (min-resolution: 2dppx) {
+    background-image: var(--home-page-bottle-img2x);
+  }
 
   @media screen and (min-width: 768px) {
     width: 518px;

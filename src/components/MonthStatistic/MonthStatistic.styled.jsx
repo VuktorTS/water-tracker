@@ -24,16 +24,18 @@ export const MonthNav = styled.div`
   align-items: center;
 `;
 export const NavBtn = styled.button`
-    display: flex;
-    border: 1px solid transparent;
-    background-color: transparent;
-    border-radius: 50%;
-    justify-content: center;
-    fill: var(--primery-color-blue);
+  display: flex;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  justify-content: center;
+  fill: var(--primery-color-blue);
+
   &:hover {
     background-color: var(--primery-color-white);
     border: 1px solid var(--calendar-color-orange);
   }
+
   &:disabled {
     fill: var(--secondary-color-blue);
     &:hover {
@@ -67,16 +69,20 @@ export const Day = styled.li`
   gap: 4px;
   align-items: center;
 
-  &.future-day{
-    button{
+  &.future-day {
+    button {
       color: #00000063;
       cursor: inherit;
     }
-    p{
+    p {
       color: #00000063;
+    }
+    > button {
+      color: var(--primery-color-black);
     }
   }
 `;
+
 export const PercentFromNorma = styled.p`
   color: var(--secondary-color-blue);
   font-size: 13px;

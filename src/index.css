@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-:root {
+:root[data-theme='light'] {
   font-family: 'Roboto', sans-serif;
 
   --primery-color-black: #2f2f2f;
@@ -17,6 +17,97 @@
   --btn-color-red: #ef5050;
   --btn-color-light-blue: #d7e3ff;
   --calendar-color-orange: #ff9d43;
+
+  --bg-welcome-page-img-mob: url('img/bg_main_page_mob@1x.png');
+  --bg-welcome-page-img-mob2x: url('img/bg_main_page_mob@2x.png');
+  --bg-welcome-page-img-tab: url('img/bg_main_page_tab@1x.png');
+  --bg-welcome-page-img-tab2x: url('img/bg_main_page_tab@2x.png');
+  --bg-welcome-page-img: url('img/bg_main_page@1x.png');
+  --bg-welcome-page-img2x: url('img/bg_main_page@2x.png');
+  --welcome-page-element: url('img/main_page@1x.png');
+  --welcome-page-element2x: url('img/main_page@2x.png');
+
+  --home-page-bottle-img: url('img/home@1x.png');
+  --home-page-bottle-img2x: url('img/home@2x.png');
+  --bg-home-page-img-mob: url('img/bg_home_mob@1x.png');
+  --bg-home-page-img-mob2x: url('img/bg_home_mob@2x.png');
+  --bg-home-page-img-tab: url('img/bg_home_tab@1x.png');
+  --bg-home-page-img-tab2x: url('img/bg_home_tab@2x.png');
+  --bg-home-page-img: url('img/main_page@1x.png');
+  --bg-home-page-img2x: url('img/main_page@2x.png');
+
+  --home-page-bottle-img-tab: url('img/home_tab@1x.png');
+  --home-page-bottle-img-tab2x: url('img/home_tab@2x.png');
+  --home-page-bottle-img-mob: url('img/home_mob@1x.png');
+  --home-page-bottle-img-mob2x: url('img/home_mob@2x.png');
+
+  --bg-signin-img-mob: url('img/bg_sign_in_mob@1x.png');
+  --bg-signin-img-mob2x: url('img/bg_sign_in_mob@2x.png');
+  --bg-signin-img-tab: url('img/bg_sign_in_tab@1x.png');
+  --bg-signin-img-tab2x: url('img/bg_sign_in_tab@2x.png');
+  --bg-signin-img: url('img/main_page@1x.png');
+  --bg-signin-img2x: url('img/main_page@2x.png');
+  --signin-bottle-img-mob: url('img/sign_in_mob@1x.png');
+  --signin-bottle-img-mob2x: url('img/sign_in_mob@2x.png');
+  --signin-bottle-img-tab: url('img/sign_in_tab@1x.png');
+  --signin-bottle-img-tab2x: url('/img/sign_in_tab@2x.png');
+  --signin-bottle-img: url('img/sign_in@1x.png');
+  --signin-bottle-img2x: url('img/sign_in@2x.png');
+}
+
+:root[data-theme='dark'] {
+  font-family: 'Roboto', sans-serif;
+
+  --primery-color-black: #d5dff5;
+  --primery-color-white: #1c1d26;
+  --primery-color-blue: #5082f2;
+  --primery-color-gray: #8f8f8f;
+  --calendar-color-green: #43ff4c;
+
+  --secondary-color-blue: #2f3875;
+  --bg-color-light-blue: #1f2438;
+  --secondary-yellow: #ffa756;
+
+  --backdrop-color: rgba(0, 0, 0, 0.8);
+  --btn-color-red: #f16161;
+  --btn-color-light-blue: #2a3052;
+  --calendar-color-orange: #ffa756;
+
+  --bg-welcome-page-img-mob: url('img/bg_main_page_mob_dark@1x.png');
+  --bg-welcome-page-img-mob2x: url('img/bg_main_page_mob_dark@2x.png');
+  --bg-welcome-page-img-tab: url('img/bg_main_page_tab_dark@1x.png');
+  --bg-welcome-page-img-tab2x: url('img/bg_main_page_tab_dark@2x.png');
+  --bg-welcome-page-img: url('img/bg_main_page_dark@1x.png');
+  --bg-welcome-page-img2x: url('img/bg_main_page_dark@2x.png');
+  --welcome-page-element: url('img/main_page_dark@1x.png');
+  --welcome-page-element2x: url('img/main_page_dark@2x.png');
+
+  --home-page-bottle-img: url('img/home_dark@1x.png');
+  --home-page-bottle-img2x: url('img/home_dark@2x.png');
+  --bg-home-page-img-mob: url('img/bg_home_mob_dark@1x.png');
+  --bg-home-page-img-mob2x: url('img/bg_home_mob_dark@2x.png');
+  --bg-home-page-img-tab: url('img/bg_home_tab_dark@1x.png');
+  --bg-home-page-img-tab2x: url('img/bg_home_tab_dark@2x.png');
+  --bg-home-page-img: url('img/main_page_dark@1x.png');
+  --bg-home-page-img2x: url('img/main_page_dark@2x.png');
+
+  --home-page-bottle-img-tab: url('img/home_tab_dark@1x.png');
+  --home-page-bottle-img-tab2x: url('img/home_tab_dark@2x.png');
+  --home-page-bottle-img-mob: url('img/home_mob_dark@1x.png');
+  --home-page-bottle-img-mob2x: url('img/home_mob_dark@2x.png');
+
+  --bg-signin-img-mob: url('img/bg_sign_in_mob_dark@1x.png');
+  --bg-signin-img-mob2x: url('img/bg_sign_in_mob_dark@2x.png');
+  --bg-signin-img-tab: url('img/bg_sign_in_tab_dark@1x.png');
+  --bg-signin-img-tab2x: url('img/bg_sign_in_tab_dark@2x.png');
+  --bg-signin-img: url('img/main_page_dark@1x.png');
+  --bg-signin-img2x: url('img/main_page_dark@2x.png');
+  --signin-bottle-img-mob: url('img/sign_in_mob_dark@1x.png');
+  --signin-bottle-img-mob2x: url('img/sign_in_mob_dark@2x.png');
+  --signin-bottle-img-tab: url('img/sign_in_tab_dark@1x.png');
+  --signin-bottle-img-tab2x: url('img/sign_in_tab_dark@2x.png');
+  --signin-bottle-img: url('img/sign_in_dark@1x.png');
+  --signin-bottle-img2x: url('img/sign_in_dark@2x.png');
 }
 
 body {
@@ -24,15 +115,20 @@ body {
   font-weight: 400;
   font-style: normal;
   margin: 0;
+  background-color: var(--primery-color-white);
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  margin: 0;
+}
 p {
   margin: 0;
+  color: var(--primery-color-black);
 }
 a {
   text-decoration: none;
@@ -57,6 +153,7 @@ button {
 
 input {
   outline: none;
+  background-color: transparent;
 }
 
 #setting {
