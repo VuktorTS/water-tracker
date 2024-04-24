@@ -28,6 +28,7 @@ const waterSlice = createSlice({
       .addCase(getTodayWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.today = payload.waterEntries;
+        state.percentage = payload.percentage;
       })
       .addCase(getMonthWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -72,7 +73,6 @@ const waterSlice = createSlice({
           editWater.rejected
         ),
         (state, action) => {
-          console.log(state, action);
           state.isLoading = false;
           state.error = action.payload;
         }
