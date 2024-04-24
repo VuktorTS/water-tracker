@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { BtnAddWater, EndMark, Icon, MiddleMark, RateContainer, StartMark, WaterRange, WaterRangeContainer, WaterRangeTitle, WaterRatioContainer } from "./WaterRatio.styled";
+import { BtnAddWater, EndMark, Icon, MiddleMark, RateContainer, StartMark, WaterRange, WaterRangeContainer, WaterRangeTitle, WaterRatioContainer } from "./ProgressBar.styled";
 import icons from 'img/icons.svg';
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import TodayListModal from "../TodayListModal/TodayListModal";
+import { useSelector } from "react-redux";
+import { selectDailyWaterNorm, selectWaterPercentage } from "../../redux/water/waterSelectors";
 
-export const WaterRatio = () => {
+export const ProgressBar = () => {
   const [modal, setModal] = useState(false);
 
   const onClose = () => {
@@ -14,16 +16,12 @@ export const WaterRatio = () => {
     setModal(true);
   };
 
-    // const dailyNorm = useSelector(отримати норму);
-    const dailyNorm = 6000;
+    const dailyNorm = useSelector(selectDailyWaterNorm);
+    const waterPercent = useSelector(selectWaterPercentage);
 
-    // const dailyDrank = useSelector(отримати загальну випиту воду за день);
     const dailyDrank = 500;
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-  
-    const waterPercent = Math.round((100 * dailyDrank) / dailyNorm);
-  
     const getBackgroundSize = () => {
       if (Number.isNaN(waterPercent)) {
         return { backgroundSize: `${0}` };
@@ -58,8 +56,7 @@ export const WaterRatio = () => {
             <MiddleMark
 
               id="waterMark"
-              style={getPosition()}
-            >{`${waterPercent}%`}</MiddleMark>
+            >50%</MiddleMark>
           )}
           <EndMark>100%</EndMark>
         </RateContainer>

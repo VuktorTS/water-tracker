@@ -41,12 +41,7 @@ export const MonthStatistic = () => {
   useEffect(()=>{    
     dispatch(getMonthWater({currentYear, currentMonth}));
   },[dispatch,currentDate])
-
-  // const dispatch = useDispatch();
-  // const formatDate = (dateString, formatString = 'yyyy-MM-dd ') => {
-  //   const date = new Date(dateString);
-  //   return format(date, formatString);
-  // };
+  
   const handleChangeMonth = offset => {
     setCurrentDate(
       prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() + offset)
