@@ -57,12 +57,18 @@ export const SettingModal = ({ handleCloseModal, profileData }) => {
           outdatedPassword: Yup.string().min(8, 'Minimum eight characters').max(64, 'Too Long!').when('password', ([password], schema) => {
             return password ? schema.required() : schema;
           }),
-          password: Yup.string().min(8, 'Minimum eight characters').max(64, 'Too Long!'),
-          passwordVerification: Yup.string()
-            .oneOf([Yup.ref('password'), null], 'Passwords must match').when('password', ([password], schema) => {
+          password: Yup.string().min(8, 'Minimum eight characters').max(64, 'Too Long!')
+            .when('outdatedPassword', ([outdatedPassword], schema) => {
+              return outdatedPassword ? schema.required() : schema;
+            })
+          ,
+          passwordVerification: Yup.string().when('password', ([password], schema) => {
               return password ? schema.required() : schema;
             })
-        })}
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        },
+          [['password', 'outdatedPassword', 'passwordVerification']]
+        )}
         onSubmit={async (formData) => {
             const { email, gender, outdatedPassword, password, username } = formData
             const updatedData = { email, gender, password: outdatedPassword, passwordNew: password, avatar: userPhoto, username }
