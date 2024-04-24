@@ -20,6 +20,9 @@ import { selectMonthWater } from '../redux/water/waterSelectors.js';
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const firstToken = new URLSearchParams(window.location.search).get('token');
+  console.log('firstToken: ', firstToken);
+
   
   useEffect(() => {
     dispatch(getTodayWater())

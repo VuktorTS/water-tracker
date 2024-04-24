@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const BoxModal = styled.div`
-  padding: 0 24px 32px 0;
+  padding: 0 0 32px 0;
 `;
+
 export const TextStyle = styled.p`
   font-size: 18px;
   color: var(--primery-color-black);
@@ -10,6 +11,7 @@ export const TextStyle = styled.p`
   font-weight: 500;
   margin-bottom: 24px;
 `;
+
 export const ButtonBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,6 +20,7 @@ export const ButtonBox = styled.div`
     flex-direction: row-reverse;
   }
 `;
+
 export const ButtonStyle = styled.button`
   display: inline-block;
   width: 100%;

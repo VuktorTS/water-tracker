@@ -5,6 +5,8 @@ import {
   logOut,
   getCurrUserParams,
   setCurrentUser,
+  resendVerify,
+  deleteUser
 } from './authOperations';
 import { assignValues } from '../../helpers/objectOperations';
 
@@ -28,6 +30,7 @@ const forRejected = (state, action) => {
   state.error = action.payload;
   if (state.error === 'invalid signature'
     || state.error === 'User already signout'
+    || state.error === 'User not found'
   ) {
     state.token = null;
     state.isLoggedIn = false;
@@ -86,7 +89,21 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(setCurrentUser.rejected, forRejected);
+      .addCase(setCurrentUser.rejected, forRejected)
+      .addCase(resendVerify.pending, forPending)
+      .addCase(resendVerify.fulfilled, (state, { payload }) => {
+        state.specialMess = payload.message;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(resendVerify.rejected, forRejected)
+      .addCase(deleteUser.pending, forPending)
+      .addCase(deleteUser.fulfilled, (state, { payload }) => {
+        state.specialMess = payload.message;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(deleteUser.rejected, forRejected);
   },
 });
 export default authSlice.reducer;
