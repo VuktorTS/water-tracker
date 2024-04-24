@@ -21,7 +21,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
-import { getTodayWater } from '../../redux/water/waterOperations';
 import { deleteWater } from '../../redux/water/waterOperations';
 
 export const TodayWaterList = () => {
@@ -63,7 +62,6 @@ export const TodayWaterList = () => {
       <TodayList>
         {waterList.map((item) => (
           <TodayItem key={item._id}>
-          {console.log("🚀 ~ TodayWaterList ~ item:", item)}
             <TodayInfo>
               <TodayClass>
                 <use href={`${icons}#icon-glass`}></use>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { MAX_VALUE, MIN_VALUE, STEP } from '../../constants/addWater';
@@ -10,7 +10,6 @@ import TimeForm from '../TimeForm/TimeForm';
 import WaterForm from '../WaterForm/WaterForm';
 import { ValueHeader, SectionHeader,  ValueInput, SubmitSection, SubmitBtn, BottomMl, ErrMessage } from './TodayListModal.styled';
 const currentDate = adjustedTimeString.slice(0, 16);
-
 
 const TodayListModal = ({title, onClose, data, waterList }) => {
   const [waterVolume, setWaterVolume] = useState(data?.waterVolume ?? 0);
