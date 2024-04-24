@@ -9,6 +9,7 @@ import {
   deleteUser
 } from './authOperations';
 import { assignValues } from '../../helpers/objectOperations';
+import { AUTH_ERRORS } from '../../constants/authErrors';
 
 const initialState = {
   user: {},
@@ -28,10 +29,7 @@ const forRejected = (state, action) => {
   console.log('action: ', action);
   state.isLoading = false;
   state.error = action.payload;
-  if (state.error === 'invalid signature'
-    || state.error === 'User already signout'
-    || state.error === 'User not found'
-  ) {
+  if (AUTH_ERRORS.includes(state.error)) {
     state.token = null;
     state.isLoggedIn = false;
     state.user = {};

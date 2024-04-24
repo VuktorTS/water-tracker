@@ -26,3 +26,7 @@ export const selectWaterIsLoading = createSelector(
   selectWater,
   (water) => water.isLoading
 );
+export const selectWaterPercentage = createSelector(
+  selectWater,
+  (water) => water.percentage
+);

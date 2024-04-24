@@ -14,11 +14,16 @@ height: 44px;
 
 box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
 background: var(--primery-color-white);
+transition: box-shadow 0.3s ease;
+&:hover {
+  box-shadow: 0 2px 12px 0 rgba(64, 123, 255, 0.54);
+}
 `
 
 export const Icon = styled.svg`
   width: 24px;
   height: 24px;
+  fill: var(--primery-color-blue);
 `;
 
 export const Mlspan = styled.span`
