@@ -42,13 +42,16 @@ const forRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setToken(state, action) { state.token = action.payload },
+    setIsLoggedIn(state, action) {state.isLoggedIn = action.payload}
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        // state.token = payload.token;
-        // state.isLoggedIn = true;
+        state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
         state.specialMess = '';
@@ -107,3 +110,5 @@ const authSlice = createSlice({
   },
 });
 export default authSlice.reducer;
+export const {setToken, setIsLoggedIn} = authSlice.actions;
+

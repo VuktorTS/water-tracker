@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BoxModal = styled.div`
-  padding: 0 24px 32px 0;
+  padding: 0 0 32px 0;
 `;
 export const TextStyle = styled.p`
   font-size: 18px;
@@ -19,7 +19,7 @@ export const ButtonBox = styled.div`
 
 export const ButtonStyle = styled.button`
   display: inline-block;
-  width: calc(100%/2);
+  width: 100%;
   padding: 8px 10px;
   color: var(--primery-color-blue);
   font-weight: 500;
@@ -38,6 +38,7 @@ export const ButtonStyle = styled.button`
   }
 
   @media screen and (min-width: 768px) {
+    width: calc(100%/2);
     padding: 10px 10px;
   }
 `;

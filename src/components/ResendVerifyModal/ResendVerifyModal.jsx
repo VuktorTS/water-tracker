@@ -6,7 +6,7 @@ export const ResendVerifyModal = ({ question, butText, email }) => {
   const dispatch = useDispatch();
 
   const resendVer = () => {
-    dispatch(resendVerify(email));
+    dispatch(resendVerify({email}));
   };
   
   return (

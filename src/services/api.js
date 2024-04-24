@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:3000/api';
+axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
 
 export const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -27,7 +27,6 @@ export const reqResendVerify = async (body) => {
 };
 
 export const reqDeleteUser = async (body) => {
-  console.log('body: ', body);
   const { data } = await axios.delete('/users/delete', {data: body});
   return data;
 };
