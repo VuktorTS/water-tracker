@@ -61,7 +61,9 @@ export const UserLogo = () => {
   useEffect(() => {
     const findPopup = (event) => {
       const popup = event.target.closest('#logoModal');
-      if (!popup) {
+      const popupButton = event.target.closest('#popupBtn')
+
+      if (!popup && !popupButton) {
         setIsOpenPopup(false);
       }
     };
@@ -72,7 +74,7 @@ export const UserLogo = () => {
 
   return (
     <Div>
-      <LogoContainer onClick={onClickPopup} ref={setReferenceElement}>
+      <LogoContainer id="popupBtn" onClick={onClickPopup} ref={setReferenceElement}>
         <NameContainer>{username}</NameContainer>
         {avatarURL ? (
           <AvatarImg src={avatarURL} alt="user avatar" />
