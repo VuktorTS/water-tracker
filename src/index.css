@@ -78,15 +78,12 @@ input {
   border-radius: 20px;
   border: none;
   background-color: var(--primery-color-white);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 20px;
   transition: all 0.3s;
 }
-.calendarDayBtn:hover {
+/* .calendarDayBtn:hover {
   background-color: var(--secondary-color-blue);
-}
+} */
 
 .today {
   background-color: var(--secondary-color-blue);

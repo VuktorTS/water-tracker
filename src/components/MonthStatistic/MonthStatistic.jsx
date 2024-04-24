@@ -6,6 +6,7 @@ import {
   endOfMonth,
   eachDayOfInterval,
   isToday,
+  isWithinInterval,
 } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 // import monthWater from '../../date.json';
@@ -23,12 +24,6 @@ import {
 import { getMonthWater } from '../../redux/water/waterOperations';
 import { selectMonthWater } from '../../redux/water/waterSelectors';
 
-// {
-//   "date": "1, April",
-//   "dailyRate": "2.5 L",
-//   "percentageConsumed": 34,
-//   "numberOfPortions": 4
-// }
 export const MonthStatistic = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -38,13 +33,15 @@ export const MonthStatistic = () => {
 
   const currentMonth = format(currentDate, 'MM');
   const currentYear = format(currentDate, 'yyyy');
-  useEffect(()=>{    
-    dispatch(getMonthWater({currentYear, currentMonth}));
-  },[dispatch,currentDate])
-  
-  const handleChangeMonth = offset => {
+
+  useEffect(() => {
+    dispatch(getMonthWater({ currentYear, currentMonth }));
+  }, [dispatch, currentDate]);
+
+  const handleChangeMonth = (offset) => {
     setCurrentDate(
-      prevDate => new Date(prevDate.getFullYear(), prevDate.getMonth() + offset)
+      (prevDate) =>
+        new Date(prevDate.getFullYear(), prevDate.getMonth() + offset)
     );
   };
 
@@ -56,6 +53,7 @@ export const MonthStatistic = () => {
 
     return eachDayOfInterval(month);
   };
+  
   const getBorderStyle = (percentage) => {
     if (percentage !== 0 && percentage < 100) {
       return 'border';
@@ -74,6 +72,24 @@ export const MonthStatistic = () => {
     return result;
   };
 
+  const btnDisabled = () => {
+    if (
+      format(new Date(), 'MM') === format(currentDate, 'MM') &&
+      format(new Date(), 'yyyy') === format(currentDate, 'yyyy')
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const futureDay = (date) => {
+    const intrval = {
+      start: new Date(2020, 0, 1),
+      end: new Date(),
+    };
+    return !isWithinInterval(date, intrval);
+  };
+
   return (
     <CalendarStyle>
       <MonthSelectionContainer>
@@ -85,9 +101,9 @@ export const MonthStatistic = () => {
             </svg>
           </NavBtn>
           <DateText>
-            {format(currentDate, 'MMMM')},{currentYear}
+            {format(currentDate, 'MMMM')}, {currentYear}
           </DateText>
-          <NavBtn onClick={() => handleChangeMonth(1)}>
+          <NavBtn onClick={() => handleChangeMonth(1)} disabled={btnDisabled()}>
             <svg width="14" height="14">
               <use href={`${icons}#icon-arrow-right`}></use>
             </svg>
@@ -96,9 +112,12 @@ export const MonthStatistic = () => {
       </MonthSelectionContainer>
       <Month>
         {getMonthDays(currentDate).map((date) => (
-          <Day key={format(date, 'yyyy-MM-dd')}>
+          <Day
+            key={format(date, 'yyyy-MM-dd')}
+            className={futureDay(date) && 'future-day'}
+          >
             <button
-              className={`calendarDayBtn ${isToday(date) ? 'today' : ''} ${
+              className={`calendarDayBtn ${isToday(date) && 'today'} ${
                 getBorderStyle(percentageWater(date)) || ''
               }`}
             >
@@ -113,4 +132,3 @@ export const MonthStatistic = () => {
     </CalendarStyle>
   );
 };
-//.toFixed(0)
