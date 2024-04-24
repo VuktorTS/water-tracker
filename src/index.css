@@ -56,6 +56,8 @@
 }
 
 :root[data-theme='dark'] {
+  font-family: 'Roboto', sans-serif;
+
   --primery-color-black: #d5dff5;
   --primery-color-white: #1c1d26;
   --primery-color-blue: #5082f2;
@@ -121,9 +123,12 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  margin: 0;
+}
 p {
   margin: 0;
+  color: var(--primery-color-black);
 }
 a {
   text-decoration: none;
@@ -148,6 +153,7 @@ button {
 
 input {
   outline: none;
+  background-color: transparent;
 }
 
 #setting {

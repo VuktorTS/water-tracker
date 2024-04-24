@@ -60,7 +60,11 @@ export const Day = styled.li`
   flex-direction: column;
   gap: 4px;
   align-items: center;
+  > button {
+    color: var(--primery-color-black);
+  }
 `;
+
 export const PercentFromNorma = styled.p`
   color: var(--secondary-color-blue);
   font-size: 13px;
