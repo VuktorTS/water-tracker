@@ -28,7 +28,7 @@ export const reqResendVerify = async (body) => {
 
 export const reqDeleteUser = async (body) => {
   console.log('body: ', body);
-  const { data } = await axios.delete('/users/delete', body);
+  const { data } = await axios.delete('/users/delete', {data: body});
   return data;
 };
 

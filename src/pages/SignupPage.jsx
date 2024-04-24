@@ -40,7 +40,7 @@ const SignUpPage = () => {
 
   const onCloseModal = () => {
     setEndRegistration(false);
-    dispatch(deleteUser(emailForResend));
+    dispatch(deleteUser({email: emailForResend}));
   };
 
   return (
