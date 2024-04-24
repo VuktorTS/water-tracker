@@ -63,7 +63,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
 
   const handleTimeChange = (values) => {
     if (values.length !== 0) {
-      setTime(values[0].time)
+      setTime(values[0].id)
     }
   }
 

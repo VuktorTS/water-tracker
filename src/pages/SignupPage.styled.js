@@ -113,6 +113,15 @@ export const Button = styled.button`
   @media (min-width: 768px) {
     padding: 10px 30px;
   }
+
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+    background: var(--primery-color-blue);
+  }
+
+  &:active {
+    box-shadow: none;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`

@@ -1,9 +1,14 @@
-import { getTimeOptions } from "../../services/timeOptions";
+import { getTimeOptions } from "../../helpers/formatDate";
+import { parse, format } from 'date-fns';
 import { TimeInput, TimeSelect } from "./TimeForm.styled";
 
 const TimeForm = ({ time, handleTimeChange }) => {
+        const parsedTime = parse(time, 'HH:mm', new Date());
+
+        const formattedTime = format(parsedTime, 'hh:mm a');
+        
         const customContentRenderer = () => (
-                <TimeInput>{time}</TimeInput>
+                <TimeInput>{formattedTime}</TimeInput>
         )
         return (
                 <TimeSelect
