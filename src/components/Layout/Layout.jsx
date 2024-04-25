@@ -21,8 +21,10 @@ const Layout = () => {
     if (firstToken) {
         axios.defaults.headers.common.Authorization = `Bearer ${firstToken}`;
             dispatch(setToken(firstToken));
+            dispatch(setIsLoggedIn(true));
     } else if (token) {
             axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+            dispatch(setIsLoggedIn(true));
     } else {
       dispatch(setIsLoggedIn(false));
     }

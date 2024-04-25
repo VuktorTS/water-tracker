@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { makeFormData } from '../../helpers/objectOperations';
-import { reqCurrent, reqLogin, reqSignOut, reqSignUp, reqUpdateUser, reqResendVerify, reqDeleteUser } from '../../services/api';
+import { reqCurrent, reqLogin, reqSignOut, reqSignUp, reqUpdateUser, reqResendVerify } from '../../services/api';
 
 export const registration = createAsyncThunk(
   'auth/register',
@@ -23,22 +23,6 @@ export const resendVerify = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await reqResendVerify(credentials);
-      return res;
-    } catch (e) {
-      if (e.response) {
-        return thunkAPI.rejectWithValue(e.response.data.message);
-      } else {
-        return thunkAPI.rejectWithValue(e.message);
-      }
-    }
-  }
-);
-
-export const deleteUser = createAsyncThunk(
-  'auth/deleteUser',
-  async (credentials, thunkAPI) => {
-    try {
-      const res = await reqDeleteUser(credentials);
       return res;
     } catch (e) {
       if (e.response) {

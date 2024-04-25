@@ -1,5 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
+  changeMonthOnAdd,
+  changeMonthOnDelete,
   changePercentage,
   deleteWaterEntry,
   editWaterEntry,
@@ -39,7 +41,7 @@ const waterSlice = createSlice({
       })
       .addCase(addWater.fulfilled, (state, { payload }) => {
         state.today.push(payload.waterEntries[0]);
-        changePercentage(state.month, payload);
+        changeMonthOnAdd(state.month, payload);
         state.percentage = payload.percentage;
         state.isLoading = false;
       })
@@ -51,7 +53,7 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.today = deleteWaterEntry(state.today, payload.waterEntries);
-        changePercentage(state.month, payload);
+        changeMonthOnDelete(state.month, payload);
         state.percentage = payload.percentage;
         state.isLoading = false;
       })

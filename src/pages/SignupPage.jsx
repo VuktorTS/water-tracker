@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { registration, deleteUser } from '../redux/auth/authOperations';
+import { registration } from '../redux/auth/authOperations';
 import { toastError, toastSuccess } from '../services/notification';
 import icons from 'img/icons.svg';
 import ModalWrapper from '../components/ModalWrapper/ModalWrapper';
@@ -40,7 +40,6 @@ const SignUpPage = () => {
 
   const onCloseModal = () => {
     setEndRegistration(false);
-    dispatch(deleteUser({email: emailForResend}));
   };
 
   return (
