@@ -8,6 +8,8 @@ import { StyleSheetManager } from 'styled-components';
 import { useEffect } from 'react';
 import { setToken, setIsLoggedIn } from '../../redux/auth/authSlice.js';
 import axios from 'axios';
+import { getCurrUserParams } from '../../redux/auth/authOperations.js';
+import { getTodayWater } from '../../redux/water/waterOperations.js';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -21,10 +23,25 @@ const Layout = () => {
     if (firstToken) {
         axios.defaults.headers.common.Authorization = `Bearer ${firstToken}`;
             dispatch(setToken(firstToken));
-            dispatch(setIsLoggedIn(true));
+            dispatch(getTodayWater())
+            dispatch(getCurrUserParams()).unwrap()
+                .then(() => {
+              dispatch(setIsLoggedIn(true));
+            })
+              .catch(() => {
+                dispatch(setIsLoggedIn(false));
+              });
     } else if (token) {
             axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-            dispatch(setIsLoggedIn(true));
+      dispatch(getTodayWater());
+      dispatch(getCurrUserParams())
+      .unwrap()
+      .then(() => {
+        dispatch(setIsLoggedIn(true));
+      })
+      .catch(() => {
+        dispatch(setIsLoggedIn(false));
+      });
     } else {
       dispatch(setIsLoggedIn(false));
     }

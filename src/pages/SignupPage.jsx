@@ -40,6 +40,7 @@ const SignUpPage = () => {
 
   const onCloseModal = () => {
     setEndRegistration(false);
+    window.location.reload()
   };
 
   return (
