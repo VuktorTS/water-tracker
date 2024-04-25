@@ -81,7 +81,7 @@ export const Day = styled.li`
     }
 
     > button {
-      color: var(--primery-color-black);
+      color: var(--secondary-color-gray);
     }
   }
 
