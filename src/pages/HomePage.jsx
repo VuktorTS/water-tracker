@@ -8,22 +8,10 @@ import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList.jsx';
 
 import { BackgroundContainer } from './HomePage.styled.jsx';
 import { MonthStatistic } from 'components/MonthStatistic/MonthStatistic.jsx';
-// import { getCurrUserParams } from '../redux/auth/authOperations.js';
-// import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-
-// import { getTodayWater } from '../redux/water/waterOperations.js';
 import { ProgressBar } from 'components/ProgressBar/ProgressBar.jsx';
 
 
 const HomePage = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //           dispatch(getTodayWater())
-  //           dispatch(getCurrUserParams());
-  // }, [dispatch]);
-
   return (
     <BackgroundContainer>
       <HomePageSection>

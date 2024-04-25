@@ -10,7 +10,6 @@ import {
 } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
-// import 'react-tooltip/dist/react-tooltip.css'
 
 import {
   CalendarStyle,
