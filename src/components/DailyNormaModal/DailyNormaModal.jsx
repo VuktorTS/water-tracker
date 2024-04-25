@@ -9,10 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { toastError } from '../../services/notification';
 import { getUser } from "../../redux/auth/authSelectors";
 import ModalWrapper from '../ModalWrapper/ModalWrapper';
+import { updatePercentage } from "../../redux/water/waterSlice";
+import { selectTodayWater } from "../../redux/water/waterSelectors";
 
 const DailyNormaModal = ({ closeMod }) => {
   const dispatch = useDispatch();
   const dailyWaterNorm = useSelector(getUser).dailyWaterNorm / 1000;
+  const waterList = useSelector(selectTodayWater);
   const usersGender = useSelector(getUser).gender;
   const usersWeight = useSelector(getUser).weight;
   const usersSportTime = useSelector(getUser).sportTime;
@@ -22,6 +25,16 @@ const DailyNormaModal = ({ closeMod }) => {
   const [result, setResult] = useState(0);
   const [selectedGender, setSelectedGender] = useState(usersGender ? usersGender.toLowerCase() : 'man');
 
+  const calculatePercentages = (waterNorm)=>{
+    const drankWater = waterList.reduce(
+      (accumulator, {waterVolume}) => 
+        accumulator + waterVolume,
+      0,
+    );
+    const newPercentage = Math.round((drankWater / waterNorm) * 100);
+    console.log("🚀 ~ calculatePercentages ~ newPercentage:", newPercentage)
+    return newPercentage;
+  }
   const handleGenderChange = (e) => {
     setSelectedGender(e.target.value);
   };
@@ -71,6 +84,8 @@ const DailyNormaModal = ({ closeMod }) => {
         sportTime: hours,
         dailyWaterNorm: willDr * 1000
       };
+      const persentage = calculatePercentages(currentData.dailyWaterNorm);
+    dispatch(updatePercentage(persentage));
     dispatch(setCurrentUser(currentData)).unwrap()
       .then(() => {
           closeMod();

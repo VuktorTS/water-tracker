@@ -25,6 +25,11 @@ const initialState = {
 const waterSlice = createSlice({
   name: 'water',
   initialState,
+  reducers: {
+    updatePercentage(state, action) { 
+      console.log("🚀 ~ updatePercentage ~ state:", action.payload)
+      state.percentage = action.payload },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getTodayWater.fulfilled, (state, { payload }) => {
@@ -84,3 +89,4 @@ const waterSlice = createSlice({
   },
 });
 export const waterReducer = waterSlice.reducer;
+export const { updatePercentage } = waterSlice.actions;
