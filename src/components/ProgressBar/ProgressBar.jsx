@@ -5,6 +5,7 @@ import {
   Icon,
   MiddleMark,
   RateContainer,
+  Ruler,
   StartMark,
   WaterRange,
   WaterRangeContainer,
@@ -49,15 +50,15 @@ export const ProgressBar = () => {
           <WaterRangeTitle>Today</WaterRangeTitle>
           <WaterRange
             type="range"
-            value="50"
+            value={waterPercent}
             readOnly={true}
             style={getBackgroundSize()}
             aria-label="Water range"
           />
           <RateContainer>
-            <StartMark>0%</StartMark>
-            <MiddleMark className={waterPercent >= 50 && waterPercent < 100 ? "progress" : ""}>50%</MiddleMark>
-            <EndMark className={waterPercent >= 100 ? "progress" : ""}>100%</EndMark>
+            <StartMark><Ruler>|</Ruler>0%</StartMark>
+            <MiddleMark className={waterPercent >= 50 && waterPercent < 100 ? "progress" : ""}><dRuler>|</dRuler> 50%</MiddleMark>
+            <EndMark className={waterPercent >= 100 ? "progress" : ""}><Ruler>|</Ruler>100%</EndMark>
           </RateContainer>
         </WaterRangeContainer>
         <BtnAddWater type="button" onClick={() => onOpen()}>

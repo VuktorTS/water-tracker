@@ -21,12 +21,12 @@ overflow-y: scroll;
 &::-webkit-scrollbar {
   width: 2px;
   border-radius: 5px;
-  background-color: #d7e3ff;
+  background-color: var(--btn-color-light-blue);
 }
 &::-webkit-scrollbar-thumb {
   width: 4px;
   border-radius: 5px;
-  background-color: #9ebbff;
+  background-color: var(--secondary-color-blue);
 }
 @media screen and (min-width: 768px) {
   height: 183px;
@@ -68,6 +68,7 @@ color: var(--primery-color-black);
 export const TodayTools = styled.div`
 display: flex;
 gap: 18px;
+margin-right: 7px;
 `
 export const ButtonEdit = styled.button`
 background-color: transparent;
