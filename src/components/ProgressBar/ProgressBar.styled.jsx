@@ -4,7 +4,7 @@ export const WaterRatioContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 15px;
+  margin-top: 20px;
 
   @media screen and (min-width: 768px) {
     width: 704px;

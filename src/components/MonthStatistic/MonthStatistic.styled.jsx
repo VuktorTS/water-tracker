@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const CalendarStyle = styled.div``;
+export const CalendarStyle = styled.div`
+`;
 export const MonthSelectionContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -30,8 +31,7 @@ export const NavBtn = styled.button`
   border-radius: 50%;
   justify-content: center;
   fill: var(--primery-color-blue);
-
-  &:hover {
+  &:hover:not([disabled]) {
     background-color: var(--primery-color-white);
     border: 1px solid var(--calendar-color-orange);
   }
@@ -39,7 +39,9 @@ export const NavBtn = styled.button`
   &:disabled {
     fill: var(--secondary-color-blue);
     &:hover {
-      border: 1px solid var(--primery-color-white);
+      border: 1px solid #ff000000;
+      // border-color: inherit;
+      // background-color: inherit;
       cursor: inherit;
     }
   }

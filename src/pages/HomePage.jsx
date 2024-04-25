@@ -30,7 +30,7 @@ const HomePage = () => {
   return (
     <BackgroundContainer>
       <HomePageSection>
-        <ContentWraper>
+        <ContentWraper style={{paddingBottom: 25}}>
           <DailyNorma />
           <BottleImg />
           <ProgressBar />
