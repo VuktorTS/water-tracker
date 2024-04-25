@@ -32,7 +32,6 @@ export const MonthStatistic = () => {
 
   const monthWater = useSelector(selectMonthWater);
   const dailyWaterNorm = useSelector(getUser).dailyWaterNorm / 1000;
-  console.log("🚀 ~ MonthStatistic ~ dailyWaterNorm:", dailyWaterNorm)
 
   const dispatch = useDispatch();
 
