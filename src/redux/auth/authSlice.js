@@ -25,7 +25,6 @@ const forPending = (state) => {
 };
 
 const forRejected = (state, action) => {
-  console.log('action: ', action);
   state.isLoading = false;
   state.error = action.payload;
   if (AUTH_ERRORS.includes(state.error)) {
