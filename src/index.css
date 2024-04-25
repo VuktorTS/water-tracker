@@ -37,7 +37,6 @@
   --bg-home-page-img-tab2x: url('img/bg_home_tab@2x.png');
   --bg-home-page-img: url('img/main_page@1x.png');
   --bg-home-page-img2x: url('img/main_page@2x.png');
-
   --home-page-bottle-img-tab: url('img/home_tab@1x.png');
   --home-page-bottle-img-tab2x: url('img/home_tab@2x.png');
   --home-page-bottle-img-mob: url('img/home_mob@1x.png');
@@ -94,7 +93,6 @@
   --bg-home-page-img-tab2x: url('img/bg_home_tab_dark@2x.png');
   --bg-home-page-img: url('img/main_page_dark@1x.png');
   --bg-home-page-img2x: url('img/main_page_dark@2x.png');
-
   --home-page-bottle-img-tab: url('img/home_tab_dark@1x.png');
   --home-page-bottle-img-tab2x: url('img/home_tab_dark@2x.png');
   --home-page-bottle-img-mob: url('img/home_mob_dark@1x.png');
@@ -186,31 +184,31 @@ input {
 .today {
   background-color: var(--secondary-color-blue);
 }
-#my-tooltip.popup-tracker{
+#my-tooltip.popup-tracker {
   padding: 24px 12px;
   background-color: var(--primery-color-white);
   border-radius: 10px;
-box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
-opacity: 1;
+  box-shadow: 0px 4px 4px 0px rgba(64, 123, 255, 0.3);
+  opacity: 1;
 }
 @media screen and (min-width: 768px) {
-  #my-tooltip.popup-tracker{
+  #my-tooltip.popup-tracker {
     padding: 24px 16px;
   }
 }
-.datePopover{
-  line-height: .8;
+.datePopover {
+  line-height: 0.8;
   color: var(--primery-color-blue);
   margin-bottom: 18px;
   display: inline-block;
 }
-.datePopoverText{
+.datePopoverText {
   color: var(--primery-color-black);
   margin-bottom: 18px;
-  line-height: .8;
+  line-height: 0.8;
 }
-.popoverColorText{
+.popoverColorText {
   color: var(--primery-color-blue);
   font-weight: 500;
-  line-height: .8;
+  line-height: 0.8;
 }

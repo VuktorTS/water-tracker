@@ -53,7 +53,7 @@ export const HomePageSection = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;  
+  gap: 40px;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
@@ -97,11 +97,11 @@ export const BottleImg = styled.div`
   width: 280px;
   height: 208px;
 
-  background-image: var(--home-page-bottle-img);
+  background-image: var(--home-page-bottle-img-mob);
   background-size: contain;
 
   @media (min-resolution: 2dppx) {
-    background-image: var(--home-page-bottle-img2x);
+    background-image: var(--home-page-bottle-img-mob2x);
   }
 
   @media screen and (min-width: 768px) {
@@ -115,9 +115,19 @@ export const BottleImg = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    background-image: var(--home-page-bottle-img-tab);
+
+    @media (min-resolution: 2dppx) {
+      background-image: var(--home-page-bottle-img-tab2x);
+    }
   }
   @media screen and (min-width: 1440px) {
     width: 570px;
     height: 500px;
+    background-image: var(--home-page-bottle-img2x);
+
+    @media (min-resolution: 2dppx) {
+      background-image: var(--home-page-bottle-img2x);
+    }
   }
 `;
