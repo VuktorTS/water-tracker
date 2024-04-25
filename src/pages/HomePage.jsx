@@ -9,8 +9,9 @@ import { TodayWaterList } from 'components/TodayWaterList/TodayWaterList.jsx';
 import { BackgroundContainer } from './HomePage.styled.jsx';
 import { MonthStatistic } from 'components/MonthStatistic/MonthStatistic.jsx';
 import { getCurrUserParams } from '../redux/auth/authOperations.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { getToken } from '../redux/auth/authSelectors.js';
 
 import { getTodayWater } from '../redux/water/waterOperations.js';
 import { ProgressBar } from 'components/ProgressBar/ProgressBar.jsx';
@@ -18,10 +19,12 @@ import { ProgressBar } from 'components/ProgressBar/ProgressBar.jsx';
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const token = useSelector(getToken);
+
   
   useEffect(() => {
-    dispatch(getTodayWater())
-    dispatch(getCurrUserParams());
+            dispatch(getTodayWater())
+            dispatch(getCurrUserParams());
   }, [dispatch]);
 
   return (

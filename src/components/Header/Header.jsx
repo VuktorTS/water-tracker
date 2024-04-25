@@ -1,7 +1,8 @@
+
 import { Logo } from '../Logo/Logo';
 import { UserAuth } from '../UserAuth/UserAuth';
 import { StyledHeader, StyledCheckbox, Switcher, Icon } from './Header.styled';
-import { isLoggedIn } from '../../redux/auth/authSelectors';
+import { isLoggedIn, getToken } from '../../redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import { UserLogo } from '../UserLogo/UserLogo';
 import { useTheme } from '../../hooks/use-theme';
@@ -9,6 +10,7 @@ import sprite from '../../img/icons.svg';
 
 export const Header = () => {
   const isLogged = useSelector(isLoggedIn);
+  const token = useSelector(getToken);
   const { theme, setTheme } = useTheme();
 
   const isChecked = theme === 'dark';
@@ -32,7 +34,7 @@ export const Header = () => {
           </Icon>
         </Switcher>
 
-        {isLogged ? <UserLogo /> : <UserAuth />}
+        {(isLogged && token) ? <UserLogo /> : <UserAuth />}
       </div>
     </StyledHeader>
   );
