@@ -32,7 +32,8 @@ const combinedReducer = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-    if (action.type === 'RESET') {
+    if(action.type === 'auth/logout/fulfilled'){
+    storage.removeItem("persistor:auth");
       return combinedReducer(undefined, action)
     }
   return combinedReducer(state, action);
