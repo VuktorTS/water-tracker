@@ -57,7 +57,7 @@ export const ProgressBar = () => {
           />
           <RateContainer>
             <StartMark><Ruler>|</Ruler>0%</StartMark>
-            <MiddleMark className={waterPercent >= 50 && waterPercent < 100 ? "progress" : ""}><dRuler>|</dRuler> 50%</MiddleMark>
+            <MiddleMark className={waterPercent >= 50 && waterPercent < 100 ? "progress" : ""}><Ruler>|</Ruler> 50%</MiddleMark>
             <EndMark className={waterPercent >= 100 ? "progress" : ""}><Ruler>|</Ruler>100%</EndMark>
           </RateContainer>
         </WaterRangeContainer>

@@ -40,8 +40,6 @@ export const NavBtn = styled.button`
     fill: var(--secondary-color-blue);
     &:hover {
       border: 1px solid #ff000000;
-      // border-color: inherit;
-      // background-color: inherit;
       cursor: inherit;
     }
   }

@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { store, persistor } from '../src/redux/store.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
@@ -16,5 +15,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  // </React.StrictMode>,
 );

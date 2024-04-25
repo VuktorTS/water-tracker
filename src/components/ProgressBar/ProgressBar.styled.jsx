@@ -96,10 +96,6 @@ export const RateContainer = styled.div`
     color: #407bff;
     flex-direction: column;
     gap: 4px;
-    // &::before {
-    //   content: '|';
-    //   color: #9ebbff;
-    // }
   }
   & span.progress {
     font-weight: 500;

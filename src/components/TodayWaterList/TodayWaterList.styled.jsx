@@ -140,4 +140,3 @@ margin-bottom: 24px;
 export const l = styled.div`
 
 `
-//Видалена частинка коду зі спрайту fill="#407bff" style="fill: var(--color1, #407bff)" string 85

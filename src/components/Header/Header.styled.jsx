@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// export const Navigation = styled.nav``;
 
 export const StyledHeader = styled.header`
   padding-top: 8px;

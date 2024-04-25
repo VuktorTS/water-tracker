@@ -37,10 +37,6 @@ export const StyledForm = styled(Form)`
   @media (min-width: 768px) {
     width: 392px;
   }
-
-  @media (min-width: 1440px) {
-    /* width: 384px; */
-  }
 `;
 
 export const TextInputsContainer = styled.div`
@@ -62,11 +58,6 @@ export const AvatarContainer = styled.div`
 export const AvatarField = styled(Field)`
   border: 1px solid seagreen;
   display: flex;
-  /* > input {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  } */
 `;
 
 export const AvatarInput = styled.input`
@@ -74,7 +65,6 @@ export const AvatarInput = styled.input`
   height: 80px;
   border-radius: 50%;
   background-color: var(--secondary-yellow);
-  /* opacity: 0; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +144,6 @@ export const InputBox = styled.div`
   @media (min-width: 1440px) {
     width: 392px;
     margin-bottom: 0px;
-    /* margin-top: 12px; */
   }
 `;
 
@@ -185,7 +174,6 @@ export const StyledFieldset = styled.fieldset`
   margin: 0;
   padding: 0;
   @media (min-width: 1440px) {
-    /* width: 384px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
