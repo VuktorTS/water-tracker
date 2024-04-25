@@ -51,12 +51,6 @@ export const App = () => {
                 <LoggedInOrNot redirectTo='/home' component={<SignupPage />}/>
               }
             />
-            <Route
-              path="/modal"
-              element={
-                  <ModalPage />
-              }
-            />
             <Route path="*" element={<Navigate to={isLogged ? '/home' : '/welcome'} replace />} />
           </Route>
         </Routes>
