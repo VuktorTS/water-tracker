@@ -12,7 +12,6 @@ import WelcomePage from 'pages/WelcomePage';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
-import ModalPage from './pages/ModalPage';
 import { setAuthHeader } from './services/api';
 
 const NotLoggedOrY = lazy(() => import('./components/NotLoggedOrY/NotLoggedOrY'));
