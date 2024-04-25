@@ -1,5 +1,5 @@
 import { HomeLink } from './Logo.styled';
-import simpleImage from '../../img/Logo.svg';
+import simpleImage from '../../img/Logo.png'
 
 // ще потрібно буде доробити рендер зображення під ретину
 // import retinaImage from '../../img/Logo-2x.jpg';

@@ -6,4 +6,5 @@ export const toastSuccess = (message) => toast.success(message, toastOptions);
 
 export const toastError = (message) => toast.error(message, toastOptions);
 
-export const toastInfo = (message) => toast.info(message, toastOptions);
+export const toastInfo = (message) =>
+  toast.info(message, { position: 'top-right', autoClose: 3000 });

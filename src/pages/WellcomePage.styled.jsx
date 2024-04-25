@@ -1,12 +1,4 @@
 import styled from 'styled-components';
-import bgImgMob from '../img/bg_main_page_mob@1x.png';
-import bgImgMob2x from '../img/bg_main_page_mob@2x.png';
-import bgImgTab from '../img/bg_main_page_tab@1x.png';
-import bgImgTab2x from '../img/bg_main_page_tab@2x.png';
-import bgImg from '../img/bg_main_page@1x.png';
-import bgImg2x from '../img/bg_main_page@2x.png';
-import bgElement from '../img/main_page@1x.png';
-import bgElement2x from '../img/main_page@2x.png';
 
 export const BackgroundContainer = styled.div`
   &:before {
@@ -18,33 +10,33 @@ export const BackgroundContainer = styled.div`
     top: 0px;
     left: 0px;
     z-index: -10;
-    background-image: url(${bgImgMob});
+    background-image: var(--bg-welcome-page-img-mob);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
 
     @media (min-resolution: 2dppx) {
-      background-image: url(${bgImgMob2x});
+      background-image: var(--bg-welcome-page-img-mob2x);
     }
   }
 
   @media (min-width: 768px) {
     &:before {
-      background-image: url(${bgImgTab});
+      background-image: var(--bg-welcome-page-img-tab);
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImgTab2x});
+        background-image: var(--bg-welcome-page-img-tab2x);
       }
     }
-  }
 
-  @media (min-width: 1440px) {
-    &:before {
-      background-image: url(${bgImg});
-      background-size: contain;
+    @media (min-width: 1440px) {
+      &:before {
+        background-image: var(--bg-welcome-page-img);
+        background-size: contain;
 
-      @media (min-resolution: 2dppx) {
-        background-image: url(${bgImg2x});
+        @media (min-resolution: 2dppx) {
+          background-image: var(--bg-welcome-page-img2x);
+        }
       }
     }
   }
@@ -73,13 +65,13 @@ export const MainContainer = styled.div`
       top: 0px;
       left: 0px;
       z-index: -10;
-      background-image: url(${bgElement});
+      background-image: var(--welcome-page-element);
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgElement2x});
+        background-image: var(--welcome-page-element2x);
       }
     }
   }

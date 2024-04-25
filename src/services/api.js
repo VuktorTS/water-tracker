@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://project-node-wt-team4.onrender.com/api';
+axios.defaults.baseURL = 'http://localhost:3000/api';
 
 export const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -21,6 +21,11 @@ export const reqSignUp = async (body) => {
   return data;
 };
 
+export const reqResendVerify = async (body) => {
+  const { data } = await axios.post('/users/verify', body);
+  return data;
+};
+
 export const reqSignOut = async () => {
   const { data } = await axios.post('/users/signout');
   clearAuthHeader();
@@ -28,11 +33,13 @@ export const reqSignOut = async () => {
 };
 
 export const reqUpdateUser = async (formData) => {
-  const { data } = await axios.patch('users/', formData, {
+  const { data } = await axios.patch('users/', formData,
+    {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
-  });
+    }
+  );
   return data;
 };
 export const reqCurrent = async () => {
@@ -69,6 +76,6 @@ export const editWaterAmount = async (formData) => {
 };
 
 export const deleteWaterAmount = async (_id) => {
-  const { data } = await axios.delete(`trackers/waterEntries/${_id}`);
+  const { data } = await axios.delete(`trackers/waterEntry/${_id}`);
   return data;
 };

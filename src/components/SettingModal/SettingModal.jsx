@@ -57,27 +57,31 @@ export const SettingModal = ({ handleCloseModal, profileData }) => {
           outdatedPassword: Yup.string().min(8, 'Minimum eight characters').max(64, 'Too Long!').when('password', ([password], schema) => {
             return password ? schema.required() : schema;
           }),
-          password: Yup.string().min(8, 'Minimum eight characters').max(64, 'Too Long!'),
-          passwordVerification: Yup.string()
-            .oneOf([Yup.ref('password'), null], 'Passwords must match').when('password', ([password], schema) => {
+          password: Yup.string().min(8, 'Minimum eight characters').max(64, 'Too Long!')
+            .when('outdatedPassword', ([outdatedPassword], schema) => {
+              return outdatedPassword ? schema.required() : schema;
+            })
+          ,
+          passwordVerification: Yup.string().when('password', ([password], schema) => {
               return password ? schema.required() : schema;
             })
-        })}
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        },
+          [['password', 'outdatedPassword', 'passwordVerification']]
+        )}
         onSubmit={async (formData) => {
-            console.log('formdata', formData)
             const { email, gender, outdatedPassword, password, username } = formData
             const updatedData = { email, gender, password: outdatedPassword, passwordNew: password, avatar: userPhoto, username }
 
             const notEmptyData = checkEmptyEntries(updatedData)
             const validData = checkDuplicateEntries(profileData, notEmptyData)
-            console.log('req', validData)
             if (Object.keys(validData).length === 0) {
               handleCloseModal()
               return
             }
               dispatch(setCurrentUser(validData)).unwrap().then(() => {
-             toastSuccess(`Profile changed successfully`)
-             handleCloseModal()
+              toastSuccess(`Profile changed successfully`)
+              handleCloseModal()
           }).catch(error => toastError(error))
         }}
         >

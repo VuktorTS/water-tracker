@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-import bottle from '../img/home@1x.png';
-import bgImgMob from '../img/bg_home_mob@1x.png';
-import bgImgMob2x from '../img/bg_home_mob@2x.png';
-import bgImgTab from '../img/bg_home_tab@1x.png';
-import bgImgTab2x from '../img/bg_home_tab@2x.png';
-import bgImg from '../img/main_page@1x.png';
-import bgImg2x from '../img/main_page@2x.png';
-
 export const BackgroundContainer = styled.div`
   &:before {
     content: '';
@@ -15,26 +7,26 @@ export const BackgroundContainer = styled.div`
     display: block;
     width: 100%;
     height: 100%;
-    top: 108px;
+    top: 0;
     left: 0px;
     z-index: -10;
-    background-image: url(${bgImgMob});
+    background-image: var(--bg-home-page-img-mob);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
 
     @media (min-resolution: 2dppx) {
-      background-image: url(${bgImgMob2x});
+      background-image: var(--bg-home-page-img-mob2x);
     }
   }
 
   @media (min-width: 768px) {
     &:before {
       top: 88px;
-      background-image: url(${bgImgTab});
+      background-image: var(--bg-home-page-img-tab);
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImgTab2x});
+        background-image: var(--bg-home-page-img-tab2x);
       }
     }
   }
@@ -42,12 +34,13 @@ export const BackgroundContainer = styled.div`
   @media (min-width: 1440px) {
     &:before {
       top: 80px;
-      background-image: url(${bgImg});
+      background-image: var(--bg-home-page-img);
+
       background-position: center;
       background-size: contain;
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImg2x});
+        background-image: var(--bg-home-page-img2x);
       }
     }
   }
@@ -60,7 +53,8 @@ export const HomePageSection = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px;  
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     max-width: 734px;
@@ -100,10 +94,15 @@ export const ContentWraper = styled.div`
   }
 `;
 export const BottleImg = styled.div`
-    width: 280px;
-    height: 208px;
-    background-image: url(${bottle});
-    background-size: contain;
+  width: 280px;
+  height: 208px;
+
+  background-image: var(--home-page-bottle-img);
+  background-size: contain;
+
+  @media (min-resolution: 2dppx) {
+    background-image: var(--home-page-bottle-img2x);
+  }
 
   @media screen and (min-width: 768px) {
     width: 518px;
@@ -120,4 +119,5 @@ export const BottleImg = styled.div`
   @media screen and (min-width: 1440px) {
     width: 570px;
     height: 500px;
-    `;
+  }
+`;

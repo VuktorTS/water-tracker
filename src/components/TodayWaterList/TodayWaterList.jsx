@@ -21,6 +21,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTodayWater } from '../../redux/water/waterSelectors.js';
 import { formatTime } from '../../helpers/formatDate.js';
 import { MODAL_TYPES } from '../../constants/addWater';
+import { getTodayWater } from '../../redux/water/waterOperations';
+import { deleteWater } from '../../redux/water/waterOperations';
 
 export const TodayWaterList = () => {
   const disp = useDispatch();
@@ -35,6 +37,7 @@ export const TodayWaterList = () => {
   const onClose = () => {
     setModal(false);
     setSelectedItem(null);
+    disp(getTodayWater())
   }
   const onOpen = (type, item) => {
     setModal(true);
@@ -99,7 +102,7 @@ export const TodayWaterList = () => {
             <TodayListModal title={'Correct entered data:'} onClose={onClose} data={selectedItem}></TodayListModal>
         </ModalWrapper>
       )}
-      {deleteModal && <ModalWrapper onClose={onCloseDeleteModal} title="Delete entry"><LogOutModal question="Are you sure you want to delete the entry?" butText="Delete" onClose={onCloseDeleteModal} onLogout={onDelete} marginR='0'/></ModalWrapper>}
+      {deleteModal && <ModalWrapper onClose={onCloseDeleteModal} title="Delete entry" alignItems='center'><LogOutModal question="Are you sure you want to delete the entry?" butText="Delete" onClose={onCloseDeleteModal} onLogout={onDelete} marginR='0'/></ModalWrapper>}
     </TodayContainer>
   );
 };

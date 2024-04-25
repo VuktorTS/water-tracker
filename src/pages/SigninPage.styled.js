@@ -2,20 +2,6 @@ import { ErrorMessage, Field, Form } from 'formik';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import bgImgMob from '../img/bg_sign_in_mob@1x.png';
-import bgImgMob2x from '../img/bg_sign_in_mob@2x.png';
-import bgImgTab from '../img/bg_sign_in_tab@1x.png';
-import bgImgTab2x from '../img/bg_sign_in_tab@2x.png';
-import bgImg from '../img/main_page@1x.png';
-import bgImg2x from '../img/main_page@2x.png';
-
-import bottleImgMob from '../img/sign_in_mob@1x.png';
-import bottleImgMob2x from '../img/sign_in_mob@2x.png';
-import bottleImgTab from '../img/sign_in_tab@1x.png';
-import bottleImgTab2x from '../img/sign_in_tab@2x.png';
-import bottleImg from '../img/sign_in@1x.png';
-import bottleImg2x from '../img/sign_in@2x.png';
-
 export const StyledContainer = styled.div`
   height: 70vh;
   width: 100%;
@@ -124,6 +110,15 @@ export const Button = styled.button`
   @media (min-width: 768px) {
     padding: 10px 30px;
   }
+
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+    background: var(--primery-color-blue);
+  }
+
+  &:active {
+    box-shadow: none;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -154,24 +149,24 @@ export const BackgroundContainer = styled.div`
     top: 108px;
     left: 0px;
     z-index: -10;
-    background-image: url(${bgImgMob});
+    background-image: var(--bg-signin-img-mob);
     background-repeat: no-repeat;
     background-position: bottom center;
     background-size: cover;
 
     @media (min-resolution: 2dppx) {
-      background-image: url(${bgImgMob2x});
+      background-image: var(--bg-signin-img-mob2x);
     }
   }
 
   @media (min-width: 768px) {
     &:before {
       top: 0;
-      background-image: url(${bgImgTab});
+      background-image: var(--bg-signin-img-tab);
       background-position: center;
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImgTab2x});
+        background-image: var(--bg-signin-img-tab2x);
       }
     }
   }
@@ -182,13 +177,13 @@ export const BackgroundContainer = styled.div`
     padding: 0 18px;
 
     &:before {
-      background-image: url(${bgImg});
+      background-image: var(--bg-signin-img);
 
       background-position: center;
       background-size: contain;
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bgImg2x});
+        background-image: var(--bg-signin-img2x);
       }
     }
   }
@@ -205,19 +200,19 @@ export const BottleImg = styled.div`
     left: 50%;
     transform: translateX(-50%);
     z-index: -5;
-    background-image: url(${bottleImgMob});
+    background-image: var(--signin-bottle-img-mob);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
 
     @media (min-resolution: 2dppx) {
-      background-image: url(${bottleImgMob2x});
+      background-image: var(--signin-bottle-img-mob2x);
     }
   }
 
   &:before {
     @media (min-width: 768px) {
-      background-image: url(${bottleImgTab});
+      background-image: var(--signin-bottle-img-tab);
       width: 736px;
       height: 548px;
       top: 17%;
@@ -228,7 +223,7 @@ export const BottleImg = styled.div`
       background-size: contain;
 
       @media (min-resolution: 2dppx) {
-        background-image: url(${bottleImgTab2x});
+        background-image: var(--signin-bottle-img-tab2x);
       }
     }
 
@@ -246,12 +241,12 @@ export const BottleImg = styled.div`
     @media (min-width: 1440px) {
       width: 916px;
       height: 680px;
-      background-image: url(${bottleImg});
+      background-image: var(--signin-bottle-img);
       top: 8%;
       left: -15%;
       transform: translateX(15%);
       @media (min-resolution: 2dppx) {
-        background-image: url(${bottleImg2x});
+        background-image: var(--signin-bottle-img2x);
       }
     }
   }

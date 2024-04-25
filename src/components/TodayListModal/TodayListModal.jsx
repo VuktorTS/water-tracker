@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
 import { MAX_VALUE, MIN_VALUE, STEP } from '../../constants/addWater';
-import { adjustedTimeString } from '../../constants/currentDate';
+import { getCurrentDate } from '../../constants/currentDate';
 import { addWater, editWater } from '../../redux/water/waterOperations';
 import { toastInfo } from '../../services/notification';
 import EditData from '../EditData/EditData';
 import TimeForm from '../TimeForm/TimeForm';
 import WaterForm from '../WaterForm/WaterForm';
 import { ValueHeader, SectionHeader,  ValueInput, SubmitSection, SubmitBtn, BottomMl, ErrMessage } from './TodayListModal.styled';
-const currentDate = adjustedTimeString.slice(0, 16);
 
-
-const TodayListModal = ({title, onClose, data, waterList }) => {
+const TodayListModal = ({ title, onClose, data, waterList }) => {
+  const currentDate = getCurrentDate().slice(0, 16);
+  
   const [waterVolume, setWaterVolume] = useState(data?.waterVolume ?? 0);
   const [time, setTime] = useState(data?.time.slice(11, 16) ?? currentDate.slice(11, 16));
   const [inputValue, setInputValue] = useState(waterVolume);
@@ -21,7 +20,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!waterList) {
+    if (waterList?.length === 0) {
       toastInfo('No notes yet.')
     }
   }, []);
@@ -65,12 +64,11 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
 
   const handleTimeChange = (values) => {
     if (values.length !== 0) {
-      setTime(values[0].time)
+      setTime(values[0].id)
     }
   }
 
-  const dataSubmit = evt => {
-    evt.preventDefault();
+  const dataSubmit = () => {
     const finalTime = `${currentDate.slice(0, 11)}${time.slice(0, 5)}`;
     if (!data) {
       const fulldata = { date: finalTime, waterVolume, time: finalTime };
@@ -78,7 +76,6 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
     }
     if (data) {
       const fulldata = { waterVolume, time: finalTime, _id: data._id};
-       console.log(fulldata);
       dispatch(editWater(fulldata))
     }
     onClose();
@@ -104,7 +101,7 @@ const TodayListModal = ({title, onClose, data, waterList }) => {
     <SubmitSection>
       <BottomMl>{waterVolume}ml</BottomMl>
       <SubmitBtn
-        type="submit"
+        type="button"
         onClick={dataSubmit}
         disabled={!waterVolume}>
         Save

@@ -15,8 +15,19 @@ margin-bottom: 16px;
 }
 `
 export const TodayList = styled.ul`
-height: 212px;
-overflow: auto;
+height: 212px;  
+overflow-y: scroll;
+
+&::-webkit-scrollbar {
+  width: 2px;
+  border-radius: 5px;
+  background-color: #d7e3ff;
+}
+&::-webkit-scrollbar-thumb {
+  width: 4px;
+  border-radius: 5px;
+  background-color: #9ebbff;
+}
 @media screen and (min-width: 768px) {
   height: 183px;
 }
@@ -59,6 +70,10 @@ display: flex;
 gap: 18px;
 `
 export const ButtonEdit = styled.button`
+background-color: transparent;
+padding: 0;
+width: 20px;
+height: 20px;
   & svg {
     stroke: var(--secondary-color-blue);
     fill: transparent;
@@ -99,6 +114,7 @@ font-size: 16px;
 font-weight: 500;
 line-height: 1.25;
 stroke: var(--primery-color-blue);
+margin-bottom: 24px;
 
 @media screen and (min-width: 768px) {
   font-size: 18px;
@@ -108,14 +124,19 @@ stroke: var(--primery-color-blue);
 & svg {
   width: 24px;
   height: 24px;
-  fill: transparent;
+  fill: var(--primery-color-blue); 
 }
 
 &:hover {
   color: var(--secondary-yellow);
   stroke: var(--secondary-yellow);
 }
+
+ &:hover svg {
+    fill: var(--secondary-yellow); 
+  }
 `
 export const l = styled.div`
 
 `
+//Видалена частинка коду зі спрайту fill="#407bff" style="fill: var(--color1, #407bff)" string 85

@@ -1,22 +1,26 @@
 import { useState, useEffect } from "react";
 import {
-  Backdrop, ButtonClose, CloseIcon, Container, ModalBody, TitleModal, AllFormulesDiv, FormulesDiv, Formule,
-  BodyFormules, AdditInfo, PAdditInfo, SpanAdditInfo, Form, TitleForm, RadioDiv, InpDiv, Result, ValueResult,
-  DivButton, Button
+  AllFormulesDiv, FormulesDiv, Formule, BodyFormules, AdditInfo, PAdditInfo, SpanAdditInfo,
+  Form, TitleForm, RadioDiv, InpDiv, Result, ValueResult, DivButton, Button
 } from "./DailyNormaModal.styled";
 import InputDaNormMod from "../InputDaNormMod/InputDaNormMod";
-import icons from "img/icons.svg"
 import { setCurrentUser } from "../../redux/auth/authOperations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toastError } from '../../services/notification';
+import { getUser } from "../../redux/auth/authSelectors";
+import ModalWrapper from '../ModalWrapper/ModalWrapper';
 
 const DailyNormaModal = ({ closeMod }) => {
-  const disp = useDispatch();
-  const [weight, setWeight] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [willDr, setWillDr] = useState(0);
+  const dispatch = useDispatch();
+  const dailyWaterNorm = useSelector(getUser).dailyWaterNorm / 1000;
+  const usersGender = useSelector(getUser).gender;
+  const usersWeight = useSelector(getUser).weight;
+  const usersSportTime = useSelector(getUser).sportTime;
+  const [weight, setWeight] = useState(usersWeight ? usersWeight : 0);
+  const [hours, setHours] = useState(usersSportTime ? usersSportTime : 0);
+  const [willDr, setWillDr] = useState(dailyWaterNorm ? dailyWaterNorm : 0);
   const [result, setResult] = useState(0);
-  const [selectedGender, setSelectedGender] = useState('girl');
+  const [selectedGender, setSelectedGender] = useState(usersGender ? usersGender.toLowerCase() : 'man');
 
   const handleGenderChange = (e) => {
     setSelectedGender(e.target.value);
@@ -26,7 +30,21 @@ const DailyNormaModal = ({ closeMod }) => {
     let newVal = e.currentTarget.value.replace(/[^0-9.]/g, '');
     if (newVal.length > 1 && newVal[0] === '0' && newVal[1] !== '.') {
         newVal = newVal.slice(1);
-    }
+    };
+
+    const arrNewVal = newVal.split('');
+    const arrIndexes = [];
+    arrNewVal.forEach((el, index) => {
+      if (el === '.') {
+        arrIndexes.push(index)
+      }
+    });
+    if (arrIndexes.length > 1) {
+      const indexSecDot = arrIndexes[1];
+      arrNewVal.splice(indexSecDot, 1);
+    };
+    newVal = arrNewVal.join('');
+
     return newVal
   };
 
@@ -47,18 +65,29 @@ const DailyNormaModal = ({ closeMod }) => {
 
   const handelClickButton = (e) => {
     e.preventDefault();
-    const currentData = { dailyWaterNorm: result };
-    disp(setCurrentUser(currentData)).unwrap()
+    if (willDr > 0 && willDr <= 15) {
+      const currentData = {
+        weight: weight,
+        sportTime: hours,
+        dailyWaterNorm: willDr * 1000
+      };
+    dispatch(setCurrentUser(currentData)).unwrap()
       .then(() => {
           closeMod();
         })
       .catch((error) => toastError(error));
+    } else if(willDr < 1) {
+      toastError('The planned amount of water cannot be equal to 0.');
+    } else {
+      toastError('The planned amount of water cannot be more than 15 liters.');
+
+    }
   };
 
   useEffect(() => { 
-    if (selectedGender === 'girl') {
-      const resGirl = ((weight * 0.03) + (hours * 0.4)).toFixed(2);
-      setResult(resGirl)
+    if (selectedGender.toLowerCase() === 'woman') {
+      const resWoman = ((weight * 0.03) + (hours * 0.4)).toFixed(2);
+      setResult(resWoman)
     } else {
       const resMan = ((weight * 0.04) + (hours * 0.6)).toFixed(2);
       setResult(resMan)
@@ -77,28 +106,9 @@ const DailyNormaModal = ({ closeMod }) => {
     };
   }, [closeMod]);
 
-  const handleClick = e => {
-    if (e.target === e.currentTarget) {
-      closeMod();
-    }
-  };
-
   return (
-
-    <Backdrop onClick={handleClick}>
-      <Container>
-        <TitleModal>My daily norma</TitleModal>
-        <ButtonClose
-          type="button"
-          onClick={closeMod}
-          aria-label="Close"
-        >
-            <CloseIcon>
-              <use href={`${icons}#icon-outline`}></use>
-            </CloseIcon>
-        </ButtonClose>
-        <ModalBody>
-      <AllFormulesDiv>
+          <ModalWrapper title='My daily norma' onClose={closeMod}>
+            <AllFormulesDiv>
         <FormulesDiv>
           <Formule>For woman: <BodyFormules>V=(M*0,03) + (T*0,4)</BodyFormules></Formule>
         </FormulesDiv>
@@ -115,9 +125,9 @@ const DailyNormaModal = ({ closeMod }) => {
           <InputDaNormMod 
           type='radio' 
           name='gender' 
-          value="girl" 
+          value="woman" 
           textInp='For woman' 
-          checked={selectedGender === 'girl'} 
+          checked={selectedGender.toLowerCase() === 'woman'} 
           onChange={handleGenderChange}
           height='14px' 
           width='14px' 
@@ -127,7 +137,7 @@ const DailyNormaModal = ({ closeMod }) => {
           name='gender' 
           value="man" 
           textInp='For man' 
-          checked={selectedGender === 'man'}
+          checked={selectedGender.toLowerCase() === 'man'}
           onChange={handleGenderChange}
           height='14px' 
           width='14px' 
@@ -166,9 +176,7 @@ const DailyNormaModal = ({ closeMod }) => {
               </Button>
             </DivButton>
       </Form>
-        </ModalBody>
-      </Container>
-    </Backdrop>
+      </ModalWrapper>
   )
 };
 

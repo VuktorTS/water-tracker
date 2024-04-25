@@ -5,17 +5,13 @@ import {
   logOut,
   getCurrUserParams,
   setCurrentUser,
+  resendVerify
 } from './authOperations';
 import { assignValues } from '../../helpers/objectOperations';
+import { AUTH_ERRORS } from '../../constants/authErrors';
 
 const initialState = {
-  user: {
-    username: null,
-    email: null,
-    gender: null,
-    avatarURL: null,
-    dailyWaterNorm: null,
-  },
+  user: {},
   specialMess: '',
   token: null,
   isLoggedIn: false,
@@ -29,12 +25,13 @@ const forPending = (state) => {
 };
 
 const forRejected = (state, action) => {
+  console.log('action: ', action);
   state.isLoading = false;
   state.error = action.payload;
-  if (state.error === '401') {
+  if (AUTH_ERRORS.includes(state.error)) {
     state.token = null;
     state.isLoggedIn = false;
-    state.user = { name: null, email: null };
+    state.user = {};
     state.specialMess = '';
   }
 };
@@ -42,13 +39,15 @@ const forRejected = (state, action) => {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setToken(state, action) { state.token = action.payload },
+    setIsLoggedIn(state, action) { state.isLoggedIn = action.payload }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.token = payload.token;
-        state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
         state.specialMess = '';
@@ -66,7 +65,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, forRejected)
       .addCase(logOut.pending, forPending)
       .addCase(logOut.fulfilled, (state, { payload }) => {
-        state.user = { name: null, email: null };
+        state.user = {};
         state.specialMess = payload.message;
         state.token = null;
         state.isLoggedIn = false;
@@ -89,7 +88,16 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(setCurrentUser.rejected, forRejected);
+      .addCase(setCurrentUser.rejected, forRejected)
+      .addCase(resendVerify.pending, forPending)
+      .addCase(resendVerify.fulfilled, (state, { payload }) => {
+        state.specialMess = payload.message;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(resendVerify.rejected, forRejected);
   },
 });
 export default authSlice.reducer;
+export const {setToken, setIsLoggedIn} = authSlice.actions;
+

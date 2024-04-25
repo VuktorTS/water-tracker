@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/authSlice';
 import {
   persistStore,
@@ -26,11 +26,21 @@ const authPersistConfig = {
   whitelist: ['token', 'isLoggedIn', 'user'],
 };
 
+const combinedReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authSlice),
+  water: waterReducer,
+});
+
+const rootReducer = (state, action) => {
+    if (action.type === 'auth/logout/fulfilled') {
+      state = undefined;
+      storage.removeItem('persist:auth');
+    }
+  return combinedReducer(state, action);
+};
+
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authSlice),
-    water: waterReducer,
-  },
+  reducer: rootReducer,
   middleware,
 });
 

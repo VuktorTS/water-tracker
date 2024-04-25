@@ -6,9 +6,12 @@ import {
   endOfMonth,
   eachDayOfInterval,
   isToday,
+  isWithinInterval,
 } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
-// import monthWater from '../../date.json';
+import { Tooltip } from 'react-tooltip';
+// import 'react-tooltip/dist/react-tooltip.css'
+
 import {
   CalendarStyle,
   DateText,
@@ -20,24 +23,29 @@ import {
   PercentFromNorma,
   Title,
 } from './MonthStatistic.styled';
+
 import { getMonthWater } from '../../redux/water/waterOperations';
 import { selectMonthWater } from '../../redux/water/waterSelectors';
 
-// {
-//   "date": "1, April",
-//   "dailyRate": "2.5 L",
-//   "percentageConsumed": 34,
-//   "numberOfPortions": 4
-// }
 export const MonthStatistic = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const monthWater = useSelector(selectMonthWater);
 
-  // const dispatch = useDispatch();
-  const formatDate = (dateString, formatString = 'yyyy-MM-dd ') => {
-    const date = new Date(dateString);
-    return format(date, formatString);
+  const dispatch = useDispatch();
+
+  const currentMonth = format(currentDate, 'MM');
+  const currentYear = format(currentDate, 'yyyy');
+
+  useEffect(() => {
+    dispatch(getMonthWater({ currentYear, currentMonth }));
+  }, [dispatch, currentDate]);
+
+  const handleChangeMonth = (offset) => {
+    setCurrentDate(
+      (prevDate) =>
+        new Date(prevDate.getFullYear(), prevDate.getMonth() + offset)
+    );
   };
 
   const getMonthDays = (date) => {
@@ -48,6 +56,7 @@ export const MonthStatistic = () => {
 
     return eachDayOfInterval(month);
   };
+
   const getBorderStyle = (percentage) => {
     if (percentage !== 0 && percentage < 100) {
       return 'border';
@@ -58,31 +67,61 @@ export const MonthStatistic = () => {
 
   const percentageWater = (date) => {
     const result = monthWater.find((item) => {
-     const [day, month] = item.date.split(',')
+      const [day, month] = item.date.split(',');
 
       return day === format(date, 'd');
-    })?.percentageConsumed;
+    })?.percentage;
 
     return result;
   };
 
-  const currentMonth = format(currentDate, 'MMMM');
-  const currentYear = format(currentDate, 'yyyy');
+  const btnDisabled = () => {
+    if (
+      format(new Date(), 'MM') === format(currentDate, 'MM') &&
+      format(new Date(), 'yyyy') === format(currentDate, 'yyyy')
+    ) {
+      return true;
+    }
+    return false;
+  };
+  const findDayInformation = (date)=>{
+    const defaultResult = {
+      date: `${format(date, 'd')}, ${format(date, 'MMMM')}`,
+      dailyWaterNorm: "2 L",
+      percentage: 0,
+      numberOfEntries: 0
+  };
+    const result = monthWater.find((item) => {
+      const [day, month] = item.date.split(',');
+
+      return day === format(date, 'd');
+    });
+
+    return result || defaultResult ;
+  }
+
+  const futureDay = (date) => {
+    const intrval = {
+      start: new Date(2020, 0, 1),
+      end: new Date(),
+    };
+    return !isWithinInterval(date, intrval);
+  };
 
   return (
     <CalendarStyle>
       <MonthSelectionContainer>
         <Title>Month</Title>
         <MonthNav>
-          <NavBtn onClick={() => console.log('-1')}>
+          <NavBtn onClick={() => handleChangeMonth(-1)}>
             <svg width="14" height="14">
               <use href={`${icons}#icon-arrow-left`}></use>
             </svg>
           </NavBtn>
           <DateText>
-            {currentMonth},{currentYear}
+            {format(currentDate, 'MMMM')}, {currentYear}
           </DateText>
-          <NavBtn onClick={() => console.log('1')}>
+          <NavBtn onClick={() => handleChangeMonth(1)} disabled={btnDisabled()}>
             <svg width="14" height="14">
               <use href={`${icons}#icon-arrow-right`}></use>
             </svg>
@@ -91,11 +130,19 @@ export const MonthStatistic = () => {
       </MonthSelectionContainer>
       <Month>
         {getMonthDays(currentDate).map((date) => (
-          <Day key={format(date, 'yyyy-MM-dd')}>
+          <Day
+            key={format(date, 'yyyy-MM-dd')}
+            className={futureDay(date) && 'future-day'}
+          >
             <button
-              className={`calendarDayBtn ${isToday(date) ? 'today' : ''} ${
+              className={`calendarDayBtn ${isToday(date) && 'today'} ${
                 getBorderStyle(percentageWater(date)) || ''
               }`}
+              data-tooltip-id="my-tooltip"
+              data-date={findDayInformation(date).date}
+              data-daily-norma={findDayInformation(date).dailyWaterNorm}
+              data-percentage={findDayInformation(date).percentage}
+              data-serfings-of-water={findDayInformation(date).numberOfEntries}
             >
               {format(date, 'd')}
             </button>
@@ -104,8 +151,34 @@ export const MonthStatistic = () => {
             </PercentFromNorma>
           </Day>
         ))}
+        <Tooltip
+          id="my-tooltip"
+          className='popup-tracker'
+          render={({ activeAnchor }) => (
+            <>
+              <span className="datePopover">
+              {` ${activeAnchor?.getAttribute('data-date')}`}
+              </span>
+              <div className="datePopoverText">
+                DailyNorma: 
+                <span className="popoverColorText">
+                 {` ${activeAnchor?.getAttribute('data-daily-norma')}`}
+                </span>
+              </div>
+              <div className="datePopoverText">
+                Fulfillment of the daily norm: 
+                <span className="popoverColorText">
+                  {` ${activeAnchor?.getAttribute('data-percentage')}`}%
+                </span>
+              </div>
+              <div className="datePopoverText">
+                How many servings of water: 
+                <span className="popoverColorText">{` ${activeAnchor?.getAttribute('data-serfings-of-water')}`}</span>
+              </div>
+            </>
+          )}
+        />
       </Month>
     </CalendarStyle>
   );
 };
-//.toFixed(0)
