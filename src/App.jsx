@@ -17,7 +17,6 @@ import { setAuthHeader } from './services/api';
 
 const NotLoggedOrY = lazy(() => import('./components/NotLoggedOrY/NotLoggedOrY'));
 const LoggedInOrNot = lazy(() => import('./components/LoggedInOrNot/LoggedInOrNot'));
-const HasTokenOrNot = lazy(() => import('./components/HasTokenOrNot/HasTokenOrNot'));
 
 export const App = () => {
   const isLogged = useSelector(isLoggedIn);
@@ -50,7 +49,7 @@ export const App = () => {
             <Route
               path="/signup"
               element={
-                <HasTokenOrNot redirectTo='/home' component={<SignupPage />}/>
+                <LoggedInOrNot redirectTo='/home' component={<SignupPage />}/>
               }
             />
             <Route
