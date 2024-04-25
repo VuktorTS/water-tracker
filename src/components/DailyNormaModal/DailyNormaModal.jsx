@@ -32,7 +32,6 @@ const DailyNormaModal = ({ closeMod }) => {
       0,
     );
     const newPercentage = Math.round((drankWater / waterNorm) * 100);
-    console.log("🚀 ~ calculatePercentages ~ newPercentage:", newPercentage)
     return newPercentage;
   }
   const handleGenderChange = (e) => {
