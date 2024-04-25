@@ -15,8 +15,19 @@ margin-bottom: 16px;
 }
 `
 export const TodayList = styled.ul`
-height: 212px;
-overflow: auto;
+height: 212px;  
+overflow-y: scroll;
+
+&::-webkit-scrollbar {
+  width: 2px;
+  border-radius: 5px;
+  background-color: #d7e3ff;
+}
+&::-webkit-scrollbar-thumb {
+  width: 4px;
+  border-radius: 5px;
+  background-color: #9ebbff;
+}
 @media screen and (min-width: 768px) {
   height: 183px;
 }
@@ -59,6 +70,10 @@ display: flex;
 gap: 18px;
 `
 export const ButtonEdit = styled.button`
+background-color: transparent;
+padding: 0;
+width: 20px;
+height: 20px;
   & svg {
     stroke: var(--secondary-color-blue);
     fill: transparent;

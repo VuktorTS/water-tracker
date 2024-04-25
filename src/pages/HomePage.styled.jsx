@@ -53,7 +53,8 @@ export const HomePageSection = styled.section`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px;  
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     max-width: 734px;
