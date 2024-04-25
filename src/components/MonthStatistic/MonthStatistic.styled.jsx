@@ -58,10 +58,13 @@ export const DateText = styled.p`
 export const Month = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(7, 0.5fr);
+  grid-template-rows: repeat(6, 0.5fr);
   gap: 10px;
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  @media screen and (min-width: 1440px) {
     grid-template-rows: repeat(4, 1fr);
   }
 `;

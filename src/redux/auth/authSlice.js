@@ -5,8 +5,7 @@ import {
   logOut,
   getCurrUserParams,
   setCurrentUser,
-  resendVerify,
-  deleteUser
+  resendVerify
 } from './authOperations';
 import { assignValues } from '../../helpers/objectOperations';
 import { AUTH_ERRORS } from '../../constants/authErrors';
@@ -42,14 +41,13 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setToken(state, action) { state.token = action.payload },
-    setIsLoggedIn(state, action) {state.isLoggedIn = action.payload}
+    setIsLoggedIn(state, action) { state.isLoggedIn = action.payload }
   },
   extraReducers: (builder) => {
     builder
       .addCase(registration.pending, forPending)
       .addCase(registration.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
         state.specialMess = '';
@@ -97,14 +95,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(resendVerify.rejected, forRejected)
-      .addCase(deleteUser.pending, forPending)
-      .addCase(deleteUser.fulfilled, (state, { payload }) => {
-        state.specialMess = payload.message;
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(deleteUser.rejected, forRejected);
+      .addCase(resendVerify.rejected, forRejected);
   },
 });
 export default authSlice.reducer;

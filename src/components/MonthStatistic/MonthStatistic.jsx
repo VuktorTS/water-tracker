@@ -26,11 +26,14 @@ import {
 
 import { getMonthWater } from '../../redux/water/waterOperations';
 import { selectMonthWater } from '../../redux/water/waterSelectors';
+import { getUser } from '../../redux/auth/authSelectors';
 
 export const MonthStatistic = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const monthWater = useSelector(selectMonthWater);
+  const dailyWaterNorm = useSelector(getUser).dailyWaterNorm / 1000;
+  console.log("🚀 ~ MonthStatistic ~ dailyWaterNorm:", dailyWaterNorm)
 
   const dispatch = useDispatch();
 
@@ -87,7 +90,7 @@ export const MonthStatistic = () => {
   const findDayInformation = (date)=>{
     const defaultResult = {
       date: `${format(date, 'd')}, ${format(date, 'MMMM')}`,
-      dailyWaterNorm: "2 L",
+      dailyWaterNorm: `${dailyWaterNorm} L`,
       percentage: 0,
       numberOfEntries: 0
   };

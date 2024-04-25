@@ -96,15 +96,18 @@ export const RateContainer = styled.div`
     color: #407bff;
     flex-direction: column;
     gap: 4px;
-    &::before {
-      content: '|';
-      color: #9ebbff;
-    }
+    // &::before {
+    //   content: '|';
+    //   color: #9ebbff;
+    // }
   }
   & span.progress {
     font-weight: 500;
     font-size: 16px;
   }
+`;
+export const Ruler = styled.div`
+  font-size: 10px;
 `;
 export const StartMark = styled.span``;
 export const MiddleMark = styled.span``;
