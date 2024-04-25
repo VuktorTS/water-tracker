@@ -1,5 +1,5 @@
 import icons from 'img/icons.svg';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   format,
   startOfMonth,
@@ -24,7 +24,7 @@ import {
 } from './MonthStatistic.styled';
 
 import { getMonthWater } from '../../redux/water/waterOperations';
-import { selectMonthWater } from '../../redux/water/waterSelectors';
+import { selectMonthWater, selectTodayWater } from '../../redux/water/waterSelectors';
 import { getUser } from '../../redux/auth/authSelectors';
 
 export const MonthStatistic = () => {
@@ -37,6 +37,14 @@ export const MonthStatistic = () => {
 
   const currentMonth = format(currentDate, 'MM');
   const currentYear = format(currentDate, 'yyyy');
+
+  const waterList = useSelector(selectTodayWater);
+  const drankWater = waterList.reduce(
+      (accumulator, {waterVolume}) => 
+        accumulator + waterVolume,
+      0,
+  ) / 1000;
+  const actualProsentages = (drankWater / dailyWaterNorm * 100).toFixed(0);
 
   useEffect(() => {
     dispatch(getMonthWater({ currentYear, currentMonth }));
@@ -68,7 +76,7 @@ export const MonthStatistic = () => {
 
   const percentageWater = (date) => {
     const result = monthWater.find((item) => {
-      const [day, month] = item.date.split(',');
+      const [day] = item.date.split(',');
 
       return day === format(date, 'd');
     })?.percentage;
@@ -88,12 +96,12 @@ export const MonthStatistic = () => {
   const findDayInformation = (date)=>{
     const defaultResult = {
       date: `${format(date, 'd')}, ${format(date, 'MMMM')}`,
-      dailyWaterNorm: `${dailyWaterNorm} L`,
+      dailyWaterNorm: `0 L`,
       percentage: 0,
       numberOfEntries: 0
   };
     const result = monthWater.find((item) => {
-      const [day, month] = item.date.split(',');
+      const [day] = item.date.split(',');
 
       return day === format(date, 'd');
     });
@@ -141,14 +149,20 @@ export const MonthStatistic = () => {
               }`}
               data-tooltip-id="my-tooltip"
               data-date={findDayInformation(date).date}
-              data-daily-norma={findDayInformation(date).dailyWaterNorm}
-              data-percentage={findDayInformation(date).percentage}
+              data-daily-norma={(isToday(date) || futureDay(date)) ?
+                  dailyWaterNorm :
+                findDayInformation(date).dailyWaterNorm}
+              data-percentage={isToday(date) ?
+                actualProsentages :
+                findDayInformation(date).percentage}
               data-serfings-of-water={findDayInformation(date).numberOfEntries}
             >
               {format(date, 'd')}
             </button>
             <PercentFromNorma>
-              {percentageWater(date)?.toFixed(0) || 0}%
+              {isToday(date) ?
+                  actualProsentages :
+                  (percentageWater(date)?.toFixed(0) || 0)}%
             </PercentFromNorma>
           </Day>
         ))}

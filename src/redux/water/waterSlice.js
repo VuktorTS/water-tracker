@@ -27,7 +27,6 @@ const waterSlice = createSlice({
   initialState,
   reducers: {
     updatePercentage(state, action) { 
-      console.log("🚀 ~ updatePercentage ~ state:", action.payload)
       state.percentage = action.payload },
   },
   extraReducers: (builder) => {
