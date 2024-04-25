@@ -20,7 +20,32 @@ export const findConsuption = (today) => {
 };
 
 export const changePercentage = (monthArr, portion) => {
-  console.log("🚀 ~ changePercentage ~ portion:", portion)
   const todayObj = monthArr.find((obj) => obj.date === stringDate);
   todayObj.percentage = portion.percentage;
+};
+
+export const changeMonthOnAdd = (monthArr, portion) => {
+  if (monthArr.length > 0) {
+    const todayObj = monthArr.find((obj) => obj.date === stringDate);
+    todayObj.percentage = portion.percentage;
+    todayObj.numberOfEntries += 1;
+  } else {
+    const waterNormMl = JSON.parse(
+      JSON.parse(localStorage.getItem('persist:auth')).user
+    ).dailyWaterNorm;
+    const dailyWaterNorm = `${waterNormMl / 1000} L`;
+    const todayData = {
+      date: stringDate,
+      dailyWaterNorm,
+      percentage: portion.percentage,
+      numberOfEntries: 1,
+    };
+    monthArr.push(todayData);
+  }
+};
+
+export const changeMonthOnDelete = (monthArr, portion) => {
+  const todayObj = monthArr.find((obj) => obj.date === stringDate);
+  todayObj.percentage = portion.percentage;
+  todayObj.numberOfEntries -= 1;
 };

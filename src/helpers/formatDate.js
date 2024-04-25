@@ -8,7 +8,9 @@ export function formatTime(dateString, formatString = 'p') {
 const currentDate = new Date();
 const currentDay = format(currentDate, 'dd');
 const currentMonth = format(currentDate, 'MMMM');
+
 export const stringDate = `${currentDay}, ${currentMonth}`;
+
 export const getTimeOptions = () => {
   const options = [];
   const baseTime = startOfHour(new Date());
