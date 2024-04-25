@@ -1,6 +1,6 @@
 import { addHours, format, parseISO, addMinutes, startOfHour } from 'date-fns';
 
-export function formatTime(dateString, formatString = 'HH:mm') {
+export function formatTime(dateString, formatString = 'p') {
   const date = addHours(parseISO(dateString), -3);
   return format(date, formatString);
 }

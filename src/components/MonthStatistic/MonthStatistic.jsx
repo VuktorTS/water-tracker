@@ -9,8 +9,8 @@ import {
   isWithinInterval,
 } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
-
-// import monthWater from '../../date.json';
+import { Tooltip } from 'react-tooltip';
+// import 'react-tooltip/dist/react-tooltip.css'
 
 import {
   CalendarStyle,
@@ -84,6 +84,21 @@ export const MonthStatistic = () => {
     }
     return false;
   };
+  const findDayInformation = (date)=>{
+    const defaultResult = {
+      date: `${format(date, 'd')}, ${format(date, 'MMMM')}`,
+      dailyWaterNorm: "2 L",
+      percentage: 0,
+      numberOfEntries: 0
+  };
+    const result = monthWater.find((item) => {
+      const [day, month] = item.date.split(',');
+
+      return day === format(date, 'd');
+    });
+
+    return result || defaultResult ;
+  }
 
   const futureDay = (date) => {
     const intrval = {
@@ -123,6 +138,11 @@ export const MonthStatistic = () => {
               className={`calendarDayBtn ${isToday(date) && 'today'} ${
                 getBorderStyle(percentageWater(date)) || ''
               }`}
+              data-tooltip-id="my-tooltip"
+              data-date={findDayInformation(date).date}
+              data-daily-norma={findDayInformation(date).dailyWaterNorm}
+              data-percentage={findDayInformation(date).percentage}
+              data-serfings-of-water={findDayInformation(date).numberOfEntries}
             >
               {format(date, 'd')}
             </button>
@@ -131,6 +151,33 @@ export const MonthStatistic = () => {
             </PercentFromNorma>
           </Day>
         ))}
+        <Tooltip
+          id="my-tooltip"
+          className='popup-tracker'
+          render={({ activeAnchor }) => (
+            <>
+              <span className="datePopover">
+              {` ${activeAnchor?.getAttribute('data-date')}`}
+              </span>
+              <div className="datePopoverText">
+                DailyNorma: 
+                <span className="popoverColorText">
+                 {` ${activeAnchor?.getAttribute('data-daily-norma')}`}
+                </span>
+              </div>
+              <div className="datePopoverText">
+                Fulfillment of the daily norm: 
+                <span className="popoverColorText">
+                  {` ${activeAnchor?.getAttribute('data-percentage')}`}%
+                </span>
+              </div>
+              <div className="datePopoverText">
+                How many servings of water: 
+                <span className="popoverColorText">{` ${activeAnchor?.getAttribute('data-serfings-of-water')}`}</span>
+              </div>
+            </>
+          )}
+        />
       </Month>
     </CalendarStyle>
   );
