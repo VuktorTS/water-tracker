@@ -1,17 +1,22 @@
 import { HomeLink } from './Logo.styled';
 import simpleImage from '../../img/Logo.png';
-
-// ще потрібно буде доробити рендер зображення під ретину
-// import retinaImage from '../../img/Logo-2x.jpg';
-// import { useSelector } from "react-redux";
+import retinaImage from '../../img/Logo-2x.png';
 
 export const Logo = () => {
-  const isLoggedIn = true; //useSelector(selectIsLoggedIn);
+  const isLoggedIn = true;
   const path = isLoggedIn ? '/home' : '/welcome';
   return (
     <HomeLink to={path}>
-      {/* <ImageDiv simple={simpleImage} retina={retinaImage}></ImageDiv> */}
-      <img src={simpleImage} alt="Water Tracker Logo" />
+      <picture>
+        <source srcSet={retinaImage} media="(min-resolution: 2dppx)" />
+
+        <img
+          src={simpleImage}
+          alt="Water Tracker Logo"
+          width="102"
+          height="48"
+        />
+      </picture>
     </HomeLink>
   );
 };
