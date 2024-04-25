@@ -26,11 +26,6 @@ export const reqResendVerify = async (body) => {
   return data;
 };
 
-export const reqDeleteUser = async (body) => {
-  const { data } = await axios.delete('/users/delete', {data: body});
-  return data;
-};
-
 export const reqSignOut = async () => {
   const { data } = await axios.post('/users/signout');
   clearAuthHeader();
